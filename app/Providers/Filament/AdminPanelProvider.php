@@ -21,10 +21,15 @@ class AdminPanelProvider extends XotBasePanelProvider
         // $panel->assets([
         //    Js::make('chart-js-plugins', Vite::asset('resources/js/filament-chart-js-plugins.js', 'assets/chart'))->module(),
         // ]);
-        FilamentAsset::register([
-            Js::make('chart-js-plugins', Vite::asset('resources/js/filament-chart-js-plugins.js', 'assets/chart'))->module(),
-            Css::make('chart-js-plugins', Vite::asset('resources/css/app.css', 'assets/chart')),
-        ]);
+        try {
+            FilamentAsset::register([
+                Js::make('chart-js-plugins', Vite::asset('resources/js/filament-chart-js-plugins.js', 'assets/chart'))->module(),
+                Css::make('chart-js-plugins', Vite::asset('resources/css/app.css', 'assets/chart')),
+            ]);
+        } catch (\Exception $e) {
+            // Only for preventing crash during composer update/install
+            // Log::warning($e->getMessage());
+        }
 
         return $panel;
     }
