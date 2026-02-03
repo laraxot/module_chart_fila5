@@ -96,8 +96,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param Collection<int, AnswerData> $answers
-     *
+     * @param  Collection<int, AnswerData>  $answers
      * @return array<int, string>
      */
     private function extractLabels(Collection $answers): array
@@ -111,8 +110,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param Collection<int, AnswerData> $answers
-     *
+     * @param  Collection<int, AnswerData>  $answers
      * @return array<int, string>
      */
     private function extractLegends(Collection $answers): array
@@ -130,9 +128,8 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param Collection<int, AnswerData> $answers
-     * @param array<int, string>          $legends
-     *
+     * @param  Collection<int, AnswerData>  $answers
+     * @param  array<int, string>  $legends
      * @return array<int, array<int, float>>
      */
     private function normalizeDataSets(Collection $answers, array $legends): array
@@ -147,8 +144,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param array<int, array<string, int|float|string|null>|null> $rawData
-     *
+     * @param  array<int, array<string, int|float|string|null>|null>  $rawData
      * @return array<int, float>
      */
     private function buildDataSeries(array $rawData, string $legend): array
@@ -163,7 +159,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param array<string, int|float|string|null>|null $row
+     * @param  array<string, int|float|string|null>|null  $row
      */
     private function extractNumericValue(?array $row, string $legend): float
     {
@@ -179,7 +175,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param array<int, string> $labels
+     * @param  array<int, string>  $labels
      */
     private function configureAxes(Graph $graph, array $labels, int $angle): void
     {
@@ -201,7 +197,7 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param array<int, string> $labels
+     * @param  array<int, string>  $labels
      */
     private function configureXAxis(Graph $graph, array $labels, int $angle): void
     {
@@ -225,8 +221,8 @@ final class LineSubQuestionAction
     }
 
     /**
-     * @param array<int, array<int, float>> $dataSets
-     * @param array<int, string>            $legends
+     * @param  array<int, array<int, float>>  $dataSets
+     * @param  array<int, string>  $legends
      */
     private function addLinePlots(Graph $graph, array $dataSets, array $legends): void
     {

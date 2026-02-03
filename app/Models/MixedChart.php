@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Models;
 
-use Illuminate\Support\Carbon;
-use Modules\Quaeris\Models\Profile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Carbon;
+use Modules\Quaeris\Models\Profile;
 
 /**
  * Modules\Chart\Models\MixedChart.

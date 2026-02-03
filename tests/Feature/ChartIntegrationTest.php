@@ -31,7 +31,7 @@ describe('Chart Integration', function () {
     });
 
     it('applies default attributes when creating chart', function () {
-        $chart = new Chart();
+        $chart = new Chart;
 
         expect($chart->list_color)->toBe('#d60021')
             ->and($chart->color)->toBe('#d60021')

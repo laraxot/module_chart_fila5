@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions\Widget;
 
-use RuntimeException;
 use Exception;
-use ReflectionClass;
-use ReflectionException;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Storage;
+use ReflectionClass;
+use ReflectionException;
+use RuntimeException;
 // use Spatie\Browsershot\Browsershot; // Not installed
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -37,12 +37,11 @@ class SaveChartWidgetAsSvgAction
     /**
      * Esegue l'export del widget Chart.js in SVG (PNG embedded)
      *
-     * @param ChartWidget $widget   Widget Filament da esportare
-     * @param string|null $filename Nome file (opzionale, auto-generato se null)
-     * @param int         $width    Larghezza immagine in pixel
-     * @param int         $height   Altezza immagine in pixel
-     * @param string      $disk     Disco storage Laravel
-     *
+     * @param  ChartWidget  $widget  Widget Filament da esportare
+     * @param  string|null  $filename  Nome file (opzionale, auto-generato se null)
+     * @param  int  $width  Larghezza immagine in pixel
+     * @param  int  $height  Altezza immagine in pixel
+     * @param  string  $disk  Disco storage Laravel
      * @return array{path: string, url: string, content: string, size: int, width: int, height: int}
      */
     public function execute(
@@ -66,7 +65,7 @@ class SaveChartWidgetAsSvgAction
         );
 
         // 3. Genera filename SVG se non fornito
-        if (null === $filename) {
+        if ($filename === null) {
             $filename = 'charts/widget-'.uniqid().'.svg';
         }
 
@@ -122,11 +121,10 @@ class SaveChartWidgetAsSvgAction
     /**
      * Crea SVG con immagine PNG embedded
      *
-     * @param string      $base64 PNG in base64
-     * @param int         $width  Larghezza
-     * @param int         $height Altezza
-     * @param string|null $title  Titolo grafico
-     *
+     * @param  string  $base64  PNG in base64
+     * @param  int  $width  Larghezza
+     * @param  int  $height  Altezza
+     * @param  string|null  $title  Titolo grafico
      * @return string Contenuto SVG
      */
     private function createSvgWithEmbeddedPng(
@@ -179,8 +177,7 @@ SVG;
     /**
      * Variante con caching
      *
-     * @param int $ttl TTL in secondi
-     *
+     * @param  int  $ttl  TTL in secondi
      * @return array{path: string, url: string, content: string, size: int, width: int, height: int}
      */
     public function executeWithCache(

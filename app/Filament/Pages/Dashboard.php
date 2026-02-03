@@ -9,7 +9,7 @@ use Modules\Chart\Filament\Widgets\Samples as WidgetsSamples;
 
 class Dashboard extends Page
 {
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-home';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
 
     protected string $view = 'chart::filament.pages.dashboard';
 

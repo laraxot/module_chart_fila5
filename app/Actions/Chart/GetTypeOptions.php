@@ -18,9 +18,20 @@ class GetTypeOptions
      */
     public function execute(): array
     {
-        $options = (array) trans('chart::chart.options.type');
+        $rawOptions = trans('chart::chart.options.type');
+        $options = [];
+        if (is_array($rawOptions)) {
+            foreach ($rawOptions as $key => $value) {
+                if (! is_string($key) || ! is_string($value)) {
+                    continue;
+                }
+
+                $options[$key] = $value;
+            }
+        }
 
         $mixed = MixedChart::get()->pluck('name', 'id')->all();
+        /** @var array<string, string> $data */
         $data = [];
         foreach ($mixed as $k => $v) {
             if (! is_string($v)) {

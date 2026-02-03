@@ -96,11 +96,7 @@ class ChartData extends Data
 
             $hex = Hex::fromString($item);
 
-            if (is_object($hex) && method_exists($hex, 'toRgba')) {
-                return (string) $hex->toRgba($alpha);
-            }
-
-            return (string) $item;
+            return (string) $hex->toRgba($alpha);
         })->all();
     }
 

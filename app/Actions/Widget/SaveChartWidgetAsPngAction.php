@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions\Widget;
 
-use RuntimeException;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Storage;
+use RuntimeException;
 // use Spatie\Browsershot\Browsershot; // Not installed
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -35,13 +35,12 @@ class SaveChartWidgetAsPngAction
     /**
      * Esegue l'export del widget Chart.js in PNG
      *
-     * @param ChartWidget $widget   Widget Filament da esportare
-     * @param string|null $filename Nome file (opzionale, auto-generato se null)
-     * @param int         $width    Larghezza immagine in pixel
-     * @param int         $height   Altezza immagine in pixel
-     * @param string      $disk     Disco storage Laravel
-     * @param int         $quality  Qualità PNG (0-100)
-     *
+     * @param  ChartWidget  $widget  Widget Filament da esportare
+     * @param  string|null  $filename  Nome file (opzionale, auto-generato se null)
+     * @param  int  $width  Larghezza immagine in pixel
+     * @param  int  $height  Altezza immagine in pixel
+     * @param  string  $disk  Disco storage Laravel
+     * @param  int  $quality  Qualità PNG (0-100)
      * @return array{path: string, url: string, base64: string, size: int, width: int, height: int}
      */
     public function execute(
@@ -65,7 +64,7 @@ class SaveChartWidgetAsPngAction
         );
 
         // 3. Genera filename se non fornito
-        if (null === $filename) {
+        if ($filename === null) {
             $filename = 'charts/widget-'.uniqid().'.png';
         }
 
@@ -76,8 +75,7 @@ class SaveChartWidgetAsPngAction
     /**
      * Variante con caching per performance
      *
-     * @param int $ttl TTL in secondi (default 1 ora)
-     *
+     * @param  int  $ttl  TTL in secondi (default 1 ora)
      * @return array{path: string, url: string, base64: string, size: int, width: int, height: int}
      */
     public function executeWithCache(

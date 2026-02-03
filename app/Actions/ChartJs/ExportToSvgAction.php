@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace Modules\Chart\Actions\ChartJs;
 
 use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
 
 final class ExportToSvgAction
 {
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $chartData
-     * @param array<string, mixed> $options
-     *
+     * @param  array<string, mixed>  $chartData
+     * @param  array<string, mixed>  $options
      * @return array{
      *     svg_content: string,
      *     export_options: array{width: int, height: int, filename: string, title: string, includeStyles: bool},
@@ -34,9 +32,8 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param array<string, mixed> $chartData
-     * @param array<string, mixed> $options
-     *
+     * @param  array<string, mixed>  $chartData
+     * @param  array<string, mixed>  $options
      * @return array{width: int, height: int, filename: string, title: string, includeStyles: bool}
      */
     private function resolveExportOptions(array $chartData, array $options): array
@@ -56,15 +53,14 @@ final class ExportToSvgAction
         return [
             'width' => $width,
             'height' => $height,
-            'filename' => '' !== $filename ? $filename : 'chart.svg',
+            'filename' => $filename !== '' ? $filename : 'chart.svg',
             'title' => $title,
             'includeStyles' => $includeStyles,
         ];
     }
 
     /**
-     * @param array<string, mixed> $chartData
-     *
+     * @param  array<string, mixed>  $chartData
      * @return array{
      *     type: string,
      *     datasets: list<array{
@@ -95,7 +91,7 @@ final class ExportToSvgAction
                 }
 
                 $data = $this->normalizeNumericSeries($dataset['data'] ?? []);
-                if ([] === $data) {
+                if ($data === []) {
                     continue;
                 }
 
@@ -151,12 +147,12 @@ final class ExportToSvgAction
 
         $palette = [];
         foreach ($rawColors as $color) {
-            if (\is_string($color) && '' !== \trim($color)) {
+            if (\is_string($color) && \trim($color) !== '') {
                 $palette[] = $color;
             }
         }
 
-        if ([] === $palette) {
+        if ($palette === []) {
             return \array_fill(0, \max($length, 1), '#36A2EB');
         }
 
@@ -171,9 +167,8 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param array<int|string, mixed>       $rawLabels
-     * @param list<array{data: list<float>}> $datasets
-     *
+     * @param  array<int|string, mixed>  $rawLabels
+     * @param  list<array{data: list<float>}>  $datasets
      * @return list<string>
      */
     private function normalizeLabels(array $rawLabels, array $datasets): array
@@ -188,14 +183,14 @@ final class ExportToSvgAction
         }
 
         $maxDataPoints = $this->maxDataPoints($datasets);
-        if ([] === $labels && $maxDataPoints > 0) {
-            for ($index = 0; $index < $maxDataPoints; ++$index) {
+        if ($labels === [] && $maxDataPoints > 0) {
+            for ($index = 0; $index < $maxDataPoints; $index++) {
                 $labels[] = \sprintf('Label %d', $index + 1);
             }
         }
 
         if (\count($labels) < $maxDataPoints) {
-            for ($index = \count($labels); $index < $maxDataPoints; ++$index) {
+            for ($index = \count($labels); $index < $maxDataPoints; $index++) {
                 $labels[] = \sprintf('Label %d', $index + 1);
             }
         }
@@ -204,7 +199,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param list<array{data: list<float>}> $datasets
+     * @param  list<array{data: list<float>}>  $datasets
      */
     private function maxDataPoints(array $datasets): int
     {
@@ -227,7 +222,7 @@ final class ExportToSvgAction
      *     }>,
      *     labels: list<string>
      * } $chartPayload
-     * @param array{width: int, height: int, title: string, includeStyles: bool, filename: string} $options
+     * @param  array{width: int, height: int, title: string, includeStyles: bool, filename: string}  $options
      */
     private function generateSvgFromData(array $chartPayload, array $options): string
     {
@@ -237,7 +232,7 @@ final class ExportToSvgAction
         $svgParts = [];
         $svgParts[] = \sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', $width, $height);
 
-        if ('' !== $options['title']) {
+        if ($options['title'] !== '') {
             $svgParts[] = \sprintf('<title>%s</title>', $this->escape($options['title']));
         }
 
@@ -268,11 +263,11 @@ final class ExportToSvgAction
      *     backgroundColor: list<string>,
      *     borderColor: list<string>
      * }> $datasets
-     * @param list<string> $labels
+     * @param  list<string>  $labels
      */
     private function generateBarChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ([] === $datasets || [] === $labels) {
+        if ($datasets === [] || $labels === []) {
             return '';
         }
 
@@ -311,7 +306,7 @@ final class ExportToSvgAction
         }
 
         $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0; $i < $barCount; ++$i) {
+        for ($i = 0; $i < $barCount; $i++) {
             $x = $xOffset + ($i * 2 * $barWidth) + ($barWidth * $datasetCount / 2);
             $y = $yOffset + 15;
 
@@ -325,7 +320,7 @@ final class ExportToSvgAction
         $svg .= '</g>';
 
         $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0; $i <= 5; ++$i) {
+        for ($i = 0; $i <= 5; $i++) {
             $yValue = ($maxValue / 5) * $i;
             $y = $yOffset - ($yValue / $maxValue) * $chartHeight;
 
@@ -364,11 +359,11 @@ final class ExportToSvgAction
      *     backgroundColor: list<string>,
      *     borderColor: list<string>
      * }> $datasets
-     * @param list<string> $labels
+     * @param  list<string>  $labels
      */
     private function generateLineChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ([] === $datasets || [] === $labels) {
+        if ($datasets === [] || $labels === []) {
             return '';
         }
 
@@ -429,7 +424,7 @@ final class ExportToSvgAction
         $svg .= '</g>';
 
         $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0; $i <= 5; ++$i) {
+        for ($i = 0; $i <= 5; $i++) {
             $yValue = ($maxValue / 5) * $i;
             $y = $yOffset - ($yValue / $maxValue) * $chartHeight;
 
@@ -468,16 +463,16 @@ final class ExportToSvgAction
      *     backgroundColor: list<string>,
      *     borderColor: list<string>
      * }> $datasets
-     * @param list<string> $labels
+     * @param  list<string>  $labels
      */
     private function generatePieChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ([] === $datasets || [] === $labels) {
+        if ($datasets === [] || $labels === []) {
             return '';
         }
 
         $dataset = $datasets[0];
-        if ([] === $dataset['data']) {
+        if ($dataset['data'] === []) {
             return '';
         }
 
@@ -548,13 +543,13 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param list<array{data: list<float>}> $datasets
+     * @param  list<array{data: list<float>}>  $datasets
      */
     private function determineMaxValue(array $datasets): float
     {
         $maxValue = 0.0;
         foreach ($datasets as $dataset) {
-            if ([] !== $dataset['data']) {
+            if ($dataset['data'] !== []) {
                 $maxValue = \max($maxValue, \max($dataset['data']));
             }
         }

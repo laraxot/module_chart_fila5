@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
-use Illuminate\Contracts\Support\Htmlable;
 use Filament\Widgets\ChartWidget;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Storage;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -23,11 +23,10 @@ class ExportChartFromWidgetAction
     /**
      * Esporta un grafico da widget Filament in SVG e PNG
      *
-     * @param ChartWidget $widget       Widget Filament con grafico
-     * @param string      $chartId      ID del canvas del grafico
-     * @param string|null $filenameBase Nome base per i file (opzionale)
-     * @param string      $disk         Disco storage Laravel
-     *
+     * @param  ChartWidget  $widget  Widget Filament con grafico
+     * @param  string  $chartId  ID del canvas del grafico
+     * @param  string|null  $filenameBase  Nome base per i file (opzionale)
+     * @param  string  $disk  Disco storage Laravel
      * @return array{svg: array, png: array, widget_class: string}
      */
     public function execute(
@@ -69,11 +68,10 @@ class ExportChartFromWidgetAction
     /**
      * Esporta solo SVG da widget Filament
      *
-     * @param ChartWidget $widget   Widget Filament con grafico
-     * @param string      $chartId  ID del canvas del grafico
-     * @param string|null $filename Nome file (opzionale)
-     * @param string      $disk     Disco storage
-     *
+     * @param  ChartWidget  $widget  Widget Filament con grafico
+     * @param  string  $chartId  ID del canvas del grafico
+     * @param  string|null  $filename  Nome file (opzionale)
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string}
      */
     public function executeSvg(
@@ -94,12 +92,11 @@ class ExportChartFromWidgetAction
     /**
      * Esporta solo PNG da widget Filament
      *
-     * @param ChartWidget $widget   Widget Filament con grafico
-     * @param string      $chartId  ID del canvas del grafico
-     * @param string|null $filename Nome file (opzionale)
-     * @param string      $disk     Disco storage
-     * @param int         $quality  Qualità PNG (0-100)
-     *
+     * @param  ChartWidget  $widget  Widget Filament con grafico
+     * @param  string  $chartId  ID del canvas del grafico
+     * @param  string|null  $filename  Nome file (opzionale)
+     * @param  string  $disk  Disco storage
+     * @param  int  $quality  Qualità PNG (0-100)
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function executePng(
@@ -122,11 +119,10 @@ class ExportChartFromWidgetAction
     /**
      * Esporta PNG per PDF (alta qualità)
      *
-     * @param ChartWidget $widget   Widget Filament con grafico
-     * @param string      $chartId  ID del canvas del grafico
-     * @param string|null $filename Nome file (opzionale)
-     * @param string      $disk     Disco storage
-     *
+     * @param  ChartWidget  $widget  Widget Filament con grafico
+     * @param  string  $chartId  ID del canvas del grafico
+     * @param  string|null  $filename  Nome file (opzionale)
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function executePngForPdf(
@@ -169,8 +165,7 @@ class ExportChartFromWidgetAction
     /**
      * Ottiene informazioni sul widget per l'export
      *
-     * @param ChartWidget $widget Widget da analizzare
-     *
+     * @param  ChartWidget  $widget  Widget da analizzare
      * @return array{class: string, title: string|null, description: string|null, chart_type: string|null}
      */
     public function getWidgetInfo(ChartWidget $widget): array
@@ -179,7 +174,7 @@ class ExportChartFromWidgetAction
 
         $title = null;
 
-        if (null !== $heading) {
+        if ($heading !== null) {
             $title = $heading instanceof Htmlable
                 ? $heading->toHtml()
                 : (string) $heading;

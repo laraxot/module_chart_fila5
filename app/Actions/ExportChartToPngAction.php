@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
-use RuntimeException;
 use Illuminate\Support\Facades\Storage;
+use RuntimeException;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert as WebmozartAssert;
 
 use function Safe\base64_decode;
 use function Safe\json_encode;
 use function Safe\preg_replace;
 use function Safe\unpack;
-
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert as WebmozartAssert;
 
 /**
  * Action per esportare grafici Chart.js in formato PNG
@@ -28,11 +27,10 @@ class ExportChartToPngAction
     /**
      * Esporta un grafico Chart.js in formato PNG
      *
-     * @param string      $base64Data Base64 dell'immagine (da canvas.toDataURL())
-     * @param string|null $filename   Nome file (opzionale)
-     * @param string      $disk       Disco storage Laravel
-     * @param int         $quality    Qualità PNG (0-100)
-     *
+     * @param  string  $base64Data  Base64 dell'immagine (da canvas.toDataURL())
+     * @param  string|null  $filename  Nome file (opzionale)
+     * @param  string  $disk  Disco storage Laravel
+     * @param  int  $quality  Qualità PNG (0-100)
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function execute(
@@ -52,7 +50,7 @@ class ExportChartToPngAction
 
         // Salva file PNG
         $result = Storage::disk($disk)->put($filename, $imageData);
-        if (false === $result) {
+        if ($result === false) {
             throw new RuntimeException('Failed to save PNG file');
         }
 
@@ -69,11 +67,10 @@ class ExportChartToPngAction
     /**
      * Esporta PNG con qualità specifica
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param int         $quality    Qualità (0-100)
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  int  $quality  Qualità (0-100)
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function executeWithQuality(
@@ -88,10 +85,9 @@ class ExportChartToPngAction
     /**
      * Esporta PNG per uso in PDF (alta qualità)
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function executeForPdf(
@@ -105,10 +101,9 @@ class ExportChartToPngAction
     /**
      * Esporta PNG per uso web (qualità bilanciata)
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
     public function executeForWeb(
@@ -122,11 +117,10 @@ class ExportChartToPngAction
     /**
      * Esporta batch di grafici in PNG
      *
-     * @param list<string> $charts  Array di base64 data
-     * @param string       $prefix  Prefisso per i nomi file
-     * @param string       $disk    Disco storage
-     * @param int          $quality Qualità PNG
-     *
+     * @param  list<string>  $charts  Array di base64 data
+     * @param  string  $prefix  Prefisso per i nomi file
+     * @param  string  $disk  Disco storage
+     * @param  int  $quality  Qualità PNG
      * @return array Array di risultati
      */
     public function executeBatch(
@@ -150,12 +144,11 @@ class ExportChartToPngAction
     /**
      * Esporta PNG con metadati aggiuntivi
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param array       $metadata   Metadati aggiuntivi
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     * @param int         $quality    Qualità PNG
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  array  $metadata  Metadati aggiuntivi
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
+     * @param  int  $quality  Qualità PNG
      * @return array{path: string, url: string, size: int, filename: string, quality: int, metadata: array}
      */
     public function executeWithMetadata(
@@ -181,9 +174,8 @@ class ExportChartToPngAction
     /**
      * Verifica se un file PNG è valido
      *
-     * @param string $filename Nome file
-     * @param string $disk     Disco storage
-     *
+     * @param  string  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return bool True se il file è un PNG valido
      */
     public function validatePngFile(string $filename, string $disk = 'public'): bool
@@ -205,9 +197,8 @@ class ExportChartToPngAction
     /**
      * Ottiene informazioni su un file PNG
      *
-     * @param string $filename Nome file
-     * @param string $disk     Disco storage
-     *
+     * @param  string  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{width: int, height: int, size: int, valid: bool}|null
      */
     public function getPngInfo(string $filename, string $disk = 'public'): ?array
@@ -222,7 +213,7 @@ class ExportChartToPngAction
 
         // Estrai dimensioni dal chunk IHDR
         $ihdrPosition = strpos($content, 'IHDR');
-        if (false === $ihdrPosition) {
+        if ($ihdrPosition === false) {
             return null;
         }
 
