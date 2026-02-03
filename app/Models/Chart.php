@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Chart\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -221,7 +220,7 @@ class Chart extends Model
         if (Str::startsWith($this->type, 'mixed')) {
             $parz = \array_slice(explode(':', $this->type), 1);
             $mixed_id = implode('|', $parz);
-            
+
             // Simplified approach - avoid potential missing MixedChart model
             return ['chart' => $this->toArray()];
         }

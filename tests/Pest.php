@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Modules\Chart\Models\Chart;
 use Modules\Chart\Tests\TestCase;
 

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
-use RuntimeException;
 use Illuminate\Support\Facades\Storage;
+use RuntimeException;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 use function Safe\base64_decode;
 use function Safe\preg_replace;
-
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
 
 /**
  * Action per esportare grafici Chart.js in formato SVG
@@ -26,10 +25,9 @@ class ExportChartToSvgAction
     /**
      * Esporta un grafico Chart.js in formato SVG
      *
-     * @param string      $base64Data Base64 dell'immagine (da canvas.toDataURL())
-     * @param string|null $filename   Nome file (opzionale)
-     * @param string      $disk       Disco storage Laravel
-     *
+     * @param  string  $base64Data  Base64 dell'immagine (da canvas.toDataURL())
+     * @param  string|null  $filename  Nome file (opzionale)
+     * @param  string  $disk  Disco storage Laravel
      * @return array{path: string, url: string, size: int, filename: string}
      */
     public function execute(
@@ -51,7 +49,7 @@ class ExportChartToSvgAction
 
         // Salva file SVG
         $result = Storage::disk($disk)->put($filename, $svgContent);
-        if (false === $result) {
+        if ($result === false) {
             throw new RuntimeException('Failed to save SVG file');
         }
 
@@ -67,10 +65,9 @@ class ExportChartToSvgAction
     /**
      * Crea contenuto SVG con immagine PNG embedded
      *
-     * @param string $imageData Dati immagine PNG
-     * @param int    $width     Larghezza SVG (opzionale)
-     * @param int    $height    Altezza SVG (opzionale)
-     *
+     * @param  string  $imageData  Dati immagine PNG
+     * @param  int  $width  Larghezza SVG (opzionale)
+     * @param  int  $height  Altezza SVG (opzionale)
      * @return string Contenuto SVG
      */
     private function createSvgWithEmbeddedImage(
@@ -100,12 +97,11 @@ SVG;
     /**
      * Esporta SVG con dimensione personalizzata
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param int         $width      Larghezza SVG
-     * @param int         $height     Altezza SVG
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  int  $width  Larghezza SVG
+     * @param  int  $height  Altezza SVG
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, width: int, height: int}
      */
     public function executeWithCustomSize(
@@ -136,11 +132,10 @@ SVG;
     /**
      * Esporta SVG con metadati aggiuntivi
      *
-     * @param string      $base64Data Base64 dell'immagine
-     * @param array       $metadata   Metadati aggiuntivi
-     * @param string|null $filename   Nome file
-     * @param string      $disk       Disco storage
-     *
+     * @param  string  $base64Data  Base64 dell'immagine
+     * @param  array  $metadata  Metadati aggiuntivi
+     * @param  string|null  $filename  Nome file
+     * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, metadata: array}
      */
     public function executeWithMetadata(

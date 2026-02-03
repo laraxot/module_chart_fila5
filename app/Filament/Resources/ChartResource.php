@@ -16,6 +16,27 @@ class ChartResource extends XotBaseResource
     protected static ?string $model = Chart::class;
 
     /**
+     * @return array<string, string>
+     */
+    private static function getTransStringOptions(string $key): array
+    {
+        $raw = trans($key);
+        if (! is_array($raw)) {
+            return [];
+        }
+
+        $options = [];
+        foreach ($raw as $k => $v) {
+            if (! is_string($k) || ! is_string($v)) {
+                continue;
+            }
+            $options[$k] = $v;
+        }
+
+        return $options;
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public static function getFormSchema(): array
@@ -23,26 +44,26 @@ class ChartResource extends XotBaseResource
         return [
             'type' => Select::make('type')
                 ->options(app(GetTypeOptions::class)->execute()),
-            
+
             'group_by' => Select::make('group_by')
-                ->options((array) trans('chart::chart.options.group_by')),
-            
+                ->options(self::getTransStringOptions('chart::chart.options.group_by')),
+
             'sort_by' => Select::make('sort_by')
-                ->options((array) trans('chart::chart.options.group_by')), // Reuse group_by options for simplicity if matching
-            
+                ->options(self::getTransStringOptions('chart::chart.options.group_by')),
+
             'width' => TextInput::make('width'),
-            
+
             'height' => TextInput::make('height'),
-            
+
             'show_box' => Toggle::make('show_box')
                 ->inline(false),
 
             'font_family' => Select::make('font_family')
-                ->options((array) trans('chart::chart.options.font_family')),
-            
+                ->options(self::getTransStringOptions('chart::chart.options.font_family')),
+
             'font_style' => Select::make('font_style')
-                ->options((array) trans('chart::chart.options.font_style')),
-            
+                ->options(self::getTransStringOptions('chart::chart.options.font_style')),
+
             'font_size' => Select::make('font_size')
                 ->options([
                     '8' => '8',
@@ -52,9 +73,9 @@ class ChartResource extends XotBaseResource
                     '16' => '16',
                     '18' => '18',
                 ]),
-            
+
             'list_color' => TextInput::make('list_color'),
-            
+
             'transparency' => TextInput::make('transparency'),
         ];
     }

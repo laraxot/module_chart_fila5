@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions\Widget;
 
+use Filament\Widgets\ChartWidget;
 use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
-use Filament\Widgets\ChartWidget;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -42,9 +42,9 @@ class RenderChartWidgetHtmlAction
     /**
      * Renderizza il widget come HTML standalone
      *
-     * @param ChartWidget $widget Widget Filament da renderizzare
-     * @param int $width Larghezza canvas
-     * @param int $height Altezza canvas
+     * @param  ChartWidget  $widget  Widget Filament da renderizzare
+     * @param  int  $width  Larghezza canvas
+     * @param  int  $height  Altezza canvas
      * @return string HTML completo
      */
     public function execute(
@@ -82,10 +82,10 @@ class RenderChartWidgetHtmlAction
     /**
      * Crea HTML completo per Chart.js
      *
-     * @param string $chartConfig Configurazione Chart.js in JSON
-     * @param int $width Larghezza
-     * @param int $height Altezza
-     * @param string|null $heading Titolo
+     * @param  string  $chartConfig  Configurazione Chart.js in JSON
+     * @param  int  $width  Larghezza
+     * @param  int  $height  Altezza
+     * @param  string|null  $heading  Titolo
      * @return string HTML
      */
     private function createHtml(
@@ -163,7 +163,6 @@ HTML;
     /**
      * Ottieni dati dal widget
      *
-     * @param ChartWidget $widget
      * @return array<string, mixed>
      */
     private function getWidgetData(ChartWidget $widget): array
@@ -184,9 +183,6 @@ HTML;
 
     /**
      * Ottieni tipo grafico dal widget
-     *
-     * @param ChartWidget $widget
-     * @return string
      */
     private function getWidgetType(ChartWidget $widget): string
     {
@@ -207,7 +203,6 @@ HTML;
     /**
      * Ottieni opzioni dal widget
      *
-     * @param ChartWidget $widget
      * @return array<string, mixed>
      */
     private function getWidgetOptions(ChartWidget $widget): array
@@ -228,9 +223,6 @@ HTML;
 
     /**
      * Ottieni heading dal widget
-     *
-     * @param ChartWidget $widget
-     * @return string|null
      */
     private function getWidgetHeading(ChartWidget $widget): ?string
     {
