@@ -46,7 +46,8 @@
         "filament/schemas": "^5.0",
         "filament/support": "^5.0",
         "filament/tables": "^5.0",
-        "filament/widgets": "^5.0"
+        "filament/widgets": "^5.0",
+        "spatie/color": "^2.0"
     },
     "repositories": [ {
         "type": "path",
