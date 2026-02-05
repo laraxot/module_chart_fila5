@@ -49,6 +49,7 @@ class AnswersChartData extends Data
             case 'bar1':
             case 'bar3':
             case 'horizbar1':
+            case 'horizontalBar':
                 $type = 'bar';
                 break;
 
@@ -405,7 +406,7 @@ class AnswersChartData extends Data
      */
     private function buildBarLabelsJs(array $chartJsData): string
     {
-        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && $this->chart->type !== 'horizbar1') {
+        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && $this->chart->type !== 'horizbar1' && $this->chart->type !== 'horizontalBar') {
             return "{
                 name: {
                     align: 'center',
@@ -444,7 +445,7 @@ class AnswersChartData extends Data
                     }";
         }
 
-        if ($this->title !== 'no_set' && $this->chart->type === 'horizbar1') {
+        if ($this->title !== 'no_set' && ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar')) {
             return "{
                         display: true,
                         text: '".$this->title."',
@@ -486,7 +487,7 @@ class AnswersChartData extends Data
 
     private function determineValueSuffix(): string
     {
-        if ($this->chart->type === 'horizbar1' || $this->chart->max === 100.0) {
+        if ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar' || $this->chart->max === 100.0) {
             return ' %';
         }
 
@@ -495,7 +496,7 @@ class AnswersChartData extends Data
 
     private function determineIndexAxis(): string
     {
-        return $this->chart->type === 'horizbar1' ? 'y' : 'x';
+        return ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar') ? 'y' : 'x';
     }
 
     /**
