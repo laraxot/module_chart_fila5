@@ -13,6 +13,7 @@
 - 🌐 **[Chart.js (Web)](./chart-js-export-guide.md)** - Guida all'integrazione e widget Filament.
 - 📄 **[JpGraph (PDF)](./jpgraph-complete-guide.md)** - Generazione server-side per report statici.
 - 🧪 **[Multiple Labels Guide](./chartjs-datalabels-multiple-labels-complete-guide.md)** - Gestione avanzata dei plugin datalabels.
+- 🎯 **[Doughnut Center Labels](../../Quaeris/docs/chartjs-doughnut-center-label-guide.md)** - Come inserire testi al centro dei grafici a ciambella.
 
 ## 🏗️ **Architettura e Dati**
 - 🧩 **[Data Objects (DTO)](./MODULE_ANALYSIS.md)** - Struttura dei pacchetti dati per i grafici.

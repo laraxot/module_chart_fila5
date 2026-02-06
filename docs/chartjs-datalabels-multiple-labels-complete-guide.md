@@ -5,7 +5,9 @@
 **Target:** Filament 5.x, Laravel 12.x  
 **Livello:** Guida "a prova di stupido" - passo dopo passo
 
-> **Riferimento Ufficiale:** [chartjs-plugin-datalabels - Multiple Labels Sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)
+> **Riferimenti ufficiali:**  
+> - [Multiple Labels Sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)  
+> - [Doughnut Sample (sorgente)](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md)
 
 ---
 
@@ -15,7 +17,7 @@
 2. [Prerequisiti](#prerequisiti)
 3. [Installazione Passo-Passo](#installazione-passo-passo)
 4. [Registrazione Plugin per Filament 5.x](#registrazione-plugin-per-filament-5x)
-5. [Configurazione Multiple Labels](#configurazione-multiple-labels)
+5. [Configurazione Multiple Labels](#configurazione-multiple-labels) (include [Riferimento ufficiale: sample Doughnut](#riferimento-ufficiale-sample-doughnut))
 6. [Esempi Pratici Completi](#esempi-pratici-completi)
 7. [Opzioni Disponibili](#opzioni-disponibili)
 8. [Troubleshooting](#troubleshooting)
@@ -341,6 +343,36 @@ protected function getData(): array
 ```
 
 **⚠️ NOTA:** La configurazione nel dataset ha priorità su quella globale.
+
+### Riferimento ufficiale: sample Doughnut
+
+Il sample ufficiale del plugin ([sorgente GitHub](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md)) mostra pattern riutilizzabili per **doughnut** con più dataset e label condizionali.
+
+**Pattern principali dal sample:**
+
+1. **Più dataset con anchor per-dataset**  
+   Ogni dataset può definire `datalabels.anchor` diverso (`'end'`, `'center'`, `'start'`) per posizionare le label sul bordo esterno, al centro o sul bordo interno del segmento.
+
+2. **Configurazione globale `plugins.datalabels`**  
+   - `backgroundColor`: funzione che usa il colore del segmento: `function(context) { return context.dataset.backgroundColor; }` (o colore per indice).  
+   - `borderColor: 'white'`, `borderRadius: 25`, `borderWidth: 2`, `color: 'white'` per leggibilità.  
+   - **`display`**: funzione per mostrare la label solo quando ha senso, es. `function(context) { var value = context.dataset.data[context.dataIndex]; var count = context.dataset.data.length; return value > count * 1.5; }` (evita label su valori troppo piccoli).  
+   - `formatter: Math.round` per valori numerici interi.  
+   - `padding: 6`, `font: { weight: 'bold' }`.
+
+3. **Opzioni core del doughnut**  
+   - `aspectRatio: 4 / 3`  
+   - **`cutoutPercentage: 32`** (o in Chart.js 4.x `cutout: '32%'`) per la dimensione del buco centrale.  
+   - `layout.padding: 32` per spazio attorno al grafico.
+
+**Riepilogo:** per doughnut/pie le label usano coordinate radiali; l’anchor può essere impostato per-dataset; la funzione `display` evita sovraffollamento; lo sfondo della label può essere ereditato dal colore del segmento.
+
+- **Sample ufficiale (sorgente):** [chartjs-plugin-datalabels – Doughnut](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md)  
+- **Demo web:** [chartjs-plugin-datalabels – Doughnut](https://chartjs-plugin-datalabels.netlify.app/samples/charts/doughnut.html)
+
+In questo progetto, per doughnut/pie con una label per slice (valore + percentuale) e `clip: false` si usa il widget `QuestionChartAnswersChartWidget`; dettagli in [question-chart-answers-chart-widget](../../Quaeris/docs/question-chart-answers-chart-widget.md). Per un doughnut con distribuzione percentuale e soglia minima si usa [Simple08ChartWidget – Doughnut](../../Quaeris/docs/simple08chartwidget-doughnut-distribution.md).
+
+**Label al centro del doughnut:** il modulo Chart registra un plugin custom `doughnutLabel` in `filament-chart-js-plugins.js` che disegna un testo al centro del doughnut/pie. I widget possono passare il testo tramite `options.plugins.doughnutLabel.label` oppure tramite `dataset.centerLabel` (supporto a più righe con `\n`). Vedi sezione "Label al centro del doughnut" in [question-chart-answers-chart-widget](../../Quaeris/docs/question-chart-answers-chart-widget.md). Per un’alternativa standard si può usare [chartjs-plugin-annotation – Doughnut Label](https://www.chartjs.org/chartjs-plugin-annotation/3.1.0/guide/types/doughnutLabel.html).
 
 ---
 
@@ -1237,6 +1269,7 @@ protected function getOptions(): array
 ### Documentazione Ufficiale
 
 - [chartjs-plugin-datalabels - Multiple Labels](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)
+- [chartjs-plugin-datalabels - Doughnut (sorgente)](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md) / [Demo Doughnut](https://chartjs-plugin-datalabels.netlify.app/samples/charts/doughnut.html)
 - [chartjs-plugin-datalabels - Guide](https://chartjs-plugin-datalabels.netlify.app/guide/)
 - [Filament 5.x - Charts Widgets](https://filamentphp.com/docs/5.x/widgets/charts)
 
