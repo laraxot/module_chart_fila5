@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Resources\ChartResource\Pages;
 
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Chart\Filament\Resources\ChartResource;
 use Modules\UI\Enums\TableLayoutEnum;
