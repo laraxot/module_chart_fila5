@@ -25,11 +25,11 @@ class ListCharts extends XotBaseListRecords
     protected static string $resource = ChartResource::class;
 
     /**
-     * Definisce le colonne della tabella.
+     * Colonne tabella Chart (condivise con ManageCharts e altri).
      *
      * @return array<string, TextColumn>
      */
-    public function getTableColumns(): array
+    public static function getChartTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id')
@@ -57,5 +57,15 @@ class ListCharts extends XotBaseListRecords
                 ->numeric()
                 ->sortable(),
         ];
+    }
+
+    /**
+     * Definisce le colonne della tabella.
+     *
+     * @return array<string, TextColumn>
+     */
+    public function getTableColumns(): array
+    {
+        return self::getChartTableColumns();
     }
 }
