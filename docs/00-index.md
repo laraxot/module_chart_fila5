@@ -23,6 +23,7 @@
 ## 🧪 **Qualità e Sviluppo**
 - ✅ **[PHPStan Analysis](./phpstan-analysis-chart.md)** - Report sulla stabilità Level 10.
 - 🔬 **[Testing Guidelines](./testing.md)** - Verifica della correttezza dei dati visualizzati.
+- ⚠️ **[Anti-Patterns](./anti-patterns.md)** - Cosa evitare assolutamente (God Widgets).
 
 ## 🧹 **Manutenzione**
 - 🗑️ **[Cleanup Plan](./piano-riorganizzazione.md)** - Strategia per la rimozione dei 300+ file obsoleti.
