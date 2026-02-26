@@ -14,22 +14,14 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListCharts extends XotBaseListRecords
 {
-    /**
-     * Layout della tabella.
-     */
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    /**
-     * Risorsa associata a questa pagina.
-     */
     protected static string $resource = ChartResource::class;
 
     /**
-     * Colonne tabella Chart (condivise con ManageCharts e altri).
-     *
      * @return array<string, TextColumn>
      */
-    public static function getChartTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id')
@@ -57,15 +49,5 @@ class ListCharts extends XotBaseListRecords
                 ->numeric()
                 ->sortable(),
         ];
-    }
-
-    /**
-     * Definisce le colonne della tabella.
-     *
-     * @return array<string, TextColumn>
-     */
-    public function getTableColumns(): array
-    {
-        return self::getChartTableColumns();
     }
 }
