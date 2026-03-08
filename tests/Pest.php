@@ -30,7 +30,7 @@ pest()->extend(TestCase::class)->in('Feature', 'Unit');
 */
 
 expect()->extend('toBeChart', function () {
-    return $this->toBeInstanceOf(Chart::class);
+    return // @var mixed toBeInstanceOf(Chart::class;
 });
 
 /*

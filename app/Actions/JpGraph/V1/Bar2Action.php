@@ -68,7 +68,7 @@ class Bar2Action
 
         /*
         $bplot = new BarPlot($data);
-        // $bplot = $this->applyPlotStyle($bplot);
+        // $bplot = // @var mixed applyPlotStyle($bplot;
         $bplot = app(ApplyPlotStyleAction::class)->execute($bplot, $chart);
 
         $colors = [];
@@ -90,7 +90,7 @@ class Bar2Action
 
             // dddx(['data' => $data, 'tmp_data' => $tmp_data]);
             $tmp = new BarPlot($tmp_data);
-            // $tmp = $this->applyPlotStyle($tmp);
+            // $tmp = // @var mixed applyPlotStyle($tmp;
             $tmp = app(ApplyPlotStyleAction::class)->execute($tmp, $chart);
             $tmp->SetColor($colors[$i]);
             $tmp->SetFillColor($colors[$i].'@'.$chart->transparency); // trasparenza da 0 a 1

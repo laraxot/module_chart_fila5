@@ -40,7 +40,7 @@ class Pie1Action
             Assert::numeric($sum = collect($data)->sum());
             Assert::numeric($chart->max);
             $other = $chart->max - $sum;
-            // dddx([$sum, $other, $this->vars['max']]);
+            // dddx([$sum, $other, // @var mixed vars['max']];
             if ($other > 0.01) {
                 $data[] = $other;
                 $labels[] = $chart->answer_value_no_txt;
@@ -53,8 +53,8 @@ class Pie1Action
 
         // A new pie graph
         $graph = new PieGraph($chart->width, $chart->height, 'auto');
-        // $graph = $this->getGraph();
-        // $graph = $this->applyGraphStyle($graph);
+        // $graph = // @var mixed getGraph(;
+        // $graph = // @var mixed applyGraphStyle($graph;
         $graph = app(ApplyGraphStyleAction::class)->execute($graph, $chart);
 
         // Create the pie plot

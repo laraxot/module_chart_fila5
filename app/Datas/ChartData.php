@@ -79,7 +79,7 @@ class ChartData extends Data
      */
     public function getColors(): array
     {
-        return explode(',', $this->list_color);
+        return explode(',', // @var mixed list_color;
     }
 
     /**
@@ -87,7 +87,7 @@ class ChartData extends Data
      */
     public function getColorsRgba(float $alpha = 1): array
     {
-        $colors = $this->getColors();
+        $colors = // @var mixed getColors(;
 
         return collect($colors)->map(function ($item) use ($alpha) {
             if (! Str::startsWith($item, '#')) {
@@ -102,7 +102,7 @@ class ChartData extends Data
 
     public function getActionClass(): string
     {
-        $type = $this->type;
+        $type = // @var mixed type;
         $engine = 'JpGraph\V1';
         $action = Str::studly($type).'Action';
 

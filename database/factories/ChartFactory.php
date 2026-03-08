@@ -32,32 +32,32 @@ class ChartFactory extends Factory
         $formats = ['%', 'decimal', 'integer', 'currency'];
 
         return [
-            'id' => $this->faker->randomNumber(5),
-            'post_id' => $this->faker->randomNumber(5),
+            'id' => // @var mixed faker->randomNumber(5
+            'post_id' => // @var mixed faker->randomNumber(5
             'post_type' => $types[array_rand($types)],
             'type' => $charts[array_rand($charts)],
-            'width' => $this->faker->numberBetween(400, 1200),
-            'height' => $this->faker->numberBetween(300, 800),
+            'width' => // @var mixed faker->numberBetween(400, 1200
+            'height' => // @var mixed faker->numberBetween(300, 800
             'color' => '#'.str_pad(dechex(random_int(0, 16777215)), 6, '0', STR_PAD_LEFT),
             'bg_color' => '#'.str_pad(dechex(random_int(0, 16777215)), 6, '0', STR_PAD_LEFT),
             'font_family' => $fonts[array_rand($fonts)],
-            'font_size' => $this->faker->numberBetween(8, 72),
+            'font_size' => // @var mixed faker->numberBetween(8, 72
             'font_style' => $styles[array_rand($styles)],
-            'y_grace' => $this->faker->randomNumber(5),
+            'y_grace' => // @var mixed faker->randomNumber(5
             'yaxis_hide' => (bool) random_int(0, 1),
             'list_color' => '#'.str_pad(dechex(random_int(0, 16777215)), 6, '0', STR_PAD_LEFT),
-            'grace' => $this->faker->randomNumber(5),
-            'x_label_angle' => $this->faker->numberBetween(0, 360),
+            'grace' => // @var mixed faker->randomNumber(5
+            'x_label_angle' => // @var mixed faker->numberBetween(0, 360
             'show_box' => (bool) random_int(0, 1),
-            'x_label_margin' => $this->faker->numberBetween(0, 50),
-            'plot_perc_width' => $this->faker->randomFloat(2, 0, 100),
+            'x_label_margin' => // @var mixed faker->numberBetween(0, 50
+            'plot_perc_width' => // @var mixed faker->randomFloat(2, 0, 100
             'plot_value_show' => (bool) random_int(0, 1),
             'plot_value_format' => $formats[array_rand($formats)],
             'plot_value_pos' => $positions[array_rand($positions)],
             'plot_value_color' => '#'.str_pad(dechex(random_int(0, 16777215)), 6, '0', STR_PAD_LEFT),
             'group_by' => $groups[array_rand($groups)],
             'sort_by' => $sorts[array_rand($sorts)],
-            'transparency' => $this->faker->numberBetween(0, 100),
+            'transparency' => // @var mixed faker->numberBetween(0, 100
         ];
     }
 }

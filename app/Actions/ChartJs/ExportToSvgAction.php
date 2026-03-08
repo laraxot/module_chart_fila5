@@ -21,11 +21,11 @@ final class ExportToSvgAction
      */
     public function execute(array $chartData, array $options = []): array
     {
-        $exportOptions = $this->resolveExportOptions($chartData, $options);
-        $payload = $this->extractChartPayload($chartData);
+        $exportOptions = // @var mixed resolveExportOptions($chartData, $options;
+        $payload = // @var mixed extractChartPayload($chartData;
 
         return [
-            'svg_content' => $this->generateSvgFromData($payload, $exportOptions),
+            'svg_content' => // @var mixed generateSvgFromData($payload, $exportOptions
             'export_options' => $exportOptions,
             'timestamp' => \time(),
         ];
@@ -40,11 +40,11 @@ final class ExportToSvgAction
     {
         /** @var float|int|string|null $widthInput */
         $widthInput = $options['width'] ?? $chartData['width'] ?? 800;
-        $width = $this->sanitizeDimension($widthInput);
+        $width = // @var mixed sanitizeDimension($widthInput;
 
         /** @var float|int|string|null $heightInput */
         $heightInput = $options['height'] ?? $chartData['height'] ?? 600;
-        $height = $this->sanitizeDimension($heightInput);
+        $height = // @var mixed sanitizeDimension($heightInput;
 
         $filename = (string) ($options['filename'] ?? ('chart_'.\time().'.svg'));
         $title = (string) ($options['title'] ?? $chartData['title'] ?? 'Chart');
@@ -90,7 +90,7 @@ final class ExportToSvgAction
                     continue;
                 }
 
-                $data = $this->normalizeNumericSeries($dataset['data'] ?? []);
+                $data = // @var mixed normalizeNumericSeries($dataset['data'] ?? [];
                 if ($data === []) {
                     continue;
                 }
@@ -98,13 +98,13 @@ final class ExportToSvgAction
                 $datasets[] = [
                     'label' => isset($dataset['label']) ? (string) $dataset['label'] : null,
                     'data' => $data,
-                    'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($data)),
-                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($data)),
+                    'backgroundColor' => // @var mixed normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($data
+                    'borderColor' => // @var mixed normalizeColorPalette($dataset['borderColor'] ?? null, \count($data
                 ];
             }
         }
 
-        $labels = $this->normalizeLabels(\is_array($rawLabels) ? $rawLabels : [], $datasets);
+        $labels = // @var mixed normalizeLabels(\is_array($rawLabels;
 
         return [
             'type' => $type,
@@ -182,7 +182,7 @@ final class ExportToSvgAction
             }
         }
 
-        $maxDataPoints = $this->maxDataPoints($datasets);
+        $maxDataPoints = // @var mixed maxDataPoints($datasets;
         if ($labels === [] && $maxDataPoints > 0) {
             for ($index = 0; $index < $maxDataPoints; $index++) {
                 $labels[] = \sprintf('Label %d', $index + 1);
@@ -233,7 +233,7 @@ final class ExportToSvgAction
         $svgParts[] = \sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', $width, $height);
 
         if ($options['title'] !== '') {
-            $svgParts[] = \sprintf('<title>%s</title>', $this->escape($options['title']));
+            $svgParts[] = \sprintf('<title>%s</title>', // @var mixed escape($options['title'];
         }
 
         if ($options['includeStyles']) {
@@ -245,10 +245,10 @@ final class ExportToSvgAction
         }
 
         $svgParts[] = match ($chartPayload['type']) {
-            'bar' => $this->generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
-            'line' => $this->generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
-            'doughnut', 'pie' => $this->generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
-            default => $this->generateGenericChartSvg($width, $height),
+            'bar' => // @var mixed generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
+            'line' => // @var mixed generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
+            'doughnut', 'pie' => // @var mixed generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
+            default => // @var mixed generateGenericChartSvg($width, $height
         };
 
         $svgParts[] = '</svg>';
@@ -276,7 +276,7 @@ final class ExportToSvgAction
         $chartWidth = \max($width - $margin['left'] - $margin['right'], 1);
         $chartHeight = \max($height - $margin['top'] - $margin['bottom'], 1);
 
-        $maxValue = $this->determineMaxValue($datasets);
+        $maxValue = // @var mixed determineMaxValue($datasets;
         $barCount = \count($labels);
         $barWidth = $chartWidth / \max($barCount * 2, 1);
         $xOffset = $margin['left'];
@@ -292,7 +292,7 @@ final class ExportToSvgAction
                 $barHeight = ($value / $maxValue) * $chartHeight;
                 $x = $xOffset + ($i * 2 * $barWidth) + $datasetOffset;
                 $y = $yOffset - $barHeight;
-                $color = $this->escape($colorPalette[$i] ?? $colorPalette[0] ?? '#36A2EB');
+                $color = // @var mixed escape($colorPalette[$i] ?? $colorPalette[0] ?? '#36A2EB';
 
                 $svg .= \sprintf(
                     '<rect x="%f" y="%f" width="%f" height="%f" fill="%s" stroke="#000" stroke-width="0.5"/>',
@@ -314,7 +314,7 @@ final class ExportToSvgAction
                 '<text x="%f" y="%f" text-anchor="middle">%s</text>',
                 $x,
                 $y,
-                $this->escape($labels[$i])
+                // @var mixed escape($labels[$i]
             );
         }
         $svg .= '</g>';
@@ -372,13 +372,13 @@ final class ExportToSvgAction
         $chartWidth = \max($width - $margin['left'] - $margin['right'], 1);
         $chartHeight = \max($height - $margin['top'] - $margin['bottom'], 1);
 
-        $maxValue = $this->determineMaxValue($datasets);
+        $maxValue = // @var mixed determineMaxValue($datasets;
         $xOffset = $margin['left'];
         $yOffset = $margin['top'] + $chartHeight;
         $xStep = $chartWidth / \max(\count($labels) - 1, 1);
 
         foreach ($datasets as $dataset) {
-            $color = $this->escape($dataset['borderColor'][0] ?? $dataset['backgroundColor'][0] ?? '#36A2EB');
+            $color = // @var mixed escape($dataset['borderColor'][0] ?? $dataset['backgroundColor'][0] ?? '#36A2EB';
             $points = [];
 
             foreach ($dataset['data'] as $i => $value) {
@@ -418,7 +418,7 @@ final class ExportToSvgAction
                 '<text x="%f" y="%f" text-anchor="middle">%s</text>',
                 $x,
                 $y,
-                $this->escape($label)
+                // @var mixed escape($label
             );
         }
         $svg .= '</g>';
@@ -496,7 +496,7 @@ final class ExportToSvgAction
             $startY = $centerY + $radius * \sin(\deg2rad($startAngle));
             $endX = $centerX + $radius * \cos(\deg2rad($endAngle));
             $endY = $centerY + $radius * \sin(\deg2rad($endAngle));
-            $color = $this->escape($dataset['backgroundColor'][$index] ?? $dataset['borderColor'][$index] ?? '#36A2EB');
+            $color = // @var mixed escape($dataset['backgroundColor'][$index] ?? $dataset['borderColor'][$index] ?? '#36A2EB';
 
             $path = \sprintf(
                 'M %f %f L %f %f A %f %f 0 %d 1 %f %f Z',
@@ -523,7 +523,7 @@ final class ExportToSvgAction
                 '<text x="%f" y="%f" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#fff">%s</text>',
                 $labelX,
                 $labelY,
-                $this->escape($labelValue)
+                // @var mixed escape($labelValue
             );
 
             $startAngle = $endAngle;
@@ -538,7 +538,7 @@ final class ExportToSvgAction
             '<text x="%d" y="%d" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#666">%s</text>',
             (int) ($width / 2),
             (int) ($height / 2),
-            $this->escape('Chart Export')
+            // @var mixed escape('Chart Export'
         );
     }
 

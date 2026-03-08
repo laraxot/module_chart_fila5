@@ -97,8 +97,8 @@ class Bar3Action
         $graph->Add($accBarPlot);
 
         if (\count($datay) > 1) {
-            // dddx($this->data->first()['title_type']);
-            // dddx($this->vars['title']);
+            // dddx(// @var mixed data->first(;
+            // dddx(// @var mixed vars['title'];
             $title = $chart->title;
 
             // $subtitle = 'Totale rispondenti';

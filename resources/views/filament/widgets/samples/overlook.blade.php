@@ -8,7 +8,7 @@
                     <a
                         href="{{ $resource['url'] }}"
                         class="overlook-link absolute inset-0 py-2 px-3 text-gray-600 font-medium ring-primary-500 dark:text-gray-400 group hover:ring-2 focus:ring-2"
-                        @if ($this->shouldShowTooltips($resource['raw_count']))
+                        @if (// @var mixed shouldShowTooltips($resource['raw_count']
                             x-data x-tooltip="'{{ $resource['raw_count'] }}'"
                         @endif
                     >

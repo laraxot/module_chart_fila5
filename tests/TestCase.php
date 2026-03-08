@@ -28,11 +28,11 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
+            // @var mixed artisan('migrate:fresh', [
                 '--force' => true,
             ]);
 
-            $this->artisan('module:migrate', [
+            // @var mixed artisan('module:migrate', [
                 '--force' => true,
             ]);
 
