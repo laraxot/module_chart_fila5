@@ -56,10 +56,10 @@ class RenderChartWidgetHtmlAction
         Assert::greaterThan($height, 0, 'Height must be positive');
 
         // 1. Estrai dati dal widget
-        $data = // @var mixed getWidgetData($widget;
-        $type = // @var mixed getWidgetType($widget;
-        $options = // @var mixed getWidgetOptions($widget;
-        $heading = // @var mixed getWidgetHeading($widget;
+        $data = $this->getWidgetData($widget);
+        $type = $this->getWidgetType($widget);
+        $options = $this->getWidgetOptions($widget);
+        $heading = $this->getWidgetHeading($widget);
 
         // 2. Prepara configurazione Chart.js
         $chartConfig = [
@@ -71,7 +71,7 @@ class RenderChartWidgetHtmlAction
         $chartConfigJson = json_encode($chartConfig, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         // 3. Genera HTML
-        return // @var mixed createHtml(
+        return $this->createHtml(
             chartConfig: $chartConfigJson,
             width: $width,
             height: $height,

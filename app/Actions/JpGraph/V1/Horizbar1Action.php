@@ -44,7 +44,7 @@ class Horizbar1Action
         }
 
         $bplot = new BarPlot($data);
-        // $bplot = // @var mixed applyPlotStyle($bplot;
+        // $bplot = $this->applyPlotStyle($bplot);
         $bplot = app(ApplyPlotStyleAction::class)->execute($bplot, $chart);
 
         $colors = [];

@@ -36,7 +36,7 @@ class ExportChartToSvgAction
         string $disk = 'public',
     ): array {
         // Decodifica base64 e rimuovi prefisso "data:image/png;base64,"
-        $cleanedData = preg_replace('#^data:image/\w+;base64,#i', '', $base64Data);
+        $cleanedData = preg_replace('#^data:image/\w+);base64,#i', '', $base64Data);
         $cleanedData = is_string($cleanedData) ? $cleanedData : (is_array($cleanedData) ? $cleanedData[0] : '');
         Assert::string($cleanedData, 'Failed to clean base64 data');
         $imageData = base64_decode($cleanedData);
@@ -45,7 +45,7 @@ class ExportChartToSvgAction
         $filename = $filename ?? 'chart-'.uniqid().'.svg';
 
         // Crea SVG wrapper con immagine PNG embedded
-        $svgContent = // @var mixed createSvgWithEmbeddedImage($imageData;
+        $svgContent = $this->createSvgWithEmbeddedImage($imageData);
 
         // Salva file SVG
         $result = Storage::disk($disk)->put($filename, $svgContent);
@@ -111,14 +111,14 @@ SVG;
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        $result = // @var mixed execute($base64Data, $filename, $disk;
+        $result = $this->execute($base64Data, $filename, $disk);
 
         // Sovrascrivi SVG con dimensioni personalizzate
-        $cleanedData = preg_replace('#^data:image/\w+;base64,#i', '', $base64Data);
+        $cleanedData = preg_replace('#^data:image/\w+);base64,#i', '', $base64Data);
         $cleanedData = is_string($cleanedData) ? $cleanedData : (is_array($cleanedData) ? $cleanedData[0] : '');
         Assert::string($cleanedData, 'Failed to clean base64 data');
         $imageData = base64_decode($cleanedData);
-        $svgContent = // @var mixed createSvgWithEmbeddedImage($imageData, $width, $height;
+        $svgContent = $this->createSvgWithEmbeddedImage($imageData, $width, $height);
 
         Storage::disk($disk)->put($result['filename'], $svgContent);
 
@@ -144,14 +144,14 @@ SVG;
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        $result = // @var mixed execute($base64Data, $filename, $disk;
+        $result = $this->execute($base64Data, $filename, $disk);
 
         // Aggiungi metadati al SVG
-        $cleanedData = preg_replace('#^data:image/\w+;base64,#i', '', $base64Data);
+        $cleanedData = preg_replace('#^data:image/\w+);base64,#i', '', $base64Data);
         $cleanedData = is_string($cleanedData) ? $cleanedData : (is_array($cleanedData) ? $cleanedData[0] : '');
         Assert::string($cleanedData, 'Failed to clean base64 data');
         $imageData = base64_decode($cleanedData);
-        $svgContent = // @var mixed createSvgWithMetadata($imageData, $metadata;
+        $svgContent = $this->createSvgWithMetadata($imageData, $metadata);
 
         Storage::disk($disk)->put($result['filename'], $svgContent);
 

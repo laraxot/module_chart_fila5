@@ -63,10 +63,10 @@ class GetGraphAction
         }
 
         if ($graph->xaxis instanceof Axis) {
-            // @var mixed applyGraphXStyle($graph->xaxis, $chartData;
+            $this->applyGraphXStyle($graph->xaxis, $chartData);
         }
         if ($graph->yaxis instanceof Axis) {
-            // @var mixed applyGraphYStyle($graph->yaxis, $chartData;
+            $this->applyGraphYStyle($graph->yaxis, $chartData);
         }
 
         return $graph;

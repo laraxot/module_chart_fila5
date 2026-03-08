@@ -36,7 +36,7 @@ class AnswersChartData extends Data
 
     public function getChartJsType(): string
     {
-        $type = // @var mixed chart->type;
+        $type = $chart->type;
         switch ($type) {
             case 'pie1':
             case 'pieAvg': // questa è una media ha un solo valore
@@ -56,7 +56,7 @@ class AnswersChartData extends Data
             default:
                 // dddx([
                 //    'type' => $type,
-                //    'chart' => // @var mixed chart,
+                //    'chart' => $chart,
                 // ]);
                 break;
         }
@@ -79,7 +79,7 @@ class AnswersChartData extends Data
     public function getChartJsData(): array
     {
         $datasets = [];
-        $answersCollection = // @var mixed answers->toCollection(;
+        $answersCollection = $answers->toCollection();
 
         $labelsCollection = $answersCollection
             ->pluck('label')
@@ -88,20 +88,20 @@ class AnswersChartData extends Data
 
         $data = $answersCollection->pluck('value')->all();
 
-        if (\in_array(// @var mixed chart->type, ['pieAvg', 'pie1'], false
+        if (\in_array($chart->type, ['pieAvg', 'pie1'], false
             $data = $answersCollection->pluck('avg')->all();
 
-            if (isset(// @var mixed chart->max
+            if (isset($chart->max
                 Assert::numeric($sum = collect($data)->sum());
-                Assert::numeric(// @var mixed chart->max;
-                $other = // @var mixed chart->max - $sum;
+                Assert::numeric($chart->max);
+                $other = $chart->max - $sum;
                 if ($other > 0.01) {
                     $data[] = $other;
-                    $labelsCollection->push((string) (// @var mixed chart->answer_value_no_txt ?? 'answer_value_no_txt';
+                    $labelsCollection->push((string) ($chart->answer_value_no_txt ?? 'answer_value_no_txt'));
                 }
             }
 
-            $data = // @var mixed normalizeSeries($data;
+            $data = $this->normalizeSeries($data);
         }
 
         if (isset($data[0]) && \is_array($data[0])) {
@@ -111,9 +111,9 @@ class AnswersChartData extends Data
 
                 $datasets[] = [
                     'label' => (string) $legend,
-                    'data' => // @var mixed normalizeSeries($series
-                    'borderColor' => // @var mixed chart->getColorsRgba(0.5
-                    'backgroundColor' => // @var mixed chart->getColorsRgba(0.5
+                    'data' => $this->normalizeSeries($series
+                    'borderColor' => $chart->getColorsRgba(0.5
+                    'backgroundColor' => $chart->getColorsRgba(0.5
                 ];
             }
         } else {
@@ -121,13 +121,13 @@ class AnswersChartData extends Data
                 static fn ($item): string => number_format(SafeFloatCastAction::cast($item, 0.0), 2, '.', '')
             )->all();
 
-            if (isset(// @var mixed chart->max
+            if (isset($chart->max
                 Assert::numeric($sum = collect($avgValues)->sum());
-                Assert::numeric(// @var mixed chart->max;
-                $other = // @var mixed chart->max - $sum;
+                Assert::numeric($chart->max);
+                $other = $chart->max - $sum;
                 if ($other > 0.01) {
                     $avgValues[] = number_format($other, 2, '.', '');
-                    $labelsCollection->push((string) (// @var mixed chart->answer_value_no_txt ?? 'answer_value_no_txt';
+                    $labelsCollection->push((string) ($chart->answer_value_no_txt ?? 'answer_value_no_txt'));
                 }
             }
 
@@ -140,9 +140,9 @@ class AnswersChartData extends Data
                 [
                     'label' => $label,
                     'data' => array_values($avgValues),
-                    'data2' => // @var mixed normalizeSeries($answersCollection->pluck('value'
-                    'borderColor' => // @var mixed chart->getColorsRgba(0.5
-                    'backgroundColor' => // @var mixed chart->getColorsRgba(0.5
+                    'data2' => $this->normalizeSeries($answersCollection->pluck('value'
+                    'borderColor' => $chart->getColorsRgba(0.5
+                    'backgroundColor' => $chart->getColorsRgba(0.5
                 ],
             ];
         }
@@ -160,20 +160,20 @@ class AnswersChartData extends Data
     {
         $title = [];
 
-        if (// @var mixed title !== 'no_set'
+        if ($title !== 'no_set'
             $title = [
                 'display' => true,
-                'text' => // @var mixed title,
+                'text' => $title,
                 'font' => [
                     'size' => 14,
                 ],
             ];
         }
 
-        if (// @var mixed footer !== 'no_set'
+        if ($footer !== 'no_set'
             $title = [
                 'display' => true,
-                'text' => // @var mixed footer,
+                'text' => $footer,
                 'position' => 'bottom',
             ];
         }
@@ -183,24 +183,24 @@ class AnswersChartData extends Data
             'title' => $title,
         ];
 
-        if (// @var mixed chart->type === 'horizbar1'
+        if ($chart->type === 'horizbar1'
             $options['indexAxis'] = 'y';
         }
 
-        $chartJsType = // @var mixed getChartJsType(;
+        $chartJsType = $this->getChartJsType();
         $method = 'getChartJs'.Str::of($chartJsType)->studly()->toString().'OptionsArray';
 
-        return // @var mixed resolveChartOptions($method, $options;
+        return $this->resolveChartOptions($method, $options);
     }
 
     public function getChartJsBarOptionsJs(): string
     {
-        $chartJsData = // @var mixed getChartJsData(;
-        $labels = // @var mixed buildBarLabelsJs($chartJsData;
-        $title = // @var mixed buildBarTitleJs(;
-        $tooltip = // @var mixed buildBarTooltipJs($chartJsData;
-        $valueSuffix = // @var mixed determineValueSuffix(;
-        $indexAxis = // @var mixed determineIndexAxis(;
+        $chartJsData = $this->getChartJsData();
+        $labels = $this->buildBarLabelsJs($chartJsData);
+        $title = $this->buildBarTitleJs();
+        $tooltip = $this->buildBarTooltipJs($chartJsData);
+        $valueSuffix = $this->determineValueSuffix();
+        $indexAxis = $this->determineIndexAxis();
 
         return <<<JS
             plugins: {
@@ -232,21 +232,21 @@ class AnswersChartData extends Data
     public function getChartJsDoughnutOptionsJs(): string
     {
         $title = '{}';
-        if (// @var mixed title !== 'no_set'
+        if ($title !== 'no_set'
             $title = "{
                         display: true,
-                        text: '{// @var mixed title}',
+                        text: '{$title}',
                         font: {
                             size: 14
                         },
                     }";
         }
-        $firstAnswer = // @var mixed answers->first(;
+        $firstAnswer = $answers->first();
         $label = '--';
         if ($firstAnswer !== null) {
             Assert::isInstanceOf($firstAnswer, AnswerData::class, '['.__LINE__.']['.__FILE__.']');
             /** @phpstan-ignore property.nonObject */
-            $label = round((float) // @var mixed answers->first(;
+            $label = round((float) $answers->first());
         }
 
         return <<<JS
@@ -337,9 +337,9 @@ class AnswersChartData extends Data
         $options['plugins']['datalabels'] = [
             'display' => false,
         ];
-        Assert::isInstanceOf(// @var mixed answers->first(;
+        Assert::isInstanceOf($answers->first());
         $options['plugins']['doughnutLabel'] = [
-            'label' => round((float) // @var mixed answers->first(
+            'label' => round((float) $answers->first(
         ];
 
         return $options;
@@ -347,9 +347,9 @@ class AnswersChartData extends Data
 
     public function getChartJsOptionsJs(): RawJs
     {
-        $chartJsType = // @var mixed getChartJsType(;
+        $chartJsType = $this->getChartJsType();
         $method = 'getChartJs'.Str::of($chartJsType)->studly()->toString().'OptionsJs';
-        $js = // @var mixed {$method}(;
+        $js = // @var mixed {$method}();
 
         return RawJs::make('{
             '.(string) $js.'
@@ -365,20 +365,20 @@ class AnswersChartData extends Data
     {
         $title = [];
 
-        if (// @var mixed title !== 'no_set'
+        if ($title !== 'no_set'
             $title = [
                 'display' => true,
-                'text' => // @var mixed title,
+                'text' => $title,
                 'font' => [
                     'size' => 14,
                 ],
             ];
         }
 
-        if (// @var mixed footer !== 'no_set'
+        if ($footer !== 'no_set'
             $title = [
                 'display' => true,
-                'text' => // @var mixed footer,
+                'text' => $footer,
                 'position' => 'bottom',
             ];
         }
@@ -388,14 +388,14 @@ class AnswersChartData extends Data
             'title' => $title,
         ];
 
-        if (// @var mixed chart->type === 'horizbar1'
+        if ($chart->type === 'horizbar1'
             $options['indexAxis'] = 'y';
         }
 
-        $chartJsType = // @var mixed getChartJsType(;
+        $chartJsType = $this->getChartJsType();
         $method = 'getChartJs'.Str::of($chartJsType)->studly()->toString().'OptionsArray';
 
-        return // @var mixed resolveChartOptions($method, $options;
+        return $this->resolveChartOptions($method, $options);
     }
 
     /**
@@ -406,7 +406,7 @@ class AnswersChartData extends Data
      */
     private function buildBarLabelsJs(array $chartJsData): string
     {
-        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && // @var mixed chart->type !== 'horizbar1' && $this->chart->type !== 'horizontalBar'
+        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && $chart->type !== 'horizbar1' && $this->chart->type !== 'horizontalBar'
             return "{
                 name: {
                     align: 'center',
@@ -437,18 +437,18 @@ class AnswersChartData extends Data
 
     private function buildBarTitleJs(): string
     {
-        if (// @var mixed footer !== 'no_set'
+        if ($footer !== 'no_set'
             return "{
                         display: true,
-                        text: '".// @var mixed footer."',
+                        text: '".$footer."',
                         position: 'bottom',
                     }";
         }
 
-        if (// @var mixed title !== 'no_set' && ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar'
+        if ($title !== 'no_set' && ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar'
             return "{
                         display: true,
-                        text: '".// @var mixed title."',
+                        text: '".$title."',
                         font: {
                             size: 14
                         },
@@ -466,7 +466,7 @@ class AnswersChartData extends Data
      */
     private function buildBarTooltipJs(array $chartJsData): string
     {
-        if (// @var mixed chart->type === 'bar2' && \is_array($chartJsData['datasets']
+        if ($chart->type === 'bar2' && \is_array($chartJsData['datasets']
             return "{
                 callbacks: {
                     label: function(context) {
@@ -487,7 +487,7 @@ class AnswersChartData extends Data
 
     private function determineValueSuffix(): string
     {
-        if (// @var mixed chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar' || $this->chart->max === 100.0
+        if ($chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar' || $this->chart->max === 100.0
             return ' %';
         }
 
@@ -496,7 +496,7 @@ class AnswersChartData extends Data
 
     private function determineIndexAxis(): string
     {
-        return (// @var mixed chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar';
+        return ($chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar');
     }
 
     /**
@@ -533,7 +533,7 @@ class AnswersChartData extends Data
     private function resolveChartOptions(string $method, array $options): array
     {
         /** @var array<string, mixed> */
-        $result = // @var mixed {$method}($options;
+        $result = // @var mixed {$method}($options);
 
         return $result;
     }

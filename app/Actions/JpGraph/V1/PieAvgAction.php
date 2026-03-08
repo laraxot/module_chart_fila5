@@ -43,7 +43,7 @@ class PieAvgAction
         // A new pie graph
         $graph = new PieGraph($chart->width, $chart->height, 'auto');
 
-        // $graph = // @var mixed applyGraphStyle($graph;
+        // $graph = $this->applyGraphStyle($graph);
         $graph = app(ApplyGraphStyleAction::class)->execute($graph, $chart);
 
         // Create the pie plot
