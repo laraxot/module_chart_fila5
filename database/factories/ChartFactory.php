@@ -57,7 +57,7 @@ class ChartFactory extends Factory
             'plot_value_color' => '#'.str_pad(dechex(random_int(0, 16777215)), 6, '0', STR_PAD_LEFT),
             'group_by' => $groups[array_rand($groups)],
             'sort_by' => $sorts[array_rand($sorts)],
-            'transparency' => $faker->numberBetween(0, 100
+            'transparency' => $faker->numberBetween(0, 100)
         ];
     }
 }

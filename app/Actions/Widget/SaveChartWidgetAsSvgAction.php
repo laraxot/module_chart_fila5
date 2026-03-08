@@ -75,7 +75,7 @@ class SaveChartWidgetAsSvgAction
                 base64: $pngResult['base64'],
                 width: $width,
                 height: $height,
-                title: $this->getWidgetHeading($widget
+                title: $this->getWidgetHeading($widget)
             );
 
             // 5. Salva SVG su storage

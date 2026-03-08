@@ -99,7 +99,7 @@ final class ExportToSvgAction
                     'label' => isset($dataset['label']) ? (string) $dataset['label'] : null,
                     'data' => $data,
                     'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($data
-                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($data
+                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($data))
                 ];
             }
         }
@@ -248,7 +248,7 @@ final class ExportToSvgAction
             'bar' => $this->generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
             'line' => $this->generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
             'doughnut', 'pie' => $this->generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
-            default => $this->generateGenericChartSvg($width, $height
+            default => $this->generateGenericChartSvg($width, $height)
         };
 
         $svgParts[] = '</svg>';
@@ -313,7 +313,7 @@ final class ExportToSvgAction
             $svg .= \sprintf(
                 '<text x="%f" y="%f" text-anchor="middle">%s</text>',
                 $x,
-                $y, $escape($labels[$i]
+                $y, $escape($labels[$i])
             );
         }
         $svg .= '</g>';
@@ -416,7 +416,7 @@ final class ExportToSvgAction
             $svg .= \sprintf(
                 '<text x="%f" y="%f" text-anchor="middle">%s</text>',
                 $x,
-                $y, $escape($label
+                $y, $escape($label)
             );
         }
         $svg .= '</g>';
@@ -520,7 +520,7 @@ final class ExportToSvgAction
             $svg .= \sprintf(
                 '<text x="%f" y="%f" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#fff">%s</text>',
                 $labelX,
-                $labelY, $escape($labelValue
+                $labelY, $escape($labelValue)
             );
 
             $startAngle = $endAngle;
@@ -534,7 +534,7 @@ final class ExportToSvgAction
         return \sprintf(
             '<text x="%d" y="%d" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#666">%s</text>',
             (int) ($width / 2),
-            (int) ($height / 2), $escape('Chart Export'
+            (int) ($height / 2), $escape('Chart Export')
         );
     }
 
