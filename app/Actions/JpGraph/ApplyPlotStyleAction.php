@@ -18,11 +18,11 @@ class ApplyPlotStyleAction
     {
         // $plot->SetFillColor($colors); // trasparenza, da 0 a 1
 
-        // $plot->SetFillColor($this->data[5]['color'].'@'.$this->vars['transparency']); // trasparenza, da 0 a 1
+        // $plot->SetFillColor(// @var mixed data[5]['color'].'@'.$this->vars['transparency']; // trasparenza, da 0 a 1
         $barPlot->SetFillColor($chartData->list_color ?? 'red@'.$chartData->transparency); // trasparenza, da 0 a 1
 
         // $bplot->SetShadow('darkgreen', 1, 1);
-        // dddx([get_defined_vars(), $this->vars]);
+        // dddx([get_defined_vars(), // @var mixed vars];
 
         $barPlot->SetColor($chartData->list_color ?? 'red');
 

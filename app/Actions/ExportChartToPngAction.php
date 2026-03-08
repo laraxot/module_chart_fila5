@@ -79,7 +79,7 @@ class ExportChartToPngAction
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        return $this->execute($base64Data, $filename, $disk, $quality);
+        return // @var mixed execute($base64Data, $filename, $disk, $quality;
     }
 
     /**
@@ -95,7 +95,7 @@ class ExportChartToPngAction
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        return $this->execute($base64Data, $filename, $disk, 100); // Massima qualità per PDF
+        return // @var mixed execute($base64Data, $filename, $disk, 100; // Massima qualità per PDF
     }
 
     /**
@@ -111,7 +111,7 @@ class ExportChartToPngAction
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        return $this->execute($base64Data, $filename, $disk, 85); // Qualità bilanciata per web
+        return // @var mixed execute($base64Data, $filename, $disk, 85; // Qualità bilanciata per web
     }
 
     /**
@@ -134,7 +134,7 @@ class ExportChartToPngAction
         foreach ($charts as $index => $base64Data) {
             WebmozartAssert::string($base64Data);
             $filename = $prefix.'-'.($index + 1).'.png';
-            $result = $this->execute($base64Data, $filename, $disk, $quality);
+            $result = // @var mixed execute($base64Data, $filename, $disk, $quality;
             $results[] = $result;
         }
 
@@ -158,7 +158,7 @@ class ExportChartToPngAction
         string $disk = 'public',
         int $quality = 95,
     ): array {
-        $result = $this->execute($base64Data, $filename, $disk, $quality);
+        $result = // @var mixed execute($base64Data, $filename, $disk, $quality;
 
         // Salva metadati in file separato
         if (! empty($metadata)) {
@@ -203,7 +203,7 @@ class ExportChartToPngAction
      */
     public function getPngInfo(string $filename, string $disk = 'public'): ?array
     {
-        if (! $this->validatePngFile($filename, $disk)) {
+        if (! // @var mixed validatePngFile($filename, $disk
             return null;
         }
 

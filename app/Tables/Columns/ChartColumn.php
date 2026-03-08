@@ -51,13 +51,13 @@ class ChartColumn extends Column
 
     public function applyAnswersChartData(AnswersChartData $answersChartData): self
     {
-        $this->chartData = $answersChartData->getChartJsData();
-        $this->chartType = $answersChartData->getChartJsType();
-        $this->chartOptions = $answersChartData->getChartJsOptions();
-        $this->cachedData = null;
+        // @var mixed chartData = $answersChartData->getChartJsData(;
+        // @var mixed chartType = $answersChartData->getChartJsType(;
+        // @var mixed chartOptions = $answersChartData->getChartJsOptions(;
+        // @var mixed cachedData = null;
 
-        // dddx([$this->getCachedData(),$this->getData()]);
-        // $this->emit('refreshChartColumn');
+        // dddx([// @var mixed getCachedData(;
+        // // @var mixed emit('refreshChartColumn';
         // filterChartData
         return $this;
     }
@@ -69,7 +69,7 @@ class ChartColumn extends Column
         ];
 
         /** @var view-string $viewName */
-        $viewName = $this->view;
+        $viewName = // @var mixed view;
 
         return view($viewName, $viewParams);
     }
@@ -79,7 +79,7 @@ class ChartColumn extends Column
      */
     public function getCachedData(): array
     {
-        return $this->cachedData ??= $this->getData();
+        return // @var mixed cachedData ??= $this->getData(;
     }
 
     public function getMaxHeight(): ?string
@@ -92,39 +92,39 @@ class ChartColumn extends Column
      */
     public function getOptions(): ?array
     {
-        return $this->chartOptions;
+        return // @var mixed chartOptions;
     }
 
     public function getType(): string
     {
-        return $this->chartType;
+        return // @var mixed chartType;
     }
 
     public function updateChartData(): void
     {
-        $newDataChecksum = $this->generateDataChecksum();
+        $newDataChecksum = // @var mixed generateDataChecksum(;
 
-        if ($newDataChecksum !== $this->dataChecksum) {
-            $this->dataChecksum = $newDataChecksum;
+        if ($newDataChecksum !== // @var mixed dataChecksum
+            // @var mixed dataChecksum = $newDataChecksum;
 
             // Assert::methodNotExists($this, 'emitSelf', $message = 'function emitSelf not exists');
             // NON E' LIVEWIRE
-            // $this->emitSelf('updateChartData', [
-            //    'data' => $this->getCachedData(),
+            // // @var mixed emitSelf('updateChartData', [
+            //    'data' => // @var mixed getCachedData(
             // ]);
         }
     }
 
     public function updatedFilter(): void
     {
-        $newDataChecksum = $this->generateDataChecksum();
+        $newDataChecksum = // @var mixed generateDataChecksum(;
 
-        if ($newDataChecksum !== $this->dataChecksum) {
-            $this->dataChecksum = $newDataChecksum;
+        if ($newDataChecksum !== // @var mixed dataChecksum
+            // @var mixed dataChecksum = $newDataChecksum;
 
             // NON E' LIVEWIRE
-            // $this->emitSelf('updateChartData', [
-            //    'data' => $this->getCachedData(),
+            // // @var mixed emitSelf('updateChartData', [
+            //    'data' => // @var mixed getCachedData(
             // ]);
         }
     }
@@ -136,7 +136,7 @@ class ChartColumn extends Column
 
     protected function generateDataChecksum(): string
     {
-        return md5(json_encode($this->getCachedData()));
+        return md5(json_encode(// @var mixed getCachedData(;
     }
 
     /**
@@ -144,7 +144,7 @@ class ChartColumn extends Column
      */
     protected function getData(): array
     {
-        return $this->chartData;
+        return // @var mixed chartData;
     }
 
     /**

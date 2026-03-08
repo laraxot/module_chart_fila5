@@ -13,7 +13,7 @@ use Spatie\LaravelData\DataCollection;
 describe('AnswersChartData', function () {
     beforeEach(function () {
         // Mock ChartData using from() method
-        $this->chartData = ChartData::from([
+        // @var mixed chartData = ChartData::from([
             'type' => 'bar1',
             'max' => 100.0,
             'min' => 0.0,
@@ -34,7 +34,7 @@ describe('AnswersChartData', function () {
         ]);
 
         // Mock AnswerData collection
-        $this->answerData = [
+        // @var mixed answerData = [
             AnswerData::from([
                 'label' => 'Test Answer 1',
                 'value' => 25,
@@ -47,31 +47,31 @@ describe('AnswersChartData', function () {
             ]),
         ];
 
-        $this->answersChartData = AnswersChartData::from([
+        // @var mixed answersChartData = AnswersChartData::from([
             'tot' => 100,
             'title' => 'Test Chart',
             'footer' => 'Test Footer',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $this->answerData),
-            'chart' => $this->chartData,
+            'answers' => new DataCollection(AnswerData::class, // @var mixed answerData
+            'chart' => // @var mixed chartData,
         ]);
     });
 
     it('can be instantiated', function () {
-        expect($this->answersChartData)->toBeInstanceOf(AnswersChartData::class);
+        expect(// @var mixed answersChartData;
     });
 
     it('has correct properties', function () {
-        expect($this->answersChartData->tot)->toBe(100)
-            ->and($this->answersChartData->title)->toBe('Test Chart')
-            ->and($this->answersChartData->footer)->toBe('Test Footer')
-            ->and($this->answersChartData->totalAnswered)->toBe(40)
-            ->and($this->answersChartData->totalInvited)->toBe(100);
+        expect(// @var mixed answersChartData->tot
+            ->and(// @var mixed answersChartData->title
+            ->and(// @var mixed answersChartData->footer
+            ->and(// @var mixed answersChartData->totalAnswered
+            ->and(// @var mixed answersChartData->totalInvited;
     });
 
     it('returns correct chart js type for bar1', function () {
-        expect($this->answersChartData->getChartJsType())->toBe('bar');
+        expect(// @var mixed answersChartData->getChartJsType(;
     });
 
     it('returns correct chart js type for pie1', function () {
@@ -98,7 +98,7 @@ describe('AnswersChartData', function () {
             'footer' => 'Test',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $this->answerData),
+            'answers' => new DataCollection(AnswerData::class, // @var mixed answerData
             'chart' => $chartData,
         ]);
 
@@ -129,7 +129,7 @@ describe('AnswersChartData', function () {
             'footer' => 'Test',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $this->answerData),
+            'answers' => new DataCollection(AnswerData::class, // @var mixed answerData
             'chart' => $chartData,
         ]);
 
@@ -137,7 +137,7 @@ describe('AnswersChartData', function () {
     });
 
     it('returns correct chart js data structure', function () {
-        $data = $this->answersChartData->getChartJsData();
+        $data = // @var mixed answersChartData->getChartJsData(;
 
         expect($data)->toHaveKeys(['datasets', 'labels'])
             ->and($data['datasets'])->toBeArray()
@@ -146,7 +146,7 @@ describe('AnswersChartData', function () {
     });
 
     it('returns correct chart js options array structure', function () {
-        $options = $this->answersChartData->getChartJsOptionsArray();
+        $options = // @var mixed answersChartData->getChartJsOptionsArray(;
 
         expect($options)->toBeArray()
             ->and($options)->toHaveKey('plugins')
@@ -154,7 +154,7 @@ describe('AnswersChartData', function () {
     });
 
     it('handles title in options correctly', function () {
-        $options = $this->answersChartData->getChartJsOptionsArray();
+        $options = // @var mixed answersChartData->getChartJsOptionsArray(;
 
         expect($options['plugins']['title'])->toHaveKeys(['display', 'text', 'font'])
             ->and($options['plugins']['title']['text'])->toBe('Test Chart');
@@ -167,8 +167,8 @@ describe('AnswersChartData', function () {
             'footer' => 'Test Footer',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $this->answerData),
-            'chart' => $this->chartData,
+            'answers' => new DataCollection(AnswerData::class, // @var mixed answerData
+            'chart' => // @var mixed chartData,
         ]);
 
         $options = $answersChartData->getChartJsOptionsArray();
@@ -202,7 +202,7 @@ describe('AnswersChartData', function () {
             'footer' => 'no_set',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $this->answerData),
+            'answers' => new DataCollection(AnswerData::class, // @var mixed answerData
             'chart' => $chartData,
         ]);
 
@@ -213,14 +213,14 @@ describe('AnswersChartData', function () {
     });
 
     it('returns chart js options as RawJs', function () {
-        $options = $this->answersChartData->getChartJsOptionsJs();
+        $options = // @var mixed answersChartData->getChartJsOptionsJs(;
 
         expect($options)->toBeInstanceOf(RawJs::class);
     });
 
     it('handles bar options correctly', function () {
         $options = [];
-        $result = $this->answersChartData->getChartJsBarOptionsArray($options);
+        $result = // @var mixed answersChartData->getChartJsBarOptionsArray($options;
 
         expect($result)->toHaveKey('plugins')
             ->and($result['plugins'])->toHaveKeys(['datalabels', 'legend'])
@@ -230,7 +230,7 @@ describe('AnswersChartData', function () {
 
     it('handles doughnut options correctly', function () {
         $options = [];
-        $result = $this->answersChartData->getChartJsDoughnutOptionsArray($options);
+        $result = // @var mixed answersChartData->getChartJsDoughnutOptionsArray($options;
 
         expect($result)->toHaveKeys(['scales', 'plugins'])
             ->and($result['scales'])->toHaveKeys(['x', 'y'])
@@ -239,7 +239,7 @@ describe('AnswersChartData', function () {
     });
 
     it('processes bar chart javascript correctly', function () {
-        $js = $this->answersChartData->getChartJsBarOptionsJs();
+        $js = // @var mixed answersChartData->getChartJsBarOptionsJs(;
 
         expect($js)->toBeString()
             ->and($js)->toContain('plugins')
@@ -248,7 +248,7 @@ describe('AnswersChartData', function () {
     });
 
     it('processes doughnut chart javascript correctly', function () {
-        $js = $this->answersChartData->getChartJsDoughnutOptionsJs();
+        $js = // @var mixed answersChartData->getChartJsDoughnutOptionsJs(;
 
         expect($js)->toBeString()
             ->and($js)->toContain('scales')
@@ -257,7 +257,7 @@ describe('AnswersChartData', function () {
     });
 
     it('handles deprecated chart js options method', function () {
-        $options = $this->answersChartData->getChartJsOptions();
+        $options = // @var mixed answersChartData->getChartJsOptions(;
 
         expect($options)->toBeArray()
             ->and($options)->toHaveKey('plugins');

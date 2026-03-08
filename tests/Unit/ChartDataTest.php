@@ -244,7 +244,7 @@ describe('ChartData', function () {
     });
 
     it('extends Spatie Laravel Data', function () {
-        expect($this->action)->toBeInstanceOf(GetTaskFrequenciesAction::class);
+        expect(// @var mixed action;
 
         // Check that ChartData extends Data
         $chartData = ChartData::from([

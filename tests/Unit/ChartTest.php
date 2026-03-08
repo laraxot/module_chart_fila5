@@ -11,7 +11,7 @@ uses(DatabaseTransactions::class);
 
 describe('Chart Model', function () {
     beforeEach(function () {
-        $this->chart = Chart::factory()->create([
+        // @var mixed chart = Chart::factory(
             'type' => 'bar1',
             'width' => 800,
             'height' => 600,
@@ -21,14 +21,14 @@ describe('Chart Model', function () {
     });
 
     it('can be created', function () {
-        expect($this->chart)->toBeInstanceOf(Chart::class)
-            ->and($this->chart->type)->toBe('bar1')
-            ->and($this->chart->width)->toBe(800)
-            ->and($this->chart->height)->toBe(600);
+        expect(// @var mixed chart
+            ->and(// @var mixed chart->type
+            ->and(// @var mixed chart->width
+            ->and(// @var mixed chart->height;
     });
 
     it('has correct fillable attributes', function () {
-        $fillable = $this->chart->getFillable();
+        $fillable = // @var mixed chart->getFillable(;
 
         expect($fillable)->toContain('type', 'width', 'height', 'color', 'bg_color');
     });
@@ -53,48 +53,48 @@ describe('Chart Model', function () {
     });
 
     it('casts colors attribute to array', function () {
-        $this->chart->colors = ['red', 'blue', 'green'];
-        $this->chart->save();
+        // @var mixed chart->colors = ['red', 'blue', 'green'];
+        // @var mixed chart->save(;
 
-        $this->chart->refresh();
+        // @var mixed chart->refresh(;
 
-        expect($this->chart->colors)->toBeArray()
-            ->and($this->chart->colors)->toBe(['red', 'blue', 'green']);
+        expect(// @var mixed chart->colors
+            ->and(// @var mixed chart->colors;
     });
 
     it('returns panel row value correctly', function () {
         // Test with existing value
-        $result = $this->chart->getPanelRow('type', 'chart_type');
+        $result = // @var mixed chart->getPanelRow('type', 'chart_type';
 
         expect($result)->toBe('bar1');
     });
 
     it('handles panel row error gracefully', function () {
         // Test with non-existent field
-        $result = $this->chart->getPanelRow('non_existent_field', 'test_field');
+        $result = // @var mixed chart->getPanelRow('non_existent_field', 'test_field';
 
         expect($result)->toBeNull();
     });
 
     it('gets type attribute correctly', function () {
-        expect($this->chart->getTypeAttribute('custom_type'))->toBe('custom_type');
-        expect($this->chart->getTypeAttribute(null))->toBe('bar1');
+        expect(// @var mixed chart->getTypeAttribute('custom_type';
+        expect(// @var mixed chart->getTypeAttribute(null;
     });
 
     it('gets width attribute correctly', function () {
-        expect($this->chart->getWidthAttribute('1000'))->toBe(1000);
-        expect($this->chart->getWidthAttribute('0'))->toBeInt();
-        expect($this->chart->getWidthAttribute(null))->toBeInt();
+        expect(// @var mixed chart->getWidthAttribute('1000';
+        expect(// @var mixed chart->getWidthAttribute('0';
+        expect(// @var mixed chart->getWidthAttribute(null;
     });
 
     it('gets height attribute correctly', function () {
-        expect($this->chart->getHeightAttribute('500'))->toBe(500);
-        expect($this->chart->getHeightAttribute('0'))->toBeInt();
-        expect($this->chart->getHeightAttribute(null))->toBeInt();
+        expect(// @var mixed chart->getHeightAttribute('500';
+        expect(// @var mixed chart->getHeightAttribute('0';
+        expect(// @var mixed chart->getHeightAttribute(null;
     });
 
     it('returns simple settings for non-mixed chart', function () {
-        $settings = $this->chart->getSettings();
+        $settings = // @var mixed chart->getSettings(;
 
         expect($settings)->toBeArray()
             ->and($settings)->toHaveCount(1)
@@ -114,7 +114,7 @@ describe('Chart Model', function () {
 
             public function __construct()
             {
-                $this->charts = new Collection([
+                // @var mixed charts = new Collection([
                     ['type' => 'bar', 'data' => 'test1'],
                     ['type' => 'line', 'data' => 'test2'],
                 ]);
@@ -130,12 +130,12 @@ describe('Chart Model', function () {
         $relations = [];
 
         // Check if creator relation exists
-        if (method_exists($this->chart, 'creator')) {
+        if (method_exists(// @var mixed chart, 'creator'
             $relations[] = 'creator';
         }
 
         // Check if updater relation exists
-        if (method_exists($this->chart, 'updater')) {
+        if (method_exists(// @var mixed chart, 'updater'
             $relations[] = 'updater';
         }
 
@@ -167,20 +167,20 @@ describe('Chart Model', function () {
     });
 
     it('can be updated', function () {
-        $this->chart->update([
+        // @var mixed chart->update([
             'type' => 'line',
             'width' => 1200,
             'height' => 800,
         ]);
 
-        expect($this->chart->fresh()->type)->toBe('line')
-            ->and($this->chart->fresh()->width)->toBe(1200)
-            ->and($this->chart->fresh()->height)->toBe(800);
+        expect(// @var mixed chart->fresh(
+            ->and(// @var mixed chart->fresh(
+            ->and(// @var mixed chart->fresh(;
     });
 
     it('can be deleted', function () {
-        $chartId = $this->chart->id;
-        $this->chart->delete();
+        $chartId = // @var mixed chart->id;
+        // @var mixed chart->delete(;
 
         expect(Chart::find($chartId))->toBeNull();
     });

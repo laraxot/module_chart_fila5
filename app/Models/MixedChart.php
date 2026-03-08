@@ -61,6 +61,6 @@ class MixedChart extends BaseModel
             'mixed_chart' => self::class,
         ]);
 
-        return $this->morphMany(Chart::class, 'post');
+        return // @var mixed morphMany(Chart::class, 'post';
     }
 }
