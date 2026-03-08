@@ -113,7 +113,7 @@ class AnswersChartData extends Data
                     'label' => (string) $legend,
                     'data' => $this->normalizeSeries($series
                     'borderColor' => $chart->getColorsRgba(0.5
-                    'backgroundColor' => $chart->getColorsRgba(0.5
+                    'backgroundColor' => $chart->getColorsRgba(0.5)
                 ];
             }
         } else {
@@ -142,7 +142,7 @@ class AnswersChartData extends Data
                     'data' => array_values($avgValues),
                     'data2' => $this->normalizeSeries($answersCollection->pluck('value'
                     'borderColor' => $chart->getColorsRgba(0.5
-                    'backgroundColor' => $chart->getColorsRgba(0.5
+                    'backgroundColor' => $chart->getColorsRgba(0.5)
                 ],
             ];
         }
@@ -339,7 +339,7 @@ class AnswersChartData extends Data
         ];
         Assert::isInstanceOf($answers->first());
         $options['plugins']['doughnutLabel'] = [
-            'label' => round((float) $answers->first(
+            'label' => round((float) $answers->first())
         ];
 
         return $options;
