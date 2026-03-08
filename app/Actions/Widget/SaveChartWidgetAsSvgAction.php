@@ -71,11 +71,11 @@ class SaveChartWidgetAsSvgAction
 
         try {
             // 4. Crea SVG con PNG embedded
-            $svgContent = // @var mixed createSvgWithEmbeddedPng(
+            $svgContent = $this->createSvgWithEmbeddedPng(
                 base64: $pngResult['base64'],
                 width: $width,
                 height: $height,
-                title: // @var mixed getWidgetHeading($widget
+                title: $this->getWidgetHeading($widget
             );
 
             // 5. Salva SVG su storage

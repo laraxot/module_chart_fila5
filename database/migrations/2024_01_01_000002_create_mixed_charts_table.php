@@ -14,7 +14,7 @@ return new class extends XotBaseMigration
      */
     public function up(): void
     {
-        // @var mixed tableCreate(function (Blueprint $table
+        $this->tableCreate(function (Blueprint $table
             $table->id();
             $table->string('name');
             $table->string('created_by')->nullable();
@@ -28,6 +28,6 @@ return new class extends XotBaseMigration
      */
     public function down(): void
     {
-        // @var mixed dropTableIfExists('mixed_charts';
+        $this->dropTableIfExists('mixed_charts');
     }
 };

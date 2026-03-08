@@ -50,19 +50,19 @@ final class LineSubQuestionAction
 
     public function execute(AnswersChartData $answersChartData): Graph
     {
-        $chart = // @var mixed extractChart($answersChartData;
-        $graph = // @var mixed makeGraph($chart;
+        $chart = $this->extractChart($answersChartData);
+        $graph = $this->makeGraph($chart);
 
-        $answers = // @var mixed getAnswers($answersChartData;
-        $labels = // @var mixed extractLabels($answers;
-        $legends = // @var mixed extractLegends($answers;
-        $dataSets = // @var mixed normalizeDataSets($answers, $legends;
+        $answers = $this->getAnswers($answersChartData);
+        $labels = $this->extractLabels($answers);
+        $legends = $this->extractLegends($answers);
+        $dataSets = $this->normalizeDataSets($answers, $legends);
 
-        // @var mixed configureAxes($graph, $labels, (int;
-        // @var mixed addLinePlots($graph, $dataSets, $legends;
-        // @var mixed configureLegend($graph;
-        // @var mixed configureTitles($graph, $chart;
-        // @var mixed clearFooter($graph;
+        $this->configureAxes($graph, $labels, (int));
+        $this->addLinePlots($graph, $dataSets, $legends);
+        $this->configureLegend($graph);
+        $this->configureTitles($graph, $chart);
+        $this->clearFooter($graph);
 
         return $graph;
     }
@@ -138,7 +138,7 @@ final class LineSubQuestionAction
         $rawData = $answers->pluck('value')->all();
 
         return array_map(
-            fn (string $legend): array => // @var mixed buildDataSeries($rawData, $legend
+            fn (string $legend): array => $this->buildDataSeries($rawData, $legend
             $legends
         );
     }
@@ -152,7 +152,7 @@ final class LineSubQuestionAction
         $series = [];
 
         foreach ($rawData as $row) {
-            $series[] = // @var mixed extractNumericValue($row, $legend;
+            $series[] = $this->extractNumericValue($row, $legend);
         }
 
         return $series;
@@ -179,9 +179,9 @@ final class LineSubQuestionAction
      */
     private function configureAxes(Graph $graph, array $labels, int $angle): void
     {
-        // @var mixed configureYAxis($graph;
-        // @var mixed configureXAxis($graph, $labels, $angle;
-        // @var mixed configureYGrid($graph;
+        $this->configureYAxis($graph);
+        $this->configureXAxis($graph, $labels, $angle);
+        $this->configureYGrid($graph);
     }
 
     private function configureYAxis(Graph $graph): void
@@ -233,7 +233,7 @@ final class LineSubQuestionAction
             $color = self::COLOR_PALETTE[$index % \count(self::COLOR_PALETTE)];
             $linePlot->SetColor($color);
             $linePlot->SetLegend($legend);
-            // @var mixed configureMarker($linePlot, $index, $color;
+            $this->configureMarker($linePlot, $index, $color);
 
             $linePlot->SetCenter();
         }
@@ -246,7 +246,7 @@ final class LineSubQuestionAction
             return;
         }
 
-        $marker = // @var mixed resolveMarker($index;
+        $marker = $this->resolveMarker($index);
         if ($marker !== null && method_exists($mark, 'SetType')) {
             $mark->SetType($marker, '', 1.2);
         }
@@ -270,14 +270,14 @@ final class LineSubQuestionAction
 
     private function configureTitles(Graph $graph, ChartData $chart): void
     {
-        // @var mixed applyTextSettings(
+        $this->applyTextSettings(
             isset($graph->title) && $graph->title instanceof Text ? $graph->title : null,
             $chart->title,
             $chart->font_family,
             $chart->font_style
         );
 
-        // @var mixed applyTextSettings(
+        $this->applyTextSettings(
             isset($graph->subtitle) && $graph->subtitle instanceof Text ? $graph->subtitle : null,
             $chart->subtitle,
             $chart->font_family,

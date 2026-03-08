@@ -244,7 +244,7 @@ describe('ChartData', function () {
     });
 
     it('extends Spatie Laravel Data', function () {
-        expect(// @var mixed action;
+        expect($action);
 
         // Check that ChartData extends Data
         $chartData = ChartData::from([

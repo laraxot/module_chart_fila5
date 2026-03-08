@@ -4,7 +4,7 @@
             <div>
                 <a
                     href="{{ $resource['url'] }}"
-                    @if (// @var mixed shouldShowTooltips($resource['raw_count']
+                    @if ($shouldShowTooltips($resource['raw_count']
                         x-data x-tooltip="'{{ $resource['raw_count'] }}'"
                     @endif
                 >

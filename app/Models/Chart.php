@@ -149,7 +149,7 @@ class Chart extends Model
         try {
             $value = $panel_row->{$parent_field};
             // @var mixed {$my_field} = $value;
-            // @var mixed save(;
+            $this->save();
         } catch (\Exception $errorException) {
             // Error caught but not logged - intentionally silent
             // If logging is needed, implement explicitly here
@@ -167,8 +167,8 @@ class Chart extends Model
         }
 
         /** @var string|int|null $attrType */
-        $attrType = // @var mixed attributes['type'] ?? null;
-        $panelRow = // @var mixed getPanelRow('chart_type', 'type';
+        $attrType = $attributes['type'] ?? null;
+        $panelRow = $this->getPanelRow('chart_type', 'type');
 
         if ($attrType !== null) {
             return is_string($attrType) ? $attrType : null;
@@ -184,11 +184,11 @@ class Chart extends Model
     public function getWidthAttribute(?string $value): ?int
     {
         if ($value === null) {
-            return (int) // @var mixed getPanelRow('width', 'width';
+            return (int) $this->getPanelRow('width', 'width');
         }
 
         if ((int) $value === 0) {
-            return (int) // @var mixed getPanelRow('width', 'width';
+            return (int) $this->getPanelRow('width', 'width');
         }
 
         return (int) $value;
@@ -197,10 +197,10 @@ class Chart extends Model
     public function getHeightAttribute(?string $value): ?int
     {
         if ($value === null) {
-            return (int) // @var mixed getPanelRow('height', 'height';
+            return (int) $this->getPanelRow('height', 'height');
         }
         if ((int) $value === 0) {
-            return (int) // @var mixed getPanelRow('height', 'height';
+            return (int) $this->getPanelRow('height', 'height');
         }
 
         return (int) $value;
@@ -213,20 +213,20 @@ class Chart extends Model
      */
     public function getSettings(): array
     {
-        if (// @var mixed type === null
+        if ($type === null
             throw new \InvalidArgumentException('Chart type cannot be null');
         }
 
-        if (Str::startsWith(// @var mixed type, 'mixed'
-            $parz = \array_slice(explode(':', // @var mixed type;
+        if (Str::startsWith($type, 'mixed'
+            $parz = \array_slice(explode(':', $type));
             $mixed_id = implode('|', $parz);
 
             // Simplified approach - avoid potential missing MixedChart model
-            return ['chart' => // @var mixed toArray(;
+            return ['chart' => $this->toArray();
         }
 
         /** @var array<string, array<int|string, mixed>> */
-        return ['chart' => // @var mixed toArray(;
+        return ['chart' => $this->toArray();
     }
 
     /**

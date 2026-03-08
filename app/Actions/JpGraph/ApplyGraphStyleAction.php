@@ -29,13 +29,13 @@ class ApplyGraphStyleAction
             }
         }
 
-        // $graph->footer->right->Set('Totale Risposte '.// @var mixed vars['tot'];
+        // $graph->footer->right->Set('Totale Risposte '.$vars['tot']);
         if ($graph->xaxis instanceof Axis) {
-            // @var mixed applyGraphXStyle($graph->xaxis, $chartData;
+            $this->applyGraphXStyle($graph->xaxis, $chartData);
         }
 
         if ($graph->yaxis instanceof Axis) {
-            // @var mixed applyGraphYStyle($graph->yaxis, $chartData;
+            $this->applyGraphYStyle($graph->yaxis, $chartData);
         }
 
         return $graph;
