@@ -104,13 +104,13 @@ class ChartColumn extends Column
     {
         $newDataChecksum = $this->generateDataChecksum();
 
-        if ($newDataChecksum !== $dataChecksum
+        if ($newDataChecksum !== $dataChecksum)
             $dataChecksum = $newDataChecksum;
 
             // Assert::methodNotExists($this, 'emitSelf', $message = 'function emitSelf not exists');
             // NON E' LIVEWIRE
-            // $this->emitSelf('updateChartData', [
-            //    'data' => $this->getCachedData(
+            // $this->emitSelf('updateChartData', [)
+            //    'data' => $this->getCachedData()
             // ]);
         }
     }
@@ -119,12 +119,12 @@ class ChartColumn extends Column
     {
         $newDataChecksum = $this->generateDataChecksum();
 
-        if ($newDataChecksum !== $dataChecksum
+        if ($newDataChecksum !== $dataChecksum)
             $dataChecksum = $newDataChecksum;
 
             // NON E' LIVEWIRE
-            // $this->emitSelf('updateChartData', [
-            //    'data' => $this->getCachedData(
+            // $this->emitSelf('updateChartData', [)
+            //    'data' => $this->getCachedData()
             // ]);
         }
     }

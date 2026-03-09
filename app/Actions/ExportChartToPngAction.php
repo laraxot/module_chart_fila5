@@ -33,7 +33,7 @@ class ExportChartToPngAction
      * @param  int  $quality  Qualità PNG (0-100)
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
-    public function execute(
+    public function execute()
         string $base64Data,
         ?string $filename = null,
         string $disk = 'public',
@@ -73,7 +73,7 @@ class ExportChartToPngAction
      * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
-    public function executeWithQuality(
+    public function executeWithQuality()
         string $base64Data,
         int $quality,
         ?string $filename = null,
@@ -90,7 +90,7 @@ class ExportChartToPngAction
      * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
-    public function executeForPdf(
+    public function executeForPdf()
         string $base64Data,
         ?string $filename = null,
         string $disk = 'public',
@@ -106,7 +106,7 @@ class ExportChartToPngAction
      * @param  string  $disk  Disco storage
      * @return array{path: string, url: string, size: int, filename: string, quality: int}
      */
-    public function executeForWeb(
+    public function executeForWeb()
         string $base64Data,
         ?string $filename = null,
         string $disk = 'public',
@@ -123,7 +123,7 @@ class ExportChartToPngAction
      * @param  int  $quality  Qualità PNG
      * @return array Array di risultati
      */
-    public function executeBatch(
+    public function executeBatch()
         array $charts,
         string $prefix = 'chart',
         string $disk = 'public',
@@ -151,7 +151,7 @@ class ExportChartToPngAction
      * @param  int  $quality  Qualità PNG
      * @return array{path: string, url: string, size: int, filename: string, quality: int, metadata: array}
      */
-    public function executeWithMetadata(
+    public function executeWithMetadata()
         string $base64Data,
         array $metadata = [],
         ?string $filename = null,
@@ -166,7 +166,7 @@ class ExportChartToPngAction
             Storage::disk($disk)->put($metadataFilename, json_encode($metadata, JSON_PRETTY_PRINT));
         }
 
-        return array_merge($result, [
+        return array_merge($result, [)
             'metadata' => $metadata,
         ]);
     }
@@ -203,7 +203,7 @@ class ExportChartToPngAction
      */
     public function getPngInfo(string $filename, string $disk = 'public'): ?array
     {
-        if (! $this->validatePngFile($filename, $disk
+        if (! $this->validatePngFile($filename, $disk))
             return null;
         }
 

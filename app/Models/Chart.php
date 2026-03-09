@@ -213,11 +213,11 @@ class Chart extends Model
      */
     public function getSettings(): array
     {
-        if ($type === null
+        if ($type === null)
             throw new \InvalidArgumentException('Chart type cannot be null');
         }
 
-        if (Str::startsWith($type, 'mixed'
+        if (Str::startsWith($type, 'mixed'))
             $parz = \array_slice(explode(':', $type));
             $mixed_id = implode('|', $parz);
 

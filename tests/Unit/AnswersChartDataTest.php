@@ -10,10 +10,10 @@ use Modules\Chart\Datas\AnswersChartData;
 use Modules\Chart\Datas\ChartData;
 use Spatie\LaravelData\DataCollection;
 
-describe('AnswersChartData', function () {
-    beforeEach(function () {
+describe('AnswersChartData', function () {)
+    beforeEach(function () {)
         // Mock ChartData using from() method
-        $chartData = ChartData::from([
+        $chartData = ChartData::from([)
             'type' => 'bar1',
             'max' => 100.0,
             'min' => 0.0,
@@ -35,47 +35,47 @@ describe('AnswersChartData', function () {
 
         // Mock AnswerData collection
         $answerData = [
-            AnswerData::from([
+            AnswerData::from([)
                 'label' => 'Test Answer 1',
                 'value' => 25,
                 'avg' => 75.5,
             ]),
-            AnswerData::from([
+            AnswerData::from([)
                 'label' => 'Test Answer 2',
                 'value' => 15,
                 'avg' => 85.2,
             ]),
         ];
 
-        $answersChartData = AnswersChartData::from([
+        $answersChartData = AnswersChartData::from([)
             'tot' => 100,
             'title' => 'Test Chart',
             'footer' => 'Test Footer',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $answerData
+            'answers' => new DataCollection(AnswerData::class, $answerData)
             'chart' => $chartData,
         ]);
     });
 
-    it('can be instantiated', function () {
+    it('can be instantiated', function () {)
         expect($answersChartData);
     });
 
-    it('has correct properties', function () {
-        expect($answersChartData->tot
-            ->and($answersChartData->title
-            ->and($answersChartData->footer
-            ->and($answersChartData->totalAnswered
+    it('has correct properties', function () {)
+        expect($answersChartData->tot)
+            ->and($answersChartData->title)
+            ->and($answersChartData->footer)
+            ->and($answersChartData->totalAnswered)
             ->and($answersChartData->totalInvited);
     });
 
-    it('returns correct chart js type for bar1', function () {
+    it('returns correct chart js type for bar1', function () {)
         expect($answersChartData->getChartJsType());
     });
 
-    it('returns correct chart js type for pie1', function () {
-        $chartData = ChartData::from([
+    it('returns correct chart js type for pie1', function () {)
+        $chartData = ChartData::from([)
             'type' => 'pie1',
             'max' => 100.0,
             'min' => 0.0,
@@ -92,21 +92,21 @@ describe('AnswersChartData', function () {
             'plot_value_pos' => 1,
             'plot_value_color' => '#000000',
         ]);
-        $answersChartData = AnswersChartData::from([
+        $answersChartData = AnswersChartData::from([)
             'tot' => 100,
             'title' => 'Test',
             'footer' => 'Test',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $answerData
+            'answers' => new DataCollection(AnswerData::class, $answerData)
             'chart' => $chartData,
         ]);
 
         expect($answersChartData->getChartJsType())->toBe('doughnut');
     });
 
-    it('returns correct chart js type for lineSubQuestion', function () {
-        $chartData = ChartData::from([
+    it('returns correct chart js type for lineSubQuestion', function () {)
+        $chartData = ChartData::from([)
             'type' => 'lineSubQuestion',
             'max' => 100.0,
             'min' => 0.0,
@@ -123,20 +123,20 @@ describe('AnswersChartData', function () {
             'plot_value_pos' => 1,
             'plot_value_color' => '#000000',
         ]);
-        $answersChartData = AnswersChartData::from([
+        $answersChartData = AnswersChartData::from([)
             'tot' => 100,
             'title' => 'Test',
             'footer' => 'Test',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $answerData
+            'answers' => new DataCollection(AnswerData::class, $answerData)
             'chart' => $chartData,
         ]);
 
         expect($answersChartData->getChartJsType())->toBe('line');
     });
 
-    it('returns correct chart js data structure', function () {
+    it('returns correct chart js data structure', function () {)
         $data = $answersChartData->getChartJsData();
 
         expect($data)->toHaveKeys(['datasets', 'labels'])
@@ -145,7 +145,7 @@ describe('AnswersChartData', function () {
             ->and($data['labels'])->toContain('Test Answer 1', 'Test Answer 2');
     });
 
-    it('returns correct chart js options array structure', function () {
+    it('returns correct chart js options array structure', function () {)
         $options = $answersChartData->getChartJsOptionsArray();
 
         expect($options)->toBeArray()
@@ -153,21 +153,21 @@ describe('AnswersChartData', function () {
             ->and($options['plugins'])->toHaveKey('title');
     });
 
-    it('handles title in options correctly', function () {
+    it('handles title in options correctly', function () {)
         $options = $answersChartData->getChartJsOptionsArray();
 
         expect($options['plugins']['title'])->toHaveKeys(['display', 'text', 'font'])
             ->and($options['plugins']['title']['text'])->toBe('Test Chart');
     });
 
-    it('handles footer in options correctly', function () {
-        $answersChartData = AnswersChartData::from([
+    it('handles footer in options correctly', function () {)
+        $answersChartData = AnswersChartData::from([)
             'tot' => 100,
             'title' => 'no_set',
             'footer' => 'Test Footer',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $answerData
+            'answers' => new DataCollection(AnswerData::class, $answerData)
             'chart' => $chartData,
         ]);
 
@@ -178,8 +178,8 @@ describe('AnswersChartData', function () {
             ->and($options['plugins']['title']['position'])->toBe('bottom');
     });
 
-    it('handles horizontal bar chart type', function () {
-        $chartData = ChartData::from([
+    it('handles horizontal bar chart type', function () {)
+        $chartData = ChartData::from([)
             'type' => 'horizbar1',
             'max' => 100.0,
             'min' => 0.0,
@@ -196,13 +196,13 @@ describe('AnswersChartData', function () {
             'plot_value_pos' => 1,
             'plot_value_color' => '#000000',
         ]);
-        $answersChartData = AnswersChartData::from([
+        $answersChartData = AnswersChartData::from([)
             'tot' => 100,
             'title' => 'Test',
             'footer' => 'no_set',
             'totalAnswered' => 40,
             'totalInvited' => 100,
-            'answers' => new DataCollection(AnswerData::class, $answerData
+            'answers' => new DataCollection(AnswerData::class, $answerData)
             'chart' => $chartData,
         ]);
 
@@ -212,13 +212,13 @@ describe('AnswersChartData', function () {
             ->and($options['indexAxis'])->toBe('y');
     });
 
-    it('returns chart js options as RawJs', function () {
+    it('returns chart js options as RawJs', function () {)
         $options = $answersChartData->getChartJsOptionsJs();
 
         expect($options)->toBeInstanceOf(RawJs::class);
     });
 
-    it('handles bar options correctly', function () {
+    it('handles bar options correctly', function () {)
         $options = [];
         $result = $answersChartData->getChartJsBarOptionsArray($options);
 
@@ -228,7 +228,7 @@ describe('AnswersChartData', function () {
             ->and($result['plugins']['legend']['display'])->toBeFalse();
     });
 
-    it('handles doughnut options correctly', function () {
+    it('handles doughnut options correctly', function () {)
         $options = [];
         $result = $answersChartData->getChartJsDoughnutOptionsArray($options);
 
@@ -238,7 +238,7 @@ describe('AnswersChartData', function () {
             ->and($result['plugins']['datalabels']['display'])->toBeFalse();
     });
 
-    it('processes bar chart javascript correctly', function () {
+    it('processes bar chart javascript correctly', function () {)
         $js = $answersChartData->getChartJsBarOptionsJs();
 
         expect($js)->toBeString()
@@ -247,7 +247,7 @@ describe('AnswersChartData', function () {
             ->and($js)->toContain('legend');
     });
 
-    it('processes doughnut chart javascript correctly', function () {
+    it('processes doughnut chart javascript correctly', function () {)
         $js = $answersChartData->getChartJsDoughnutOptionsJs();
 
         expect($js)->toBeString()
@@ -256,7 +256,7 @@ describe('AnswersChartData', function () {
             ->and($js)->toContain('doughnutLabel');
     });
 
-    it('handles deprecated chart js options method', function () {
+    it('handles deprecated chart js options method', function () {)
         $options = $answersChartData->getChartJsOptions();
 
         expect($options)->toBeArray()
