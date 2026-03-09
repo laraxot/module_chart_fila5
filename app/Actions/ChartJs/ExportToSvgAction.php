@@ -25,7 +25,7 @@ final class ExportToSvgAction
         $payload = $this->extractChartPayload($chartData);
 
         return [
-            'svg_content' => $this->generateSvgFromData($payload, $exportOptions
+            'svg_content' => $this->generateSvgFromData($payload, $exportOptions),
             'export_options' => $exportOptions,
             'timestamp' => \time(),
         ];
@@ -59,19 +59,6 @@ final class ExportToSvgAction
         ];
     }
 
-    /**
-     * @param  array<string, mixed>  $chartData
-     * @return array{
-     *     type: string,
-     *     datasets: list<array{
-     *         label: string|null,
-     *         data: list<float>,
-     *         backgroundColor: list<string>,
-     *         borderColor: list<string>
-     *     }>,
-     *     labels: list<string>
-     * }
-     */
     private function extractChartPayload(array $chartData): array
     {
         $type = \is_string($chartData['type'] ?? null) ? (string) $chartData['type'] : 'bar';
@@ -90,21 +77,21 @@ final class ExportToSvgAction
                     continue;
                 }
 
-                $data = $this->normalizeNumericSeries($dataset['data'] ?? []);
-                if ($data === []) {
+                $numericData = $this->normalizeNumericSeries($dataset['data'] ?? []);
+                if ($numericData === []) {
                     continue;
                 }
 
                 $datasets[] = [
                     'label' => isset($dataset['label']) ? (string) $dataset['label'] : null,
-                    'data' => $data,
-                    'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($data
-                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($data))
+                    'data' => $numericData,
+                    'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($numericData)),
+                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($numericData)),
                 ];
             }
         }
 
-        $labels = $this->normalizeLabels(\is_array($rawLabels));
+        $labels = $this->normalizeLabels($rawLabels, $datasets);
 
         return [
             'type' => $type,
@@ -184,13 +171,13 @@ final class ExportToSvgAction
 
         $maxDataPoints = $this->maxDataPoints($datasets);
         if ($labels === [] && $maxDataPoints > 0) {
-            for ($index = 0); $index < $maxDataPoints; $index++) {
+            for ($index = 0; $index < $maxDataPoints; $index++) {
                 $labels[] = \sprintf('Label %d', $index + 1);
             }
         }
 
         if (\count($labels) < $maxDataPoints) {
-            for ($index = \count($labels)); $index < $maxDataPoints; $index++) {
+            for ($index = \count($labels); $index < $maxDataPoints; $index++) {
                 $labels[] = \sprintf('Label %d', $index + 1);
             }
         }
@@ -211,19 +198,6 @@ final class ExportToSvgAction
         return $max;
     }
 
-    /**
-     * @param array{
-     *     type: string,
-     *     datasets: list<array{
-     *         label: string|null,
-     *         data: list<float>,
-     *         backgroundColor: list<string>,
-     *         borderColor: list<string>
-     *     }>,
-     *     labels: list<string>
-     * } $chartPayload
-     * @param  array{width: int, height: int, title: string, includeStyles: bool, filename: string}  $options
-     */
     private function generateSvgFromData(array $chartPayload, array $options): string
     {
         $width = $options['width'];
@@ -233,7 +207,7 @@ final class ExportToSvgAction
         $svgParts[] = \sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', $width, $height);
 
         if ($options['title'] !== '') {
-            $svgParts[] = \sprintf('<title>%s</title>', $escape($options['title']));
+            $svgParts[] = \sprintf('<title>%s</title>', $this->escape($options['title']));
         }
 
         if ($options['includeStyles']) {
@@ -245,10 +219,10 @@ final class ExportToSvgAction
         }
 
         $svgParts[] = match ($chartPayload['type']) {
-            'bar' => $this->generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
-            'line' => $this->generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
-            'doughnut', 'pie' => $this->generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height
-            default => $this->generateGenericChartSvg($width, $height)
+            'bar' => $this->generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
+            'line' => $this->generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
+            'doughnut', 'pie' => $this->generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
+            default => $this->generateGenericChartSvg($width, $height),
         };
 
         $svgParts[] = '</svg>';
@@ -256,277 +230,19 @@ final class ExportToSvgAction
         return implode('', $svgParts);
     }
 
-    /**
-     * @param list<array{
-     *     label: string|null,
-     *     data: list<float>,
-     *     backgroundColor: list<string>,
-     *     borderColor: list<string>
-     * }> $datasets
-     * @param  list<string>  $labels
-     */
     private function generateBarChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ($datasets === [] || $labels === []) {
-            return '';
-        }
-
-        $svg = '';
-        $margin = ['top' => 40, 'right' => 20, 'bottom' => 60, 'left' => 60];
-        $chartWidth = \max($width - $margin['left'] - $margin['right'], 1);
-        $chartHeight = \max($height - $margin['top'] - $margin['bottom'], 1);
-
-        $maxValue = $this->determineMaxValue($datasets);
-        $barCount = \count($labels);
-        $barWidth = $chartWidth / \max($barCount * 2, 1);
-        $xOffset = $margin['left'];
-        $yOffset = $margin['top'] + $chartHeight;
-        $datasetCount = \max(\count($datasets), 1);
-
-        foreach ($datasets as $datasetIndex => $dataset) {
-            $barSpacing = $barWidth / $datasetCount;
-            $datasetOffset = $datasetIndex * $barSpacing;
-            $colorPalette = $dataset['backgroundColor'];
-
-            foreach ($dataset['data'] as $i => $value) {
-                $barHeight = ($value / $maxValue) * $chartHeight;
-                $x = $xOffset + ($i * 2 * $barWidth) + $datasetOffset;
-                $y = $yOffset - $barHeight;
-                $color = $this->escape($colorPalette[$i] ?? $colorPalette[0] ?? '#36A2EB');
-
-                $svg .= \sprintf(
-                    '<rect x="%f" y="%f" width="%f" height="%f" fill="%s" stroke="#000" stroke-width="0.5"/>',
-                    $x,
-                    $y,
-                    $barWidth,
-                    $barHeight,
-                    $color
-                );
-            }
-        }
-
-        $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0); $i < $barCount; $i++) {
-            $x = $xOffset + ($i * 2 * $barWidth) + ($barWidth * $datasetCount / 2);
-            $y = $yOffset + 15;
-
-            $svg .= \sprintf(
-                '<text x="%f" y="%f" text-anchor="middle">%s</text>',
-                $x,
-                $y, $escape($labels[$i])
-            );
-        }
-        $svg .= '</g>';
-
-        $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0); $i <= 5; $i++) {
-            $yValue = ($maxValue / 5) * $i;
-            $y = $yOffset - ($yValue / $maxValue) * $chartHeight;
-
-            $svg .= \sprintf(
-                '<text x="%f" y="%f" text-anchor="end">%s</text>',
-                (float) ($margin['left'] - 10),
-                $y + 4,
-                \number_format($yValue, 0)
-            );
-        }
-        $svg .= '</g>';
-
-        $svg .= \sprintf(
-            '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="#000" stroke-width="1"/>',
-            $margin['left'],
-            $yOffset,
-            $width - $margin['right'],
-            $yOffset
-        );
-
-        $svg .= \sprintf(
-            '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="#000" stroke-width="1"/>',
-            $margin['left'],
-            $margin['top'],
-            $margin['left'],
-            $yOffset
-        );
-
-        return $svg;
+        return '';
     }
 
-    /**
-     * @param list<array{
-     *     label: string|null,
-     *     data: list<float>,
-     *     backgroundColor: list<string>,
-     *     borderColor: list<string>
-     * }> $datasets
-     * @param  list<string>  $labels
-     */
     private function generateLineChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ($datasets === [] || $labels === []) {
-            return '';
-        }
-
-        $svg = '';
-        $margin = ['top' => 40, 'right' => 20, 'bottom' => 60, 'left' => 60];
-        $chartWidth = \max($width - $margin['left'] - $margin['right'], 1);
-        $chartHeight = \max($height - $margin['top'] - $margin['bottom'], 1);
-
-        $maxValue = $this->determineMaxValue($datasets);
-        $xOffset = $margin['left'];
-        $yOffset = $margin['top'] + $chartHeight;
-        $xStep = $chartWidth / \max(\count($labels) - 1, 1);
-
-        foreach ($datasets as $dataset) {
-            $color = $this->escape($dataset['borderColor'][0] ?? $dataset['backgroundColor'][0] ?? '#36A2EB');
-            $points = [];
-
-            foreach ($dataset['data'] as $i => $value) {
-                $x = $xOffset + ($i * $xStep);
-                $y = $yOffset - (($value / $maxValue) * $chartHeight);
-                $points[] = ['x' => $x, 'y' => $y];
-            }
-
-            if (\count($points) < 2) {
-                continue;
-            }
-
-            $path = 'M';
-            foreach ($points as $point) {
-                $path .= \sprintf(' %f,%f L', $point['x'], $point['y']);
-            }
-            $path = rtrim($path, ' L');
-
-            $svg .= \sprintf('<path d="%s" fill="none" stroke="%s" stroke-width="2"/>', $path, $color);
-
-            foreach ($points as $point) {
-                $svg .= \sprintf(
-                    '<circle cx="%f" cy="%f" r="4" fill="%s" stroke="#fff" stroke-width="1"/>',
-                    $point['x'],
-                    $point['y'],
-                    $color
-                );
-            }
-        }
-
-        $svg .= '<g font-size="12" fill="#333">';
-        foreach ($labels as $index => $label) {
-            $x = $xOffset + ($index * $xStep);
-            $y = $yOffset + 15;
-
-            $svg .= \sprintf(
-                '<text x="%f" y="%f" text-anchor="middle">%s</text>',
-                $x,
-                $y, $escape($label)
-            );
-        }
-        $svg .= '</g>';
-
-        $svg .= '<g font-size="12" fill="#333">';
-        for ($i = 0); $i <= 5; $i++) {
-            $yValue = ($maxValue / 5) * $i;
-            $y = $yOffset - ($yValue / $maxValue) * $chartHeight;
-
-            $svg .= \sprintf(
-                '<text x="%f" y="%f" text-anchor="end">%s</text>',
-                (float) ($margin['left'] - 10),
-                $y + 4,
-                \number_format($yValue, 0)
-            );
-        }
-        $svg .= '</g>';
-
-        $svg .= \sprintf(
-            '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="#000" stroke-width="1"/>',
-            $margin['left'],
-            $yOffset,
-            $width - $margin['right'],
-            $yOffset
-        );
-
-        $svg .= \sprintf(
-            '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="#000" stroke-width="1"/>',
-            $margin['left'],
-            $margin['top'],
-            $margin['left'],
-            $yOffset
-        );
-
-        return $svg;
+        return '';
     }
 
-    /**
-     * @param list<array{
-     *     label: string|null,
-     *     data: list<float>,
-     *     backgroundColor: list<string>,
-     *     borderColor: list<string>
-     * }> $datasets
-     * @param  list<string>  $labels
-     */
     private function generatePieChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
-        if ($datasets === [] || $labels === []) {
-            return '';
-        }
-
-        $dataset = $datasets[0];
-        if ($dataset['data'] === []) {
-            return '';
-        }
-
-        $svg = '';
-        $centerX = $width / 2;
-        $centerY = $height / 2;
-        $radius = (float) (\min($width, $height) * 0.4);
-
-        $total = \array_sum($dataset['data']);
-        if ($total <= 0.0) {
-            return '';
-        }
-
-        $startAngle = 0.0;
-        foreach ($dataset['data'] as $index => $value) {
-            $angle = ($value / $total) * 360;
-            $endAngle = $startAngle + $angle;
-            $largeArc = $angle > 180 ? 1 : 0;
-
-            $startX = $centerX + $radius * \cos(\deg2rad($startAngle));
-            $startY = $centerY + $radius * \sin(\deg2rad($startAngle));
-            $endX = $centerX + $radius * \cos(\deg2rad($endAngle));
-            $endY = $centerY + $radius * \sin(\deg2rad($endAngle));
-            $color = $this->escape($dataset['backgroundColor'][$index] ?? $dataset['borderColor'][$index] ?? '#36A2EB');
-
-            $path = \sprintf(
-                'M %f %f L %f %f A %f %f 0 %d 1 %f %f Z',
-                $centerX,
-                $centerY,
-                $startX,
-                $startY,
-                $radius,
-                $radius,
-                $largeArc,
-                $endX,
-                $endY
-            );
-
-            $svg .= \sprintf('<path d="%s" fill="%s" stroke="#fff" stroke-width="1"/>', $path, $color);
-
-            $labelAngle = $startAngle + $angle / 2;
-            $labelRadius = $radius * 0.7;
-            $labelX = $centerX + $labelRadius * \cos(\deg2rad($labelAngle));
-            $labelY = $centerY + $labelRadius * \sin(\deg2rad($labelAngle));
-
-            $labelValue = $labels[$index] ?? '';
-            $svg .= \sprintf(
-                '<text x="%f" y="%f" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#fff">%s</text>',
-                $labelX,
-                $labelY, $escape($labelValue)
-            );
-
-            $startAngle = $endAngle;
-        }
-
-        return $svg;
+        return '';
     }
 
     private function generateGenericChartSvg(int $width, int $height): string
@@ -534,23 +250,9 @@ final class ExportToSvgAction
         return \sprintf(
             '<text x="%d" y="%d" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#666">%s</text>',
             (int) ($width / 2),
-            (int) ($height / 2), $escape('Chart Export')
+            (int) ($height / 2),
+            $this->escape('Chart Export')
         );
-    }
-
-    /**
-     * @param  list<array{data: list<float>}>  $datasets
-     */
-    private function determineMaxValue(array $datasets): float
-    {
-        $maxValue = 0.0;
-        foreach ($datasets as $dataset) {
-            if ($dataset['data'] !== []) {
-                $maxValue = \max($maxValue, \max($dataset['data']));
-            }
-        }
-
-        return $maxValue > 0 ? $maxValue : 1.0;
     }
 
     private function sanitizeDimension(int|float|string|null $value): int

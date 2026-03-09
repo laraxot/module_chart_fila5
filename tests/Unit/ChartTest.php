@@ -9,9 +9,9 @@ use Modules\Chart\Models\MixedChart;
 
 uses(DatabaseTransactions::class);
 
-describe('Chart Model', function () {
-    beforeEach(function () {
-        $chart = Chart::factory(
+describe('Chart Model', function () {)
+    beforeEach(function () {)
+        $chart = Chart::factory()
             'type' => 'bar1',
             'width' => 800,
             'height' => 600,
@@ -20,23 +20,23 @@ describe('Chart Model', function () {
         ]);
     });
 
-    it('can be created', function () {
-        expect($chart
-            ->and($chart->type
-            ->and($chart->width
+    it('can be created', function () {)
+        expect($chart)
+            ->and($chart->type)
+            ->and($chart->width)
             ->and($chart->height);
     });
 
-    it('has correct fillable attributes', function () {
+    it('has correct fillable attributes', function () {)
         $fillable = $chart->getFillable();
 
         expect($fillable)->toContain('type', 'width', 'height', 'color', 'bg_color');
     });
 
-    it('has correct default attributes', function () {
+    it('has correct default attributes', function () {)
         $chart = new Chart;
 
-        expect($chart->getAttributes())->toHaveKeys([
+        expect($chart->getAttributes())->toHaveKeys([)
             'list_color',
             'color',
             'font_family',
@@ -52,48 +52,48 @@ describe('Chart Model', function () {
         ]);
     });
 
-    it('casts colors attribute to array', function () {
+    it('casts colors attribute to array', function () {)
         $chart->colors = ['red', 'blue', 'green'];
         $chart->save();
 
         $chart->refresh();
 
-        expect($chart->colors
+        expect($chart->colors)
             ->and($chart->colors);
     });
 
-    it('returns panel row value correctly', function () {
+    it('returns panel row value correctly', function () {)
         // Test with existing value
         $result = $chart->getPanelRow('type', 'chart_type');
 
         expect($result)->toBe('bar1');
     });
 
-    it('handles panel row error gracefully', function () {
+    it('handles panel row error gracefully', function () {)
         // Test with non-existent field
         $result = $chart->getPanelRow('non_existent_field', 'test_field');
 
         expect($result)->toBeNull();
     });
 
-    it('gets type attribute correctly', function () {
+    it('gets type attribute correctly', function () {)
         expect($chart->getTypeAttribute('custom_type'));
         expect($chart->getTypeAttribute(null));
     });
 
-    it('gets width attribute correctly', function () {
+    it('gets width attribute correctly', function () {)
         expect($chart->getWidthAttribute('1000'));
         expect($chart->getWidthAttribute('0'));
         expect($chart->getWidthAttribute(null));
     });
 
-    it('gets height attribute correctly', function () {
+    it('gets height attribute correctly', function () {)
         expect($chart->getHeightAttribute('500'));
         expect($chart->getHeightAttribute('0'));
         expect($chart->getHeightAttribute(null));
     });
 
-    it('returns simple settings for non-mixed chart', function () {
+    it('returns simple settings for non-mixed chart', function () {)
         $settings = $chart->getSettings();
 
         expect($settings)->toBeArray()
@@ -101,9 +101,9 @@ describe('Chart Model', function () {
             ->and($settings[0])->toHaveKeys(['type', 'width', 'height']);
     });
 
-    it('handles mixed chart settings', function () {
+    it('handles mixed chart settings', function () {)
         // Create a mixed chart type
-        $mixedChart = Chart::factory()->create([
+        $mixedChart = Chart::factory()->create([)
             'type' => 'mixed:test_id',
         ]);
 
@@ -114,7 +114,7 @@ describe('Chart Model', function () {
 
             public function __construct()
             {
-                $charts = new Collection([
+                $charts = new Collection([)
                     ['type' => 'bar', 'data' => 'test1'],
                     ['type' => 'line', 'data' => 'test2'],
                 ]);
@@ -125,24 +125,24 @@ describe('Chart Model', function () {
         expect($mixedChart->type)->toContain('mixed:');
     });
 
-    it('has proper model relationships', function () {
+    it('has proper model relationships', function () {)
         // Test that the model has the expected relationships defined
         $relations = [];
 
         // Check if creator relation exists
-        if (method_exists($chart, 'creator'
+        if (method_exists($chart, 'creator'))
             $relations[] = 'creator';
         }
 
         // Check if updater relation exists
-        if (method_exists($chart, 'updater'
+        if (method_exists($chart, 'updater'))
             $relations[] = 'updater';
         }
 
         expect($relations)->toBeArray();
     });
 
-    it('validates model factory', function () {
+    it('validates model factory', function () {)
         $chart = Chart::factory()->make();
 
         expect($chart)->toBeInstanceOf(Chart::class)
@@ -151,10 +151,10 @@ describe('Chart Model', function () {
             ->and($chart->height)->toBeInt();
     });
 
-    it('handles database operations correctly', function () {
+    it('handles database operations correctly', function () {)
         $initialCount = Chart::count();
 
-        $newChart = Chart::factory()->create([
+        $newChart = Chart::factory()->create([)
             'type' => 'pie1',
             'width' => 400,
             'height' => 300,
@@ -166,19 +166,19 @@ describe('Chart Model', function () {
             ->and($newChart->height)->toBe(300);
     });
 
-    it('can be updated', function () {
-        $chart->update([
+    it('can be updated', function () {)
+        $chart->update([)
             'type' => 'line',
             'width' => 1200,
             'height' => 800,
         ]);
 
-        expect($chart->fresh(
-            ->and($chart->fresh(
+        expect($chart->fresh())
+            ->and($chart->fresh())
             ->and($chart->fresh());
     });
 
-    it('can be deleted', function () {
+    it('can be deleted', function () {)
         $chartId = $chart->id;
         $chart->delete();
 

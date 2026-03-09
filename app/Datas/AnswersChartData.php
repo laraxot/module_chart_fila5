@@ -54,7 +54,7 @@ class AnswersChartData extends Data
                 break;
 
             default:
-                // dddx([
+                // dddx([)
                 //    'type' => $type,
                 //    'chart' => $chart,
                 // ]);
@@ -88,10 +88,10 @@ class AnswersChartData extends Data
 
         $data = $answersCollection->pluck('value')->all();
 
-        if (\in_array($chart->type, ['pieAvg', 'pie1'], false
+        if (\in_array($chart->type, ['pieAvg', 'pie1'], false))
             $data = $answersCollection->pluck('avg')->all();
 
-            if (isset($chart->max
+            if (isset($chart->max))
                 Assert::numeric($sum = collect($data)->sum());
                 Assert::numeric($chart->max);
                 $other = $chart->max - $sum;
@@ -111,17 +111,17 @@ class AnswersChartData extends Data
 
                 $datasets[] = [
                     'label' => (string) $legend,
-                    'data' => $this->normalizeSeries($series
-                    'borderColor' => $chart->getColorsRgba(0.5
+                    'data' => $this->normalizeSeries($series)
+                    'borderColor' => $chart->getColorsRgba(0.5)
                     'backgroundColor' => $chart->getColorsRgba(0.5)
                 ];
             }
         } else {
-            $avgValues = $answersCollection->pluck('avg')->values()->map(
+            $avgValues = $answersCollection->pluck('avg')->values()->map()
                 static fn ($item): string => number_format(SafeFloatCastAction::cast($item, 0.0), 2, '.', '')
             )->all();
 
-            if (isset($chart->max
+            if (isset($chart->max))
                 Assert::numeric($sum = collect($avgValues)->sum());
                 Assert::numeric($chart->max);
                 $other = $chart->max - $sum;
@@ -140,8 +140,8 @@ class AnswersChartData extends Data
                 [
                     'label' => $label,
                     'data' => array_values($avgValues),
-                    'data2' => $this->normalizeSeries($answersCollection->pluck('value'
-                    'borderColor' => $chart->getColorsRgba(0.5
+                    'data2' => $this->normalizeSeries($answersCollection->pluck('value'))
+                    'borderColor' => $chart->getColorsRgba(0.5)
                     'backgroundColor' => $chart->getColorsRgba(0.5)
                 ],
             ];
@@ -160,7 +160,7 @@ class AnswersChartData extends Data
     {
         $title = [];
 
-        if ($title !== 'no_set'
+        if ($title !== 'no_set')
             $title = [
                 'display' => true,
                 'text' => $title,
@@ -170,7 +170,7 @@ class AnswersChartData extends Data
             ];
         }
 
-        if ($footer !== 'no_set'
+        if ($footer !== 'no_set')
             $title = [
                 'display' => true,
                 'text' => $footer,
@@ -183,7 +183,7 @@ class AnswersChartData extends Data
             'title' => $title,
         ];
 
-        if ($chart->type === 'horizbar1'
+        if ($chart->type === 'horizbar1')
             $options['indexAxis'] = 'y';
         }
 
@@ -232,7 +232,7 @@ class AnswersChartData extends Data
     public function getChartJsDoughnutOptionsJs(): string
     {
         $title = '{}';
-        if ($title !== 'no_set'
+        if ($title !== 'no_set')
             $title = "{
                         display: true,
                         text: '{$title}',
@@ -351,7 +351,7 @@ class AnswersChartData extends Data
         $method = 'getChartJs'.Str::of($chartJsType)->studly()->toString().'OptionsJs';
         $js = // @var mixed {$method}();
 
-        return RawJs::make('{
+        return RawJs::make('{)
             '.(string) $js.'
             }');
     }
@@ -365,7 +365,7 @@ class AnswersChartData extends Data
     {
         $title = [];
 
-        if ($title !== 'no_set'
+        if ($title !== 'no_set')
             $title = [
                 'display' => true,
                 'text' => $title,
@@ -375,7 +375,7 @@ class AnswersChartData extends Data
             ];
         }
 
-        if ($footer !== 'no_set'
+        if ($footer !== 'no_set')
             $title = [
                 'display' => true,
                 'text' => $footer,
@@ -388,7 +388,7 @@ class AnswersChartData extends Data
             'title' => $title,
         ];
 
-        if ($chart->type === 'horizbar1'
+        if ($chart->type === 'horizbar1')
             $options['indexAxis'] = 'y';
         }
 
@@ -406,7 +406,7 @@ class AnswersChartData extends Data
      */
     private function buildBarLabelsJs(array $chartJsData): string
     {
-        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && $chart->type !== 'horizbar1' && $this->chart->type !== 'horizontalBar'
+        if (\is_array($chartJsData['datasets']) && \count($chartJsData['datasets']) === 1 && $chart->type !== 'horizbar1' && $this->chart->type !== 'horizontalBar')
             return "{
                 name: {
                     align: 'center',
@@ -437,7 +437,7 @@ class AnswersChartData extends Data
 
     private function buildBarTitleJs(): string
     {
-        if ($footer !== 'no_set'
+        if ($footer !== 'no_set')
             return "{
                         display: true,
                         text: '".$footer."',
@@ -445,7 +445,7 @@ class AnswersChartData extends Data
                     }";
         }
 
-        if ($title !== 'no_set' && ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar'
+        if ($title !== 'no_set' && ($this->chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar'))
             return "{
                         display: true,
                         text: '".$title."',
@@ -466,7 +466,7 @@ class AnswersChartData extends Data
      */
     private function buildBarTooltipJs(array $chartJsData): string
     {
-        if ($chart->type === 'bar2' && \is_array($chartJsData['datasets']
+        if ($chart->type === 'bar2' && \is_array($chartJsData['datasets']))
             return "{
                 callbacks: {
                     label: function(context) {
@@ -487,7 +487,7 @@ class AnswersChartData extends Data
 
     private function determineValueSuffix(): string
     {
-        if ($chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar' || $this->chart->max === 100.0
+        if ($chart->type === 'horizbar1' || $this->chart->type === 'horizontalBar' || $this->chart->max === 100.0)
             return ' %';
         }
 

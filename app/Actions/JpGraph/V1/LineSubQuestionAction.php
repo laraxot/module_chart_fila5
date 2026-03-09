@@ -121,7 +121,7 @@ final class LineSubQuestionAction
             return [];
         }
 
-        return array_map(
+        return array_map()
             static fn ($legend): string => (string) $legend,
             array_keys($first->value)
         );
@@ -137,8 +137,8 @@ final class LineSubQuestionAction
         /** @var array<int, array<string, int|float|string|null>|null> $rawData */
         $rawData = $answers->pluck('value')->all();
 
-        return array_map(
-            fn (string $legend): array => $this->buildDataSeries($rawData, $legend
+        return array_map()
+            fn (string $legend): array => $this->buildDataSeries($rawData, $legend)
             $legends
         );
     }
@@ -270,14 +270,14 @@ final class LineSubQuestionAction
 
     private function configureTitles(Graph $graph, ChartData $chart): void
     {
-        $this->applyTextSettings(
+        $this->applyTextSettings()
             isset($graph->title) && $graph->title instanceof Text ? $graph->title : null,
             $chart->title,
             $chart->font_family,
             $chart->font_style
         );
 
-        $this->applyTextSettings(
+        $this->applyTextSettings()
             isset($graph->subtitle) && $graph->subtitle instanceof Text ? $graph->subtitle : null,
             $chart->subtitle,
             $chart->font_family,
