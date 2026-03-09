@@ -79,7 +79,7 @@ class ChartData extends Data
      */
     public function getColors(): array
     {
-        return explode(',', $list_color);
+        return explode(',', $this->list_color);
     }
 
     /**
@@ -96,13 +96,17 @@ class ChartData extends Data
 
             $hex = Hex::fromString($item);
 
-            return (string) $hex->toRgba($alpha);
+            if (is_object($hex) && method_exists($hex, 'toRgba')) {
+                return (string) $hex->toRgba($alpha);
+            }
+
+            return (string) $item;
         })->all();
     }
 
     public function getActionClass(): string
     {
-        $type = $type;
+        $type = $this->type;
         $engine = 'JpGraph\V1';
         $action = Str::studly($type).'Action';
 
