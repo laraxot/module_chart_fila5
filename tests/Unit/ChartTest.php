@@ -103,7 +103,7 @@ describe('Chart Model', function () {)
 
     it('handles mixed chart settings', function () {)
         // Create a mixed chart type
-        $mixedChart = Chart::factory()->create([)
+        $mixedChart = Chart::factory()->create([
             'type' => 'mixed:test_id',
         ]);
 
@@ -154,7 +154,7 @@ describe('Chart Model', function () {)
     it('handles database operations correctly', function () {)
         $initialCount = Chart::count();
 
-        $newChart = Chart::factory()->create([)
+        $newChart = Chart::factory()->create([
             'type' => 'pie1',
             'width' => 400,
             'height' => 300,
