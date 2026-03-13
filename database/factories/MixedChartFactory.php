@@ -23,8 +23,8 @@ class MixedChartFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $faker->randomNumber(5)
-            'name' => $faker->name,
+            'id' => $this->faker->randomNumber(5),
+            'name' => $this->faker->name,
         ];
     }
 }
