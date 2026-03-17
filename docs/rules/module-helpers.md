@@ -4,7 +4,7 @@
 
 1. **module_asset()**
    ```php
-   // Definita in Modules/Xot/Helpers/Helper.php
+   // Definita in Modules/Xot/helpers/Helper.php
    function module_asset(string $moduleName, string $path): string
    {
        return asset("Modules/{$moduleName}/Resources/assets/{$path}");
@@ -16,7 +16,7 @@
    // composer.json
    "autoload": {
        "files": [
-           "Modules/Xot/Helpers/Helper.php"
+           "Modules/Xot/helpers/Helper.php"
        ]
    }
    ```
