@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Datas;
 
+use Illuminate\Support\HtmlString;
 use Spatie\LaravelData\Data;
 use function Safe\json_encode;
 
 /**
-<<<<<<< Updated upstream
- * DTO per la configurazione di un chart
-||||||| Stash base
-=======
  * DTO per la configurazione di un chart.
  * Espone getChartJsType/getChartJsData/getChartJsOptionsJs per compatibilità
  * quando usato al posto di AnswersChartData (es. QuestionChartItemWidget).
->>>>>>> Stashed changes
  */
 class ChartData extends Data
 {
@@ -26,110 +22,6 @@ class ChartData extends Data
         public ?string $title = null,
         public ?array $options = null,
     ) {
-<<<<<<< Updated upstream
-||||||| Stash base
-    public string $type; // horizbar1, pie ecc
-
-    public float $max;
-
-    public float $min;
-
-    public ?int $width = null;
-
-    public int $height;
-
-    public ?string $title = null;
-
-    public ?string $subtitle = null;
-
-    public string $list_color;
-
-    // public string $color; // #000000 // non si deve più usare, sostituito da list_color
-    public ?string $bg_color = null; // #000000
-
-    public string $font_family;
-
-    public string $font_size;
-
-    public string $font_style;
-
-    public ?int $y_grace = null;
-
-    public ?int $yaxis_hide = null;
-
-    public string $x_label_angle;
-
-    public int $show_box;
-
-    public int $x_label_margin;
-
-    public int $plot_perc_width;
-
-    public bool $plot_value_show;
-
-    public ?string $plot_value_format = null;
-
-    public ?string $plot_value_color = '#000000';
-
-    public string $transparency;
-
-    public ?string $engine_type = null;
-
-    public ?string $footer = null;
-
-    public int $plot_value_pos = 0;
-
-    public ?string $answer_value_no_txt = null;
-
-    public ?string $answer_value_txt = null;
-
-    // public ?string $legend;
-    /** @var array<string, mixed>|null */
-    public ?array $legend = null;
-
-    /** @var array<int, string>|null */
-    public ?array $sublabels = null;
-
-    public ?float $avg = null;
-
-    /**
-     * @return array<int, string>
-     */
-    public function getColors(): array
-    {
-        return explode(',', $this->list_color);
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    public function getColorsRgba(float $alpha = 1): array
-    {
-        $colors = $this->getColors();
-
-        return collect($colors)->map(function ($item) use ($alpha) {
-            if (! Str::startsWith($item, '#')) {
-                return $item;
-            }
-
-            $hex = Hex::fromString($item);
-
-            if (is_object($hex) && method_exists($hex, 'toRgba')) {
-                return (string) $hex->toRgba($alpha);
-            }
-
-            return (string) $item;
-        })->all();
-    }
-
-    public function getActionClass(): string
-    {
-        $type = $this->type;
-        $engine = 'JpGraph\V1';
-        $action = Str::studly($type).'Action';
-
-        return '\Modules\Chart\Actions\\'.$engine.'\\'.$action;
-=======
     }
 
     public function getChartJsType(): string
@@ -137,7 +29,7 @@ class ChartData extends Data
         return match ($this->type) {
             'pie1', 'pieAvg' => 'doughnut',
             'lineSubQuestion' => 'line',
-            'bar2', 'bar1', 'bar3', 'horizbar1' => 'bar',
+            'bar2', 'bar1', 'bar3', 'horizbar1', 'horizontalBar' => 'bar',
             default => $this->type ?? 'bar',
         };
     }
@@ -153,18 +45,17 @@ class ChartData extends Data
         ];
     }
 
-    public function getChartJsOptionsJs(): \Illuminate\Support\HtmlString
+    public function getChartJsOptionsJs(): HtmlString
     {
         $options = [
             'plugins' => ['title' => ['display' => true, 'text' => $this->title ?? '', 'font' => ['size' => 14]]],
             'responsive' => true,
             'maintainAspectRatio' => false,
         ];
-        if ($this->type === 'horizbar1') {
+        if ($this->type === 'horizbar1' || $this->type === 'horizontalBar') {
             $options['indexAxis'] = 'y';
         }
 
-        return new \Illuminate\Support\HtmlString(json_encode($options));
->>>>>>> Stashed changes
+        return new HtmlString(json_encode($options));
     }
 }
