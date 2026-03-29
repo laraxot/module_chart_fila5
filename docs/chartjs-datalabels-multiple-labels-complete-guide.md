@@ -63,7 +63,7 @@ Prima di iniziare, assicurati di avere:
 Apri il terminale e vai nella directory del modulo Chart:
 
 ```bash
-cd /var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/Chart
+cd ./laravel/Modules/Chart
 ```
 
 Installa il plugin:
