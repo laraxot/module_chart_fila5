@@ -1,4 +1,4 @@
-# Livewire 3.x
+# Livewire 4.x
 
 ## Prerequisiti
 - Laravel 12.x

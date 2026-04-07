@@ -37,7 +37,7 @@ Attualmente, la configurazione di Filament presenta incompatibilità con i modul
 ```json
 {
     "require": {
-        "livewire/livewire": "^3.0",
+        "livewire/livewire": "^4.0",
         "blade-ui-kit/blade-icons": "^1.5",
         "ryangjchandler/blade-capture-directive": "^0.3"
     }

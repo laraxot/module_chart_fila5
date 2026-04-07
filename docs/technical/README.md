@@ -22,7 +22,7 @@ MySQL 8.0+
 Blade Templates
 Alpine.js 3.x
 Tailwind CSS 3.x
-Livewire 3.x
+Livewire 4.x
 
 # Server & Infrastructure
 Ubuntu 22.04 LTS

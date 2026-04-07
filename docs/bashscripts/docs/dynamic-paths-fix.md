@@ -8,7 +8,7 @@ Lo script `fix_git_conflicts_current_change_v2.sh` aveva una logica di calcolo p
 
 **Entrambe le soluzioni nel conflitto Git erano sbagliate**:
 1. **Soluzione HEAD**: Assumava che lo script fosse sempre in `bashscripts/conflicts/` (2 livelli sotto la root)
-2. **Soluzione Incoming**: Usava percorsi hardcoded come `/var/www/_bases/base_techplanner_fila3_mono/laravel`
+2. **Soluzione Incoming**: Usava percorsi hardcoded come `./laravel`
 
 **Perché entrambe sono sbagliate**:
 - La cartella `bashscripts` viene riutilizzata tra molti progetti diversi
