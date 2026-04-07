@@ -3,7 +3,7 @@
 ## Prerequisiti
 - Laravel 12.x
 - PHP 8.2+
-- Livewire 3.x
+- Livewire 4.x
 
 ## Folio - Routing Automatico
 
