@@ -39,19 +39,28 @@ return [
         'font_style' => [
             'label' => 'Stile font',
             'placeholder' => 'Seleziona stile',
+            'description' => 'font_style',
         ],
         'font_size' => [
             'label' => 'Dimensione font',
             'placeholder' => 'Es: 12',
+            'description' => 'font_size',
+            'helper_text' => 'font_size',
         ],
         'show_box' => [
             'label' => 'Mostra box',
         ],
         'list_color' => [
             'label' => 'Colore lista',
+            'description' => 'list_color',
+            'helper_text' => 'list_color',
+            'placeholder' => 'list_color',
         ],
         'transparency' => [
             'label' => 'Trasparenza',
+            'description' => 'transparency',
+            'helper_text' => 'transparency',
+            'placeholder' => 'transparency',
         ],
     ],
     'options' => [
@@ -73,18 +82,18 @@ return [
         ],
         'font_family' => [
             10 => 'Courier',
-            11 => 'Verdana',
-            12 => 'Times New Roman',
+            'Verdana',
+            'Times New Roman',
             14 => 'Comic Sans',
-            15 => 'Arial',
-            16 => 'Georgia',
-            17 => 'Trebuchet MS',
+            'Arial',
+            'Georgia',
+            'Trebuchet MS',
         ],
         'font_style' => [
             9001 => 'Normale',
-            9002 => 'Grassetto',
-            9003 => 'Corsivo',
-            9004 => 'Grassetto Corsivo',
+            'Grassetto',
+            'Corsivo',
+            'Grassetto Corsivo',
         ],
     ],
     'navigation' => [
