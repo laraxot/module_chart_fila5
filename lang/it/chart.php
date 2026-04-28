@@ -35,11 +35,14 @@ return [
         'font_family' => [
             'label' => 'Famiglia font',
             'placeholder' => 'Seleziona font',
+            'description' => 'font_family',
+            'helper_text' => 'font_family',
         ],
         'font_style' => [
             'label' => 'Stile font',
             'placeholder' => 'Seleziona stile',
             'description' => 'font_style',
+            'helper_text' => 'font_style',
         ],
         'font_size' => [
             'label' => 'Dimensione font',
