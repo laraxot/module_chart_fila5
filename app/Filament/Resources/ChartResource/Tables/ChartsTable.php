@@ -11,6 +11,9 @@ class ChartsTable extends XotBaseResourceTable
 {
     public static function getTableColumns(): array
     {
+    /**
+     * @return array<int\|string, \Filament\Tables\Columns\Column>
+     */
         return [
             'id' => TextColumn::make('id')->searchable()->sortable(),
             'title' => TextColumn::make('title')->searchable()->sortable(),
