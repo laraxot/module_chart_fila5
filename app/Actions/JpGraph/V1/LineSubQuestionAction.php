@@ -129,15 +129,23 @@ final class LineSubQuestionAction
         );
     }
 
+    /**
+     * @param  array<int, array<string, int|float|string|null>|null>  $rawData
+     * @return array<int, float>
+     */
     private function buildDataSeries(array $rawData, string $legend): array
     {
         $series = [];
         foreach ($rawData as $row) {
-            $series[] = $this->extractNumericValue($row, $legend);
+            $series[] = $this->extractNumericValue(is_array($row) ? $row : null, $legend);
         }
+
         return $series;
     }
 
+    /**
+     * @param  array<string, int|float|string|null>|null  $row
+     */
     private function extractNumericValue(?array $row, string $legend): float
     {
         if ($row !== null && array_key_exists($legend, $row)) {
@@ -149,6 +157,9 @@ final class LineSubQuestionAction
         return 0.0;
     }
 
+    /**
+     * @param  array<int, string>  $labels
+     */
     private function configureAxes(Graph $graph, array $labels, int $angle): void
     {
         $this->configureYAxis($graph);
@@ -166,6 +177,9 @@ final class LineSubQuestionAction
         }
     }
 
+    /**
+     * @param  array<int, string>  $labels
+     */
     private function configureXAxis(Graph $graph, array $labels, int $angle): void
     {
         $xAxis = $graph->xaxis ?? null;
@@ -183,6 +197,10 @@ final class LineSubQuestionAction
         }
     }
 
+    /**
+     * @param  array<int, array<int, float>>  $dataSets
+     * @param  array<int, string>  $legends
+     */
     private function addLinePlots(Graph $graph, array $dataSets, array $legends): void
     {
         foreach ($legends as $index => $legend) {

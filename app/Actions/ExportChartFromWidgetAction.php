@@ -27,7 +27,13 @@ class ExportChartFromWidgetAction
      * @param  string  $chartId  ID del canvas del grafico
      * @param  string|null  $filenameBase  Nome base per i file (opzionale)
      * @param  string  $disk  Disco storage Laravel
-     * @return array{svg: array, png: array, widget_class: string}
+     * @return array{
+     *     svg: array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null},
+     *     png: array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null},
+     *     widget_class: class-string,
+     *     chart_id: string,
+     *     exported_at: string|null
+     * }
      */
     public function execute(
         ChartWidget $widget,
@@ -72,7 +78,7 @@ class ExportChartFromWidgetAction
      * @param  string  $chartId  ID del canvas del grafico
      * @param  string|null  $filename  Nome file (opzionale)
      * @param  string  $disk  Disco storage
-     * @return array{path: string, url: string, size: int, filename: string}
+     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null}
      */
     public function executeSvg(
         ChartWidget $widget,
@@ -97,7 +103,7 @@ class ExportChartFromWidgetAction
      * @param  string|null  $filename  Nome file (opzionale)
      * @param  string  $disk  Disco storage
      * @param  int  $quality  Qualità PNG (0-100)
-     * @return array{path: string, url: string, size: int, filename: string, quality: int}
+     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null}
      */
     public function executePng(
         ChartWidget $widget,
@@ -123,7 +129,7 @@ class ExportChartFromWidgetAction
      * @param  string  $chartId  ID del canvas del grafico
      * @param  string|null  $filename  Nome file (opzionale)
      * @param  string  $disk  Disco storage
-     * @return array{path: string, url: string, size: int, filename: string, quality: int}
+     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null}
      */
     public function executePngForPdf(
         ChartWidget $widget,

@@ -42,7 +42,7 @@ class SaveChartWidgetAsSvgAction
      * @param  int  $width  Larghezza immagine in pixel
      * @param  int  $height  Altezza immagine in pixel
      * @param  string  $disk  Disco storage Laravel
-     * @return array{path: string, url: string, content: string, size: int, width: int, height: int}
+     * @return array{path: string, url: string, content: string, size: int, width: int, height: int, format: 'svg', filename: string, note: string}
      */
     public function execute(
         ChartWidget $widget,

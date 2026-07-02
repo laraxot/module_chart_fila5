@@ -20,10 +20,9 @@ class ExportToPngAction
     /**
      * Prepare chart data for PNG export
      *
-     * @param  array  $chartData  The chart configuration data
-     * @param  string  $chartId  The HTML ID of the chart canvas
-     * @param  array  $options  Export options including quality, dimensions, etc.
-     * @return array Prepared data for client-side PNG export
+     * @param  array<string, mixed>  $chartData  The chart configuration data
+     * @param  array<string, mixed>  $options  Export options including quality, dimensions, etc.
+     * @return array<string, mixed> Prepared data for client-side PNG export
      */
     public function execute(array $chartData, string $chartId, array $options = []): array
     {

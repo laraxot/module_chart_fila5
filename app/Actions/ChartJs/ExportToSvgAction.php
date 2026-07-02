@@ -59,6 +59,14 @@ final class ExportToSvgAction
         ];
     }
 
+    /**
+     * @param  array<string, mixed>  $chartData
+     * @return array{
+     *     type: string,
+     *     datasets: list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>,
+     *     labels: list<string>
+     * }
+     */
     private function extractChartPayload(array $chartData): array
     {
         $type = \is_string($chartData['type'] ?? null) ? (string) $chartData['type'] : 'bar';
@@ -91,7 +99,7 @@ final class ExportToSvgAction
             }
         }
 
-        $labels = $this->normalizeLabels($rawLabels, $datasets);
+        $labels = $this->normalizeLabels(is_array($rawLabels) ? $rawLabels : [], $datasets);
 
         return [
             'type' => $type,
@@ -155,7 +163,7 @@ final class ExportToSvgAction
 
     /**
      * @param  array<int|string, mixed>  $rawLabels
-     * @param  list<array{data: list<float>}>  $datasets
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      * @return list<string>
      */
     private function normalizeLabels(array $rawLabels, array $datasets): array
@@ -186,7 +194,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param  list<array{data: list<float>}>  $datasets
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      */
     private function maxDataPoints(array $datasets): int
     {
@@ -198,6 +206,14 @@ final class ExportToSvgAction
         return $max;
     }
 
+    /**
+     * @param  array{
+     *     type: string,
+     *     datasets: list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>,
+     *     labels: list<string>
+     * }  $chartPayload
+     * @param  array{width: int, height: int, filename: string, title: string, includeStyles: bool}  $options
+     */
     private function generateSvgFromData(array $chartPayload, array $options): string
     {
         $width = $options['width'];
@@ -230,16 +246,28 @@ final class ExportToSvgAction
         return implode('', $svgParts);
     }
 
+    /**
+     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<string>  $labels
+     */
     private function generateBarChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
         return '';
     }
 
+    /**
+     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<string>  $labels
+     */
     private function generateLineChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
         return '';
     }
 
+    /**
+     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<string>  $labels
+     */
     private function generatePieChartSvg(array $datasets, array $labels, int $width, int $height): string
     {
         return '';

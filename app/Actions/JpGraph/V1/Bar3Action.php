@@ -112,7 +112,7 @@ class Bar3Action
         if (isset($chart->totali) && is_iterable($chart->totali)) {
             $str = '';
             foreach ($chart->totali as $k => $v) {
-                $kStr = is_scalar($k) ? (string) $k : '';
+                $kStr = (string) $k;
                 $vStr = is_scalar($v) ? (string) $v : '';
                 $str .= $kStr.' '.$vStr.' - ';
             }

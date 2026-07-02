@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Resources\ChartResource\Schemas;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component as SchemaComponent;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 class ChartForm extends XotBaseResourceForm
 {
     /**
-     * @return array<string, \Filament\Forms\Components\Component>
+     * @return array<string, SchemaComponent>
      */
     public static function getFormSchema(): array
     {
