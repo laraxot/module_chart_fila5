@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Chart\Tests\TestCase::class);
-
+use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;
+use Modules\Chart\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-it('can create a chart with valid data', function () {
-    $chartData = [
+uses(TestCase::class);
+
+test('can create a chart with valid data', function (): void {
+    $chart = ChartFactory::new()->createOne([
         'post_id' => 1,
         'post_type' => 'report',
         'type' => 'bar',
@@ -21,40 +24,40 @@ it('can create a chart with valid data', function () {
         'y_grace' => 10,
         'yaxis_hide' => false,
         'list_color' => '#00FF00',
-        'grace' => 5,
-        'x_label_angle' => 45,
+        'grace' => '5',
+        'x_label_angle' => '45',
         'show_box' => true,
         'x_label_margin' => 10,
         'plot_perc_width' => 80,
         'plot_value_show' => true,
         'plot_value_format' => 'integer',
-        'plot_value_pos' => false,
+        'plot_value_pos' => 1,
         'plot_value_color' => '#0000FF',
         'group_by' => 'category',
         'sort_by' => 'name',
-        'transparency' => 0.5,
-    ];
+        'transparency' => '0.5',
+    ]);
 
-    $chart = Chart::create($chartData);
-
-    expect($chart)->toBeInstanceOf(Chart::class);
-    expect($chart->post_id)->toBe(1);
-    expect($chart->type)->toBe('bar');
-    expect($chart->width)->toBe(800);
-    expect($chart->color)->toBe('#FF0000');
+    Assert::assertInstanceOf(Chart::class, $chart);
+    Assert::assertSame(1, $chart->post_id);
+    Assert::assertSame('bar', $chart->type);
+    Assert::assertSame(800, $chart->width);
+    Assert::assertSame('#FF0000', $chart->color);
 });
 
-it('can update a chart', function () {
-    $chart = Chart::factory()->create();
+test('can update a chart', function (): void {
+    $chart = ChartFactory::new()->createOne();
     $chart->update(['width' => 1024]);
 
-    expect($chart->fresh()->width)->toBe(1024);
+    $fresh = $chart->fresh();
+    Assert::assertNotNull($fresh);
+    Assert::assertSame(1024, $fresh->width);
 });
 
-it('can delete a chart', function () {
-    $chart = Chart::factory()->create();
+test('can delete a chart', function (): void {
+    $chart = ChartFactory::new()->createOne();
     $chartId = $chart->id;
     $chart->delete();
 
-    expect(Chart::find($chartId))->toBeNull();
+    Assert::assertNull(Chart::query()->find($chartId));
 });

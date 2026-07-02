@@ -9,11 +9,11 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ChartsTable extends XotBaseResourceTable
 {
-    public static function getTableColumns(): array
-    {
     /**
-     * @return array<int\|string, \Filament\Tables\Columns\Column>
+     * @return array<string, TextColumn>
      */
+    public function getTableColumns(): array
+    {
         return [
             'id' => TextColumn::make('id')->searchable()->sortable(),
             'title' => TextColumn::make('title')->searchable()->sortable(),

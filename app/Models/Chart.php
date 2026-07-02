@@ -57,6 +57,7 @@ use Modules\Xot\Traits\Updater;
  */
 class Chart extends Model
 {
+    /** @use HasXotFactory<ChartFactory> */
     use HasXotFactory;
     use Updater;
 
@@ -77,7 +78,10 @@ class Chart extends Model
         if ($value !== null) {
             return $value;
         }
-        return $this->attributes['type'] ?? null;
+
+        $type = $this->attributes['type'] ?? null;
+
+        return is_string($type) ? $type : null;
     }
 
     public function getWidthAttribute(?string $value): ?int

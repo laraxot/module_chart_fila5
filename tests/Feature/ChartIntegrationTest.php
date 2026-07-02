@@ -2,72 +2,68 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Chart\Tests\TestCase::class);
-
+use Modules\Chart\Database\Factories\ChartFactory;
+use Modules\Chart\Database\Factories\MixedChartFactory;
 use Modules\Chart\Models\Chart;
-use Modules\Chart\Models\MixedChart;
+use Modules\Chart\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('Chart Integration', function () {
-    it('can create chart with all required fields', function () {
-        $chartData = [
-            'type' => 'bar',
-            'width' => 800,
-            'height' => 600,
-            'color' => '#ff0000',
-            'bg_color' => '#ffffff',
-            'post_id' => '123',
-            'post_type' => 'report',
-        ];
+uses(TestCase::class);
 
-        $chart = Chart::factory()->create($chartData);
+test('can create chart with all required fields', function (): void {
+    $chart = ChartFactory::new()->createOne([
+        'type' => 'bar',
+        'width' => 800,
+        'height' => 600,
+        'color' => '#ff0000',
+        'bg_color' => '#ffffff',
+        'post_id' => 123,
+        'post_type' => 'report',
+    ]);
 
-        expect($chart->type)->toBe('bar')
-            ->and($chart->width)->toBe(800)
-            ->and($chart->height)->toBe(600)
-            ->and($chart->color)->toBe('#ff0000')
-            ->and($chart->bg_color)->toBe('#ffffff')
-            ->and($chart->post_id)->toBe('123')
-            ->and($chart->post_type)->toBe('report');
-    });
+    Assert::assertSame('bar', $chart->type);
+    Assert::assertSame(800, $chart->width);
+    Assert::assertSame(600, $chart->height);
+    Assert::assertSame('#ff0000', $chart->color);
+    Assert::assertSame('#ffffff', $chart->bg_color);
+    Assert::assertSame(123, $chart->post_id);
+    Assert::assertSame('report', $chart->post_type);
+});
 
-    it('applies default attributes when creating chart', function () {
-        $chart = new Chart;
+test('applies default attributes when creating chart', function (): void {
+    $chart = new Chart;
 
-        expect($chart->list_color)->toBe('#d60021')
-            ->and($chart->color)->toBe('#d60021')
-            ->and($chart->font_family)->toBe(15)
-            ->and($chart->font_size)->toBe(12)
-            ->and($chart->plot_perc_width)->toBe(90);
-    });
+    Assert::assertSame('#d60021', $chart->list_color);
+    Assert::assertSame('#d60021', $chart->color);
+    Assert::assertSame(15, $chart->font_family);
+    Assert::assertSame(12, $chart->font_size);
+    Assert::assertSame(90, $chart->plot_perc_width);
+});
 
-    it('handles mixed chart type correctly', function () {
-        // Create a mixed chart first
-        $mixedChart = MixedChart::factory()->create();
+test('handles mixed chart type settings', function (): void {
+    $mixedChart = MixedChartFactory::new()->createOne();
+    $chart = ChartFactory::new()->createOne(['type' => 'mixed:'.$mixedChart->id]);
 
-        $chart = Chart::factory()->create([
-            'type' => 'mixed:'.$mixedChart->id,
-        ]);
+    $settings = $chart->getSettings();
+    Assert::assertIsArray($settings);
+});
 
-        // This should not throw an exception
-        expect(fn () => $chart->getSettings())->not->toThrow(Exception::class);
-    });
+test('can update chart properties', function (): void {
+    $chart = ChartFactory::new()->createOne(['width' => 400]);
+    $chart->update(['width' => 800, 'height' => 600]);
 
-    it('can update chart properties', function () {
-        $chart = Chart::factory()->create(['width' => 400]);
+    $fresh = $chart->fresh();
+    Assert::assertNotNull($fresh);
+    Assert::assertSame(800, $fresh->width);
+    Assert::assertSame(600, $fresh->height);
+});
 
-        $chart->update(['width' => 800, 'height' => 600]);
+test('persists colors array correctly', function (): void {
+    $colors = ['#ff0000', '#00ff00', '#0000ff'];
+    $chart = ChartFactory::new()->createOne(['colors' => $colors]);
 
-        expect($chart->fresh()->width)->toBe(800)
-            ->and($chart->fresh()->height)->toBe(600);
-    });
-
-    it('persists colors array correctly', function () {
-        $colors = ['#ff0000', '#00ff00', '#0000ff'];
-        $chart = Chart::factory()->create(['colors' => $colors]);
-
-        $freshChart = Chart::find($chart->id);
-
-        expect($freshChart->colors)->toBe($colors)
-            ->and($freshChart->colors)->toHaveCount(3);
-    });
+    $freshChart = Chart::query()->find($chart->id);
+    Assert::assertNotNull($freshChart);
+    Assert::assertSame($colors, $freshChart->colors);
+    Assert::assertCount(3, $freshChart->colors);
 });

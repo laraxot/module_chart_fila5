@@ -5,26 +5,26 @@ declare(strict_types=1);
 namespace Modules\Chart\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Chart\Models\MixedChart;
 
+/**
+ * @extends Factory<MixedChart>
+ */
 class MixedChartFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var class-string<Model>
+     * @var class-string<MixedChart>
      */
     protected $model = MixedChart::class;
 
     /**
-     * Define the model's default state.
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
         return [
             'id' => $this->faker->randomNumber(5),
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
         ];
     }
 }
