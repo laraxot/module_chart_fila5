@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
+use RuntimeException;
 use GdImage;
 use Illuminate\Support\Facades\Storage;
 use Spatie\QueueableAction\QueueableAction;
@@ -40,7 +41,7 @@ class ExportChartToPngAction
 
         $storedPath = Storage::disk($disk)->put($filename, $imageData);
         if (! is_string($storedPath)) {
-            throw new \RuntimeException('Failed to save PNG file');
+            throw new RuntimeException('Failed to save PNG file');
         }
 
         return [
@@ -234,7 +235,7 @@ class ExportChartToPngAction
     {
         $color = imagecolorallocate($image, $red, $green, $blue);
         if ($color === false) {
-            throw new \RuntimeException('Failed to allocate color');
+            throw new RuntimeException('Failed to allocate color');
         }
 
         return $color;
