@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
+use RuntimeException;
 use Illuminate\Support\Facades\Storage;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -30,7 +31,7 @@ class ExportChartToSvgAction
 
         $storedPath = Storage::disk($disk)->put($filename, $svgData);
         if (! is_string($storedPath)) {
-            throw new \RuntimeException('Failed to save SVG file');
+            throw new RuntimeException('Failed to save SVG file');
         }
 
         return [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Models;
 
+use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -103,7 +104,7 @@ class Chart extends Model
     {
         $type = $this->type;
         if ($type === null) {
-            throw new \InvalidArgumentException('Chart type cannot be null');
+            throw new InvalidArgumentException('Chart type cannot be null');
         }
 
         return ['chart' => $this->toArray()];
