@@ -19,9 +19,11 @@ class MixedChartResource extends XotBaseResource
     protected static ?string $model = MixedChart::class;
 
     /**
+     * Schema legacy del form: la sorgente di verità è MixedChartForm::getFormSchema().
+     *
      * @return array<string, Select>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchemaOld(): array
     {
         return [
             'type' => Select::make('type')->options(app(GetTypeOptions::class)->execute()),

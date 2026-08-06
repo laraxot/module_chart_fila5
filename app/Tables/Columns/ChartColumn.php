@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Tables\Columns;
 
-use Filament\Tables\Columns\Column;
 use Modules\Chart\Datas\AnswersChartData;
+use Modules\Xot\Filament\Tables\Columns\XotBaseColumn;
 
 use function Safe\json_encode;
 
-class ChartColumn extends Column
+class ChartColumn extends XotBaseColumn
 {
     public string $dataChecksum = '';
 

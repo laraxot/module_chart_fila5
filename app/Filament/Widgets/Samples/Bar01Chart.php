@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Chart\Filament\Widgets\Samples;
 
 use Filament\Support\RawJs;
-use Filament\Widgets\ChartWidget;
+use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
-class Bar01Chart extends ChartWidget
+class Bar01Chart extends XotBaseChartWidget
 {
     protected ?string $heading = 'Blog Posts';
 

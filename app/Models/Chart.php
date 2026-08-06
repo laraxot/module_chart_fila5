@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Models;
 
-use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Modules\Chart\Database\Factories\ChartFactory;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Traits\Updater;
 
@@ -60,6 +60,7 @@ class Chart extends Model
 {
     /** @use HasXotFactory<ChartFactory> */
     use HasXotFactory;
+
     use Updater;
 
     protected $table = 'charts';
@@ -87,12 +88,12 @@ class Chart extends Model
 
     public function getWidthAttribute(?string $value): ?int
     {
-        return (int) ($value ?: $this->attributes['width'] ?? 800);
+        return SafeIntCastAction::cast($value ?: $this->attributes['width'] ?? 800);
     }
 
     public function getHeightAttribute(?string $value): ?int
     {
-        return (int) ($value ?: $this->attributes['height'] ?? 600);
+        return SafeIntCastAction::cast($value ?: $this->attributes['height'] ?? 600);
     }
 
     /**
