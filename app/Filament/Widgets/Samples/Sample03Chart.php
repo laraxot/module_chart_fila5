@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Widgets\Samples;
 
-use Filament\Widgets\ChartWidget;
+use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
-class Sample03Chart extends ChartWidget
+class Sample03Chart extends XotBaseChartWidget
 {
     protected ?string $heading = 'Blog Posts';
 

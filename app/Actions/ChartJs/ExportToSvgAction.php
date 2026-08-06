@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions\ChartJs;
 
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
 final class ExportToSvgAction
@@ -46,8 +47,8 @@ final class ExportToSvgAction
         $heightInput = $options['height'] ?? $chartData['height'] ?? 600;
         $height = $this->sanitizeDimension($heightInput);
 
-        $filename = (string) ($options['filename'] ?? ('chart_'.\time().'.svg'));
-        $title = (string) ($options['title'] ?? $chartData['title'] ?? 'Chart');
+        $filename = SafeStringCastAction::cast($options['filename'] ?? ('chart_'.\time().'.svg'));
+        $title = SafeStringCastAction::cast($options['title'] ?? $chartData['title'] ?? 'Chart');
         $includeStyles = isset($options['includeStyles']) ? (bool) $options['includeStyles'] : true;
 
         return [
@@ -91,7 +92,7 @@ final class ExportToSvgAction
                 }
 
                 $datasets[] = [
-                    'label' => isset($dataset['label']) ? (string) $dataset['label'] : null,
+                    'label' => isset($dataset['label']) ? SafeStringCastAction::cast($dataset['label']) : null,
                     'data' => $numericData,
                     'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($numericData)),
                     'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($numericData)),

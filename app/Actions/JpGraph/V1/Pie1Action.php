@@ -10,6 +10,7 @@ use Amenadiel\JpGraph\Plot\PiePlotC;
 use Amenadiel\JpGraph\Text\Text;
 use Modules\Chart\Actions\JpGraph\ApplyGraphStyleAction;
 use Modules\Chart\Datas\AnswersChartData;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -44,7 +45,7 @@ class Pie1Action
             $data[] = $other;
             $labels[] = $chart->answer_value_no_txt;
 
-            if (\count($labels) === 2 && \strlen((string) $labels[0]) < 3) {
+            if (\count($labels) === 2 && \strlen(SafeStringCastAction::cast($labels[0])) < 3) {
                 $labels[0] = $chart->answer_value_txt;
             }
         }

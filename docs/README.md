@@ -1,3 +1,18 @@
+---
+title: "Chart — documentazione del modulo"
+description: "Documentazione del modulo Chart: grafici e data visualization."
+module: Chart
+tags: [chart, documentazione, modulo, laraxot]
+status: active
+repository: https://github.com/laraxot/module_chart_fila5
+related:
+  - ./00-index.md
+  - ./index.md
+  - ../../../../docs/wiki/audits/docs-redundancy-audit.md
+issues: https://github.com/laraxot/module_chart_fila5/issues
+discussions: https://github.com/laraxot/module_chart_fila5/discussions
+---
+
 # 📈 **Chart Module** - Visualizzazione & Data Intelligence
 
 [![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)

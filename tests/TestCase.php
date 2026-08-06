@@ -23,19 +23,6 @@ abstract class TestCase extends XotBaseTestCase
 
     public ?Chart $chart = null;
 
-    protected static bool $migrated = false;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        if (! self::$migrated) {
-            $this->artisan('migrate:fresh', ['--force' => true]);
-            $this->artisan('module:migrate', ['--force' => true]);
-            self::$migrated = true;
-        }
-    }
-
     /** @return array<int, class-string<ServiceProvider>> */
     protected function getPackageProviders(Application $app): array
     {
