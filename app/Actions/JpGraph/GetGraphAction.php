@@ -26,7 +26,11 @@ class GetGraphAction
         $graph->SetTheme($universalTheme);
 
         if (is_object($graph->yscale)) {
+<<<<<<< HEAD
            if (method_exists($graph->yscale, 'SetAutoMin')) {
+=======
+            if (method_exists($graph->yscale, 'SetAutoMin')) {
+>>>>>>> laraxot/dev
                 $graph->yscale->SetAutoMin($chartData->min);
             }
 

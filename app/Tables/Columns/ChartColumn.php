@@ -25,6 +25,7 @@ class ChartColumn extends XotBaseColumn
         ],
         'labels' => [],
     ];
+
     public string $chartType = 'bar';
 
     /** @var array<string, mixed> */
@@ -40,6 +41,7 @@ class ChartColumn extends XotBaseColumn
         $this->chartData = $answersChartData->getChartJsData();
         $this->chartType = $answersChartData->getChartJsType();
         $this->chartOptions = $answersChartData->getChartJsOptionsArray();
+
         return $this;
     }
 
@@ -49,7 +51,11 @@ class ChartColumn extends XotBaseColumn
         return $this->cachedData ??= $this->getData();
     }
 
+<<<<<<< HEAD
    /** @return array<string, mixed>|null */
+=======
+    /** @return array<string, mixed>|null */
+>>>>>>> laraxot/dev
     public function getOptions(): ?array
     {
         return $this->chartOptions;
@@ -65,7 +71,11 @@ class ChartColumn extends XotBaseColumn
         return md5(json_encode($this->getCachedData()));
     }
 
+<<<<<<< HEAD
    /** @return array<string, mixed> */
+=======
+    /** @return array<string, mixed> */
+>>>>>>> laraxot/dev
     protected function getData(): array
     {
         return $this->chartData;

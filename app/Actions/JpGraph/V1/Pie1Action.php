@@ -37,7 +37,11 @@ class Pie1Action
         $chart = $answersChartData->chart;
         // dddx(['labels' => $labels, 'data' => $data, 'chart' => $chart]);
 
+<<<<<<< HEAD
        Assert::numeric($sum = collect($data)->sum());
+=======
+        Assert::numeric($sum = collect($data)->sum());
+>>>>>>> laraxot/dev
         Assert::numeric($chart->max);
         $other = $chart->max - $sum;
         // dddx([$sum, $other, $vars['max']]);

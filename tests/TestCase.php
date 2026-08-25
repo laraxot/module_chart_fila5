@@ -15,7 +15,11 @@ use Modules\Xot\Tests\XotBaseTestCase;
 /**
  * Base test case for Chart module.
  *
+<<<<<<< HEAD
 * @property Chart|null $chart
+=======
+ * @property Chart|null $chart
+>>>>>>> laraxot/dev
  */
 abstract class TestCase extends XotBaseTestCase
 {

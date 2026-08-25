@@ -24,14 +24,22 @@ test('can create a chart with valid data', function (): void {
         'y_grace' => 10,
         'yaxis_hide' => false,
         'list_color' => '#00FF00',
+<<<<<<< HEAD
        'grace' => '5',
+=======
+        'grace' => '5',
+>>>>>>> laraxot/dev
         'x_label_angle' => '45',
         'show_box' => true,
         'x_label_margin' => 10,
         'plot_perc_width' => 80,
         'plot_value_show' => true,
         'plot_value_format' => 'integer',
+<<<<<<< HEAD
        'plot_value_pos' => 1,
+=======
+        'plot_value_pos' => 1,
+>>>>>>> laraxot/dev
         'plot_value_color' => '#0000FF',
         'group_by' => 'category',
         'sort_by' => 'name',

@@ -19,7 +19,11 @@ class MixedChartResource extends XotBaseResource
     protected static ?string $model = MixedChart::class;
 
     /**
+<<<<<<< HEAD
     * Schema legacy del form: la sorgente di verità è MixedChartForm::getFormSchema().
+=======
+     * Schema legacy del form: la sorgente di verità è MixedChartForm::getFormSchema().
+>>>>>>> laraxot/dev
      *
      * @return array<string, Select>
      */

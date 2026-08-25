@@ -27,7 +27,11 @@ class ExportChartToPngAction
     use QueueableAction;
 
     /**
+<<<<<<< HEAD
     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null}
+=======
+     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null}
+>>>>>>> laraxot/dev
      */
     public function execute(
         string $base64Data,
@@ -35,7 +39,11 @@ class ExportChartToPngAction
         string $disk = 'public',
         int $quality = 95
     ): array {
+<<<<<<< HEAD
        $filename = $filename ?? 'chart-'.now()->timestamp.'.png';
+=======
+        $filename = $filename ?? 'chart-'.now()->timestamp.'.png';
+>>>>>>> laraxot/dev
 
         $imageData = base64_decode($base64Data, true);
 
@@ -56,7 +64,11 @@ class ExportChartToPngAction
     }
 
     /**
+<<<<<<< HEAD
     * @param  array<string, mixed>  $chartData
+=======
+     * @param  array<string, mixed>  $chartData
+>>>>>>> laraxot/dev
      *
      * @return array{path: string, url: string, size: int, filename: string, mime_type: string, quality: int, exported_at: string|null}
      */
@@ -66,7 +78,11 @@ class ExportChartToPngAction
         string $disk = 'public',
         int $quality = 95
     ): array {
+<<<<<<< HEAD
        $imageData = $this->chartDataToImage($chartData);
+=======
+        $imageData = $this->chartDataToImage($chartData);
+>>>>>>> laraxot/dev
 
         return $this->execute(base64_encode($imageData), $filename, $disk, $quality);
     }
@@ -96,6 +112,10 @@ class ExportChartToPngAction
         $startX = 100;
         $chartHeight = 400;
         $baseY = 500;
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
         foreach ($data as $index => $value) {
             $numericValue = is_numeric($value) ? (float) $value : 0.0;
             $x = $startX + ($index * ($barWidth + $spacing));
@@ -120,7 +140,11 @@ class ExportChartToPngAction
     }
 
     /**
+<<<<<<< HEAD
     * @param  array<string, mixed>  $chartData
+=======
+     * @param  array<string, mixed>  $chartData
+>>>>>>> laraxot/dev
      */
     private function chartTitle(array $chartData): string
     {

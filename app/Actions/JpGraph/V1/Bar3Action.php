@@ -33,7 +33,11 @@ class Bar3Action
         $datay = $answers->toCollection()->pluck('value')->all();
         $datay1 = $answers->toCollection()->pluck('value1')->all();
         // $legends = collect(collect($datay)->first())->keys()->all();
+<<<<<<< HEAD
        $answers_first = $answers->toCollection()->first();
+=======
+        $answers_first = $answers->toCollection()->first();
+>>>>>>> laraxot/dev
         Assert::isInstanceOf($answers_first, AnswerData::class);
         $legends = [];
         if (is_array($answers_first->value)) {
@@ -112,7 +116,11 @@ class Bar3Action
         if (isset($chart->totali) && is_iterable($chart->totali)) {
             $str = '';
             foreach ($chart->totali as $k => $v) {
+<<<<<<< HEAD
                $kStr = (string) $k;
+=======
+                $kStr = (string) $k;
+>>>>>>> laraxot/dev
                 $vStr = is_scalar($v) ? (string) $v : '';
                 $str .= $kStr.' '.$vStr.' - ';
             }

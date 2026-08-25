@@ -20,7 +20,11 @@ class ExportToPngAction
     /**
      * Prepare chart data for PNG export
      *
+<<<<<<< HEAD
     * @param  array<string, mixed>  $chartData  The chart configuration data
+=======
+     * @param  array<string, mixed>  $chartData  The chart configuration data
+>>>>>>> laraxot/dev
      * @param  array<string, mixed>  $options  Export options including quality, dimensions, etc.
      * @return array<string, mixed> Prepared data for client-side PNG export
      */

@@ -58,7 +58,11 @@ use Modules\Xot\Traits\Updater;
  */
 class Chart extends Model
 {
+<<<<<<< HEAD
    /** @use HasXotFactory<ChartFactory> */
+=======
+    /** @use HasXotFactory<ChartFactory> */
+>>>>>>> laraxot/dev
     use HasXotFactory;
 
     use Updater;
@@ -80,6 +84,10 @@ class Chart extends Model
         if ($value !== null) {
             return $value;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
         $type = $this->attributes['type'] ?? null;
 
         return is_string($type) ? $type : null;
@@ -87,12 +95,20 @@ class Chart extends Model
 
     public function getWidthAttribute(?string $value): ?int
     {
+<<<<<<< HEAD
        return SafeIntCastAction::cast($value ?: $this->attributes['width'] ?? 800);
+=======
+        return SafeIntCastAction::cast($value ?: $this->attributes['width'] ?? 800);
+>>>>>>> laraxot/dev
     }
 
     public function getHeightAttribute(?string $value): ?int
     {
+<<<<<<< HEAD
        return SafeIntCastAction::cast($value ?: $this->attributes['height'] ?? 600);
+=======
+        return SafeIntCastAction::cast($value ?: $this->attributes['height'] ?? 600);
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -104,7 +120,11 @@ class Chart extends Model
     {
         $type = $this->type;
         if ($type === null) {
+<<<<<<< HEAD
            throw new InvalidArgumentException('Chart type cannot be null');
+=======
+            throw new InvalidArgumentException('Chart type cannot be null');
+>>>>>>> laraxot/dev
         }
 
         return ['chart' => $this->toArray()];
