@@ -1,11 +1,22 @@
-# LLM Wiki Index
+---
+title: "Chart Wiki Index"
+module: "Chart"
+---
 
-This directory contains curated, interlinked Markdown notes generated from the package documentation and raw sources.
+# Chart Module Wiki
 
-Use it as the first local knowledge layer before searching the wider codebase.
+## Indices
+- [Rules](rules/INDEX.md)
+- [Skills](skills/INDEX.md)
+- [Commands](commands/INDEX.md)
+- [Memories](memories/INDEX.md)
+- [Concepts](concepts/INDEX.md)
 
-Workflow:
-1. Add source material to `../raw/` or existing package docs.
-2. Update focused wiki pages instead of rewriting the whole wiki.
-3. Link related concepts with relative Markdown links.
-4. Store one-off answers and reports in `../outputs/`.
+## On-Demand Workflow
+
+```bash
+qmd search "Chart <topic>" --limit 5
+```
+
+---
+*Updated: 2026-05-11*

@@ -26,11 +26,11 @@ class GetGraphAction
         $graph->SetTheme($universalTheme);
 
         if (is_object($graph->yscale)) {
-            if (isset($chartData->min) && method_exists($graph->yscale, 'SetAutoMin')) {
+           if (method_exists($graph->yscale, 'SetAutoMin')) {
                 $graph->yscale->SetAutoMin($chartData->min);
             }
 
-            if (isset($chartData->max) && method_exists($graph->yscale, 'SetAutoMax')) {
+            if (method_exists($graph->yscale, 'SetAutoMax')) {
                 $graph->yscale->SetAutoMax($chartData->max);
             }
         }

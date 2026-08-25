@@ -4,48 +4,41 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Tests;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\ServiceProvider;
+use Modules\Chart\Models\Chart;
 use Modules\Chart\Providers\ChartServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
-use Modules\Xot\Providers\XotServiceProvider;
-use Modules\Xot\Tests\CreatesApplication;
+use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
  * Base test case for Chart module.
  *
- * Uses MySQL from .env.testing.
+* @property Chart|null $chart
  */
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends XotBaseTestCase
 {
-    use CreatesApplication;
     use DatabaseTransactions;
 
-    protected static bool $migrated = false;
+    public ?Chart $chart = null;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
-                '--force' => true,
-            ]);
-
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
-            self::$migrated = true;
-        }
-    }
-
-    protected function getPackageProviders($app): array
+    /** @return array<int, class-string<ServiceProvider>> */
+    protected function getPackageProviders(Application $app): array
     {
         return [
+            ...parent::getPackageProviders($app),
             ChartServiceProvider::class,
             UserServiceProvider::class,
-            XotServiceProvider::class,
         ];
+    }
+
+    public function requireChart(): Chart
+    {
+        if ($this->chart === null) {
+            $this->fail('Chart test property is not initialized.');
+        }
+
+        return $this->chart;
     }
 }

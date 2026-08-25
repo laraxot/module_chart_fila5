@@ -10,6 +10,7 @@ use Amenadiel\JpGraph\Plot\PiePlotC;
 use Amenadiel\JpGraph\Text\Text;
 use Modules\Chart\Actions\JpGraph\ApplyGraphStyleAction;
 use Modules\Chart\Datas\AnswersChartData;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -36,18 +37,16 @@ class Pie1Action
         $chart = $answersChartData->chart;
         // dddx(['labels' => $labels, 'data' => $data, 'chart' => $chart]);
 
-        if (isset($chart->max)) {
-            Assert::numeric($sum = collect($data)->sum());
-            Assert::numeric($chart->max);
-            $other = $chart->max - $sum;
-            // dddx([$sum, $other, $vars['max']]);
-            if ($other > 0.01) {
-                $data[] = $other;
-                $labels[] = $chart->answer_value_no_txt;
+       Assert::numeric($sum = collect($data)->sum());
+        Assert::numeric($chart->max);
+        $other = $chart->max - $sum;
+        // dddx([$sum, $other, $vars['max']]);
+        if ($other > 0.01) {
+            $data[] = $other;
+            $labels[] = $chart->answer_value_no_txt;
 
-                if (\count($labels) === 2 && \strlen((string) $labels[0]) < 3) {
-                    $labels[0] = $chart->answer_value_txt;
-                }
+            if (\count($labels) === 2 && \strlen(SafeStringCastAction::cast($labels[0])) < 3) {
+                $labels[0] = $chart->answer_value_txt;
             }
         }
 
