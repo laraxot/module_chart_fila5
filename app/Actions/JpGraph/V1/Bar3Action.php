@@ -33,7 +33,7 @@ class Bar3Action
         $datay = $answers->toCollection()->pluck('value')->all();
         $datay1 = $answers->toCollection()->pluck('value1')->all();
         // $legends = collect(collect($datay)->first())->keys()->all();
-        $answers_first = $answers->first();
+        $answers_first = $answers->toCollection()->first();
         Assert::isInstanceOf($answers_first, AnswerData::class);
         $legends = [];
         if (is_array($answers_first->value)) {
