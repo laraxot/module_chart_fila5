@@ -42,7 +42,11 @@ class AnswersChartData extends Data
      */
     public function getChartJsData(): array
     {
+<<<<<<< HEAD
        $datasets = [];
+=======
+        $datasets = [];
+>>>>>>> laraxot/dev
         $answersCollection = $this->answers->toCollection();
 
         $labelsCollection = $answersCollection
@@ -92,7 +96,11 @@ class AnswersChartData extends Data
 
         return [
             'datasets' => $datasets,
+<<<<<<< HEAD
            'labels' => $labelsCollection->values()->all(),
+=======
+            'labels' => $labelsCollection->values()->all(),
+>>>>>>> laraxot/dev
         ];
     }
 
@@ -142,7 +150,11 @@ class AnswersChartData extends Data
     {
         $options = [
             'plugins' => [
+<<<<<<< HEAD
                'title' => ($this->title !== 'no_set') ? [
+=======
+                'title' => ($this->title !== 'no_set') ? [
+>>>>>>> laraxot/dev
                     'display' => true,
                     'text' => $this->title,
                     'font' => ['size' => 14],
@@ -152,7 +164,11 @@ class AnswersChartData extends Data
             'maintainAspectRatio' => false,
         ];
 
+<<<<<<< HEAD
        $isHorizontal = \in_array($this->chart->type, ['horizbar1', 'horizbar2', 'horizontalBar'], true);
+=======
+        $isHorizontal = \in_array($this->chart->type, ['horizbar1', 'horizbar2', 'horizontalBar'], true);
+>>>>>>> laraxot/dev
         if ($isHorizontal) {
             $options['indexAxis'] = 'y';
         }
@@ -183,6 +199,10 @@ class AnswersChartData extends Data
     {
         return $this->getChartJsOptionsArray();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
     /**
      * @param  array<mixed>  $series
      * @return array<int, int|float|string>

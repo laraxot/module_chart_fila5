@@ -18,14 +18,22 @@ class ExportChartToSvgAction
     use QueueableAction;
 
     /**
+<<<<<<< HEAD
     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null}
+=======
+     * @return array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null}
+>>>>>>> laraxot/dev
      */
     public function execute(
         string $base64Data,
         ?string $filename = null,
         string $disk = 'public'
     ): array {
+<<<<<<< HEAD
        $filename = $filename ?? 'chart-'.now()->timestamp.'.svg';
+=======
+        $filename = $filename ?? 'chart-'.now()->timestamp.'.svg';
+>>>>>>> laraxot/dev
 
         $svgData = base64_decode($base64Data, true);
 
@@ -45,7 +53,11 @@ class ExportChartToSvgAction
     }
 
     /**
+<<<<<<< HEAD
     * @param  array<string, mixed>  $chartData
+=======
+     * @param  array<string, mixed>  $chartData
+>>>>>>> laraxot/dev
      *
      * @return array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null}
      */
@@ -54,7 +66,11 @@ class ExportChartToSvgAction
         ?string $filename = null,
         string $disk = 'public'
     ): array {
+<<<<<<< HEAD
        return $this->execute(base64_encode($this->chartDataToSvg($chartData)), $filename, $disk);
+=======
+        return $this->execute(base64_encode($this->chartDataToSvg($chartData)), $filename, $disk);
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -78,11 +94,19 @@ class ExportChartToSvgAction
         $startX = 100;
         $chartHeight = 400;
         $baseY = 500;
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
         foreach ($data as $index => $value) {
             $x = $startX + ($index * ($barWidth + $spacing));
             $height = ($value / $maxValue) * $chartHeight;
             $y = $baseY - $height;
+<<<<<<< HEAD
            $color = $this->barColor($chartData, $index);
+=======
+            $color = $this->barColor($chartData, $index);
+>>>>>>> laraxot/dev
 
             $svg .= '  <rect x="'.$x.'" y="'.$y.'" width="'.$barWidth.'" height="'.$height.'" fill="'.$color.'"/>'."\n";
 

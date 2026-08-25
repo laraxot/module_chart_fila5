@@ -37,7 +37,11 @@ class ChartResource extends XotBaseResource
     }
 
     /**
+<<<<<<< HEAD
     * Schema legacy del form: la sorgente di verità è ChartForm::getFormSchema().
+=======
+     * Schema legacy del form: la sorgente di verità è ChartForm::getFormSchema().
+>>>>>>> laraxot/dev
      *
      * @return array<string, \Filament\Schemas\Components\Component>
      */

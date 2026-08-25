@@ -47,7 +47,11 @@ final class ExportToSvgAction
         $heightInput = $options['height'] ?? $chartData['height'] ?? 600;
         $height = $this->sanitizeDimension($heightInput);
 
+<<<<<<< HEAD
        $filename = SafeStringCastAction::cast($options['filename'] ?? ('chart_'.\time().'.svg'));
+=======
+        $filename = SafeStringCastAction::cast($options['filename'] ?? ('chart_'.\time().'.svg'));
+>>>>>>> laraxot/dev
         $title = SafeStringCastAction::cast($options['title'] ?? $chartData['title'] ?? 'Chart');
         $includeStyles = isset($options['includeStyles']) ? (bool) $options['includeStyles'] : true;
 
@@ -60,7 +64,11 @@ final class ExportToSvgAction
         ];
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<string, mixed>  $chartData
      * @return array{
      *     type: string,
@@ -92,7 +100,11 @@ final class ExportToSvgAction
                 }
 
                 $datasets[] = [
+<<<<<<< HEAD
                    'label' => isset($dataset['label']) ? SafeStringCastAction::cast($dataset['label']) : null,
+=======
+                    'label' => isset($dataset['label']) ? SafeStringCastAction::cast($dataset['label']) : null,
+>>>>>>> laraxot/dev
                     'data' => $numericData,
                     'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($numericData)),
                     'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($numericData)),
@@ -100,7 +112,11 @@ final class ExportToSvgAction
             }
         }
 
+<<<<<<< HEAD
        $labels = $this->normalizeLabels(is_array($rawLabels) ? $rawLabels : [], $datasets);
+=======
+        $labels = $this->normalizeLabels(is_array($rawLabels) ? $rawLabels : [], $datasets);
+>>>>>>> laraxot/dev
 
         return [
             'type' => $type,
@@ -164,7 +180,11 @@ final class ExportToSvgAction
 
     /**
      * @param  array<int|string, mixed>  $rawLabels
+<<<<<<< HEAD
     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
+=======
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
+>>>>>>> laraxot/dev
      * @return list<string>
      */
     private function normalizeLabels(array $rawLabels, array $datasets): array
@@ -195,7 +215,11 @@ final class ExportToSvgAction
     }
 
     /**
+<<<<<<< HEAD
     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
+=======
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
+>>>>>>> laraxot/dev
      */
     private function maxDataPoints(array $datasets): int
     {
@@ -207,7 +231,11 @@ final class ExportToSvgAction
         return $max;
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array{
      *     type: string,
      *     datasets: list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>,
@@ -247,7 +275,11 @@ final class ExportToSvgAction
         return implode('', $svgParts);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  list<array<string, mixed>>  $datasets
      * @param  list<string>  $labels
      */
@@ -256,7 +288,11 @@ final class ExportToSvgAction
         return '';
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  list<array<string, mixed>>  $datasets
      * @param  list<string>  $labels
      */
@@ -265,7 +301,11 @@ final class ExportToSvgAction
         return '';
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  list<array<string, mixed>>  $datasets
      * @param  list<string>  $labels
      */

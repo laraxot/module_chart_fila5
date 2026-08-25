@@ -17,7 +17,11 @@ use function Safe\json_encode;
 class ChartData extends Data
 {
     public function __construct(
+<<<<<<< HEAD
        public string $type = 'bar',
+=======
+        public string $type = 'bar',
+>>>>>>> laraxot/dev
         public float $max = 100.0,
         public float $min = 0.0,
         public ?int $width = 800,
@@ -58,7 +62,11 @@ class ChartData extends Data
     ) {
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<int, string>
      */
     public function getColors(): array
@@ -98,7 +106,11 @@ class ChartData extends Data
             'pie1', 'pieAvg' => 'doughnut',
             'lineSubQuestion' => 'line',
             'bar2', 'bar1', 'bar3', 'horizbar1', 'horizontalBar' => 'bar',
+<<<<<<< HEAD
            default => $this->type,
+=======
+            default => $this->type,
+>>>>>>> laraxot/dev
         };
     }
 

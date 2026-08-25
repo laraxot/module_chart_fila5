@@ -14,7 +14,11 @@ use Spatie\LaravelData\DataCollection;
  */
 class AnswerData extends Data
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<int|string, float|int>|float  $value
      * @param  array<int|string, float|int>|float|string  $value1
      * @param  array<int|string, float|int>|float|string  $avg
@@ -37,7 +41,11 @@ class AnswerData extends Data
 
     /**
      * @param  EloquentCollection<int, Model>|array<int, mixed>  $data
+<<<<<<< HEAD
     * @return DataCollection<int, static>
+=======
+     * @return DataCollection<int, static>
+>>>>>>> laraxot/dev
      */
     public static function collection(EloquentCollection|array $data): DataCollection
     {

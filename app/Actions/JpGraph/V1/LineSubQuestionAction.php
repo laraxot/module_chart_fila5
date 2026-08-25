@@ -129,7 +129,11 @@ final class LineSubQuestionAction
         );
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<int, array<string, int|float|string|null>|null>  $rawData
      * @return array<int, float>
      */
@@ -137,7 +141,11 @@ final class LineSubQuestionAction
     {
         $series = [];
         foreach ($rawData as $row) {
+<<<<<<< HEAD
            $series[] = $this->extractNumericValue(is_array($row) ? $row : null, $legend);
+=======
+            $series[] = $this->extractNumericValue(is_array($row) ? $row : null, $legend);
+>>>>>>> laraxot/dev
         }
 
         return $series;
@@ -157,7 +165,11 @@ final class LineSubQuestionAction
         return 0.0;
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<int, string>  $labels
      */
     private function configureAxes(Graph $graph, array $labels, int $angle): void
@@ -169,7 +181,11 @@ final class LineSubQuestionAction
 
     private function configureYAxis(Graph $graph): void
     {
+<<<<<<< HEAD
        $yAxis = $graph->yaxis;
+=======
+        $yAxis = $graph->yaxis;
+>>>>>>> laraxot/dev
         if ($yAxis instanceof Axis) {
             $yAxis->HideZeroLabel();
             $yAxis->HideLine(false);
@@ -177,7 +193,11 @@ final class LineSubQuestionAction
         }
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<int, string>  $labels
      */
     private function configureXAxis(Graph $graph, array $labels, int $angle): void
@@ -191,13 +211,21 @@ final class LineSubQuestionAction
 
     private function configureYGrid(Graph $graph): void
     {
+<<<<<<< HEAD
        $yGrid = $graph->ygrid;
+=======
+        $yGrid = $graph->ygrid;
+>>>>>>> laraxot/dev
         if (is_object($yGrid) && method_exists($yGrid, 'SetFill')) {
             $yGrid->SetFill(false);
         }
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  array<int, array<int, float>>  $dataSets
      * @param  array<int, string>  $legends
      */
@@ -218,7 +246,11 @@ final class LineSubQuestionAction
 
     private function configureMarker(LinePlot $linePlot, int $index, string $color): void
     {
+<<<<<<< HEAD
        $mark = $linePlot->mark;
+=======
+        $mark = $linePlot->mark;
+>>>>>>> laraxot/dev
         if (! is_object($mark)) {
             return;
         }
@@ -235,7 +267,11 @@ final class LineSubQuestionAction
 
     private function configureLegend(Graph $graph): void
     {
+<<<<<<< HEAD
        $legend = $graph->legend;
+=======
+        $legend = $graph->legend;
+>>>>>>> laraxot/dev
         if ($legend instanceof Legend) {
             $legend->SetFrameWeight(1);
             $legend->SetColor('#4E4E4E', '#00A78A');
@@ -245,12 +281,20 @@ final class LineSubQuestionAction
 
     private function configureTitles(Graph $graph, ChartData $chart): void
     {
+<<<<<<< HEAD
        $title = $graph->title;
+=======
+        $title = $graph->title;
+>>>>>>> laraxot/dev
         if ($title instanceof Text) {
             $this->applyTextSettings($title, $chart->title, $chart->font_family, $chart->font_style);
         }
 
+<<<<<<< HEAD
        $subtitle = $graph->subtitle;
+=======
+        $subtitle = $graph->subtitle;
+>>>>>>> laraxot/dev
         if ($subtitle instanceof Text) {
             $this->applyTextSettings($subtitle, $chart->subtitle, $chart->font_family, $chart->font_style);
         }
@@ -258,7 +302,11 @@ final class LineSubQuestionAction
 
     private function clearFooter(Graph $graph): void
     {
+<<<<<<< HEAD
        $footer = $graph->footer;
+=======
+        $footer = $graph->footer;
+>>>>>>> laraxot/dev
         if (is_object($footer) && isset($footer->center)) {
             $center = $footer->center;
             if ($center instanceof Text) {

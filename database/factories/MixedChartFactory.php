@@ -18,13 +18,21 @@ class MixedChartFactory extends Factory
     protected $model = MixedChart::class;
 
     /**
+<<<<<<< HEAD
     * @return array<string, mixed>
+=======
+     * @return array<string, mixed>
+>>>>>>> laraxot/dev
      */
     public function definition(): array
     {
         return [
             'id' => $this->faker->randomNumber(5),
+<<<<<<< HEAD
            'name' => $this->faker->name(),
+=======
+            'name' => $this->faker->name(),
+>>>>>>> laraxot/dev
         ];
     }
 }

@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 return [
     'fields' => [
+<<<<<<< HEAD
        'id' => ['label' => 'ID'],
+=======
+        'id' => ['label' => 'ID'],
+>>>>>>> laraxot/dev
         'type' => ['label' => 'Tipo', 'placeholder' => 'Seleziona tipo', 'help' => 'Tipo di grafico da visualizzare', 'helper_text' => 'type', 'description' => 'type'],
         'group_by' => ['label' => 'Raggruppa per', 'placeholder' => 'Nessun raggruppamento', 'help' => 'Campo per il raggruppamento dei dati', 'helper_text' => 'group_by', 'description' => 'group_by'],
         'sort_by' => ['label' => 'Ordina per', 'placeholder' => 'Nessun ordinamento', 'help' => 'Campo per l\'ordinamento dei dati', 'helper_text' => 'sort_by', 'description' => 'sort_by'],

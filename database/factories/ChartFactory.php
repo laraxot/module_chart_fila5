@@ -16,7 +16,11 @@ class ChartFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      *
+<<<<<<< HEAD
     * @var class-string<Chart>
+=======
+     * @var class-string<Chart>
+>>>>>>> laraxot/dev
      */
     protected $model = Chart::class;
 

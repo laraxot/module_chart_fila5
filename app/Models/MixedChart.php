@@ -51,7 +51,11 @@ class MixedChart extends BaseModel
 
     // ---- relations
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return MorphMany<Chart, $this>
      */
     public function charts(): MorphMany

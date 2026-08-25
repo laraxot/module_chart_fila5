@@ -13,7 +13,11 @@ class ChartDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
        $this->call([
+=======
+        $this->call([
+>>>>>>> laraxot/dev
             ChartSeeder::class,
             MixedChartSeeder::class,
         ]);

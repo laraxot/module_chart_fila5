@@ -19,7 +19,11 @@ class ApplyPlotStyleAction
         // $plot->SetFillColor($colors); // trasparenza, da 0 a 1
 
         // $plot->SetFillColor($data[5]['color'].'@'.$this->vars['transparency']); // trasparenza, da 0 a 1
+<<<<<<< HEAD
        $barPlot->SetFillColor($chartData->list_color.'@'.$chartData->transparency);
+=======
+        $barPlot->SetFillColor($chartData->list_color.'@'.$chartData->transparency);
+>>>>>>> laraxot/dev
 
         $barPlot->SetColor($chartData->list_color);
 
@@ -52,7 +56,11 @@ class ApplyPlotStyleAction
         // visualizza il risultato con % oppure no
         // SetFormat exists on subclasses, check dynamically
         if (method_exists($value, 'SetFormat')) {
+<<<<<<< HEAD
            $format = match ($chartData->plot_value_format) {
+=======
+            $format = match ($chartData->plot_value_format) {
+>>>>>>> laraxot/dev
                 1, '1' => '%.1f &#37);',
                 2, '2' => '%.1f',
                 3, '3' => '%.0f',

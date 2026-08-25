@@ -24,7 +24,11 @@ class PieAvgAction
 
         $data = $answersChartData->answers->toCollection()->pluck('avg')->all();
         $chart = $answersChartData->chart;
+<<<<<<< HEAD
        Assert::numeric($sum = collect($data)->sum());
+=======
+        Assert::numeric($sum = collect($data)->sum());
+>>>>>>> laraxot/dev
         Assert::numeric($chart->max);
         $other = $chart->max - $sum;
         // $other = $chart->max - $chart->avg;
