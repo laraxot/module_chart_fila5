@@ -32,12 +32,12 @@ class RenderChartWidgetHtmlAction
     /**
      * Versione Chart.js da usare (CDN)
      */
-    private const CHARTJS_VERSION = '4.4.3';
+    private const string CHARTJS_VERSION = '4.4.3';
 
     /**
      * Versione chartjs-plugin-datalabels
      */
-    private const DATALABELS_VERSION = '2.2.0';
+    private const string DATALABELS_VERSION = '2.2.0';
 
     /**
      * Renderizza il widget come HTML standalone
