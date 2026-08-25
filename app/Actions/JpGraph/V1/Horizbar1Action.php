@@ -23,7 +23,7 @@ class Horizbar1Action
 
         $labels = $answersChartData->answers->toCollection()
             ->pluck('label')
-            ->map(function ($item): string {
+            ->map(function (mixed $item): string {
                 Assert::string($item);
 
                 return wordwrap($item, 25, PHP_EOL);

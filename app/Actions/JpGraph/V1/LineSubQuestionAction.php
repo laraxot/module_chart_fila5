@@ -89,8 +89,8 @@ final class LineSubQuestionAction
     {
         return $answers
             ->pluck('label')
-            ->filter(static fn ($label): bool => is_scalar($label))
-            ->map(static fn ($label): string => (string) $label)
+            ->filter(static fn (mixed $label): bool => is_scalar($label))
+            ->map(static fn (mixed $label): string => (string) $label)
             ->values()
             ->all();
     }
@@ -108,7 +108,7 @@ final class LineSubQuestionAction
         }
 
         return array_map(
-            static fn ($legend): string => (string) $legend,
+            static fn (mixed $legend): string => (string) $legend,
             array_keys($first->value)
         );
     }

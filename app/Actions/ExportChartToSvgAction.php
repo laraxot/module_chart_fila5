@@ -78,7 +78,6 @@ class ExportChartToSvgAction
         $startX = 100;
         $chartHeight = 400;
         $baseY = 500;
-
         foreach ($data as $index => $value) {
             $x = $startX + ($index * ($barWidth + $spacing));
             $height = ($value / $maxValue) * $chartHeight;
