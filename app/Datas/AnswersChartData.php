@@ -47,7 +47,7 @@ class AnswersChartData extends Data
 
         $labelsCollection = $answersCollection
             ->pluck('label')
-            ->map(static fn ($label): string => SafeStringCastAction::cast($label))
+            ->map(static fn (mixed $label): string => SafeStringCastAction::cast($label))
             ->values();
 
         $data = $answersCollection->pluck('value')->all();
@@ -71,7 +71,7 @@ class AnswersChartData extends Data
             }
         } else {
             $avgValues = $answersCollection->pluck('avg')->values()->map(
-                static fn ($item): string => number_format(SafeFloatCastAction::cast($item, 0.0), 2, '.', '')
+                static fn (mixed $item): string => number_format(SafeFloatCastAction::cast($item, 0.0), 2, '.', '')
             )->all();
 
             $firstAvg = $answersCollection->pluck('avg')->first();
@@ -183,7 +183,6 @@ class AnswersChartData extends Data
     {
         return $this->getChartJsOptionsArray();
     }
-
     /**
      * @param  array<mixed>  $series
      * @return array<int, int|float|string>

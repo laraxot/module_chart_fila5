@@ -96,7 +96,6 @@ class ExportChartToPngAction
         $startX = 100;
         $chartHeight = 400;
         $baseY = 500;
-
         foreach ($data as $index => $value) {
             $numericValue = is_numeric($value) ? (float) $value : 0.0;
             $x = $startX + ($index * ($barWidth + $spacing));
