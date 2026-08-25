@@ -75,17 +75,23 @@ class Chart extends Model
         'list_color' => '#d60021', 'color' => '#d60021', 'font_family' => 15, 'font_style' => 9002, 'font_size' => 12, 'x_label_angle' => 0, 'show_box' => false, 'x_label_margin' => 10, 'plot_perc_width' => 90, 'plot_value_show' => 1, 'plot_value_pos' => 1, 'plot_value_color' => '#000000',
     ];
 
-    public function getTypeAttribute(?string $value): ?string
-    {
-        if ($value !== null) {
-            return $value;
-        }
-
-        $type = $this->attributes['type'] ?? null;
-
-        return is_string($type) ? $type : null;
-    }
-
+    /**
+     * Larghezza del grafico, con il default storico di 800.
+     *
+     * Fino al 2026-08-25 questo metodo si chiamava `getTypeAttribute()` e dichiarava
+     * `?string`, ma il corpo era rimasto quello della larghezza: leggeva
+     * `$this->attributes['width']`, ripiegava su 800 e passava il risultato a
+     * `SafeIntCastAction`. Una rinomina sbagliata, non un accessor di `type`.
+     *
+     * Il difetto era latente: la guardia `if ($value !== null) return $value;`
+     * restituiva la stringa intatta per ogni grafico reale, e solo un `type` nullo
+     * avrebbe prodotto 800 al posto di `null`. `Modules\Chart\Datas\ChartData` usa
+     * `$this->type` come stringa (`'bar3'`, `'pieAvg'`), quindi il giorno che fosse
+     * scattato avrebbe rotto la risoluzione dell'Action.
+     *
+     * `type` non ha bisogno di accessor: il valore passa come sta.
+     * Story ROOT-17.10.
+     */
     public function getWidthAttribute(?string $value): ?int
     {
         return SafeIntCastAction::cast($value ?: $this->attributes['width'] ?? 800);

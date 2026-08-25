@@ -23,14 +23,14 @@ final class LineSubQuestionAction
 {
     use QueueableAction;
 
-    private const COLOR_PALETTE = [
+    private const array COLOR_PALETTE = [
         '#55bbdd',
         '#aaaaaa',
         '#d60021',
         '#0baa90',
     ];
 
-    private const MARKERS = [
+    private const array MARKERS = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     ];
 
