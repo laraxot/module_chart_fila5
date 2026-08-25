@@ -7,8 +7,9 @@ namespace Modules\Chart\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Modules\Chart\Database\Factories\ChartFactory;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Traits\Updater;
 
@@ -57,7 +58,9 @@ use Modules\Xot\Traits\Updater;
  */
 class Chart extends Model
 {
+   /** @use HasXotFactory<ChartFactory> */
     use HasXotFactory;
+
     use Updater;
 
     protected $table = 'charts';
@@ -77,17 +80,19 @@ class Chart extends Model
         if ($value !== null) {
             return $value;
         }
-        return $this->attributes['type'] ?? null;
+        $type = $this->attributes['type'] ?? null;
+
+        return is_string($type) ? $type : null;
     }
 
     public function getWidthAttribute(?string $value): ?int
     {
-        return (int) ($value ?: $this->attributes['width'] ?? 800);
+       return SafeIntCastAction::cast($value ?: $this->attributes['width'] ?? 800);
     }
 
     public function getHeightAttribute(?string $value): ?int
     {
-        return (int) ($value ?: $this->attributes['height'] ?? 600);
+       return SafeIntCastAction::cast($value ?: $this->attributes['height'] ?? 600);
     }
 
     /**
@@ -99,7 +104,7 @@ class Chart extends Model
     {
         $type = $this->type;
         if ($type === null) {
-            throw new \InvalidArgumentException('Chart type cannot be null');
+           throw new InvalidArgumentException('Chart type cannot be null');
         }
 
         return ['chart' => $this->toArray()];

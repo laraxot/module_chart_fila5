@@ -10,6 +10,7 @@ use Amenadiel\JpGraph\Plot\PiePlotC;
 use Amenadiel\JpGraph\Text\Text;
 use Modules\Chart\Actions\JpGraph\ApplyGraphStyleAction;
 use Modules\Chart\Datas\AnswersChartData;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -23,22 +24,20 @@ class PieAvgAction
 
         $data = $answersChartData->answers->toCollection()->pluck('avg')->all();
         $chart = $answersChartData->chart;
-        if (isset($chart->max)) {
-            Assert::numeric($sum = collect($data)->sum());
-            Assert::numeric($chart->max);
-            $other = $chart->max - $sum;
-            // $other = $chart->max - $chart->avg;
-            if ($other > 0.01) {
-                // $color_array[1] = 'white';
-                $data[] = $other;
-                $labels[] = $chart->answer_value_no_txt ?? 'answer_value_no_txt';
-                if (\count($labels) === 2 && \strlen((string) $labels[0]) < 3) {
-                    $labels[0] = $chart->answer_value_txt;
-                }
+       Assert::numeric($sum = collect($data)->sum());
+        Assert::numeric($chart->max);
+        $other = $chart->max - $sum;
+        // $other = $chart->max - $chart->avg;
+        if ($other > 0.01) {
+            // $color_array[1] = 'white';
+            $data[] = $other;
+            $labels[] = $chart->answer_value_no_txt ?? 'answer_value_no_txt';
+            if (\count($labels) === 2 && \strlen(SafeStringCastAction::cast($labels[0])) < 3) {
+                $labels[0] = $chart->answer_value_txt;
             }
-
-            // $data = [$chart->avg, $other];
         }
+
+        // $data = [$chart->avg, $other];
 
         // A new pie graph
         $graph = new PieGraph($chart->width, $chart->height, 'auto');

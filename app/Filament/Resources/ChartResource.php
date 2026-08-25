@@ -37,9 +37,11 @@ class ChartResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, mixed>
+    * Schema legacy del form: la sorgente di verità è ChartForm::getFormSchema().
+     *
+     * @return array<string, \Filament\Schemas\Components\Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchemaOld(): array
     {
         return [
             'type' => Select::make('type')

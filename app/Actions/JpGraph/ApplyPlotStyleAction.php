@@ -19,12 +19,9 @@ class ApplyPlotStyleAction
         // $plot->SetFillColor($colors); // trasparenza, da 0 a 1
 
         // $plot->SetFillColor($data[5]['color'].'@'.$this->vars['transparency']); // trasparenza, da 0 a 1
-        $barPlot->SetFillColor($chartData->list_color ?? 'red@'.$chartData->transparency); // trasparenza, da 0 a 1
+       $barPlot->SetFillColor($chartData->list_color.'@'.$chartData->transparency);
 
-        // $bplot->SetShadow('darkgreen', 1, 1);
-        // dddx([get_defined_vars(), $vars]);
-
-        $barPlot->SetColor($chartData->list_color ?? 'red');
+        $barPlot->SetColor($chartData->list_color);
 
         // You can change the width of the bars if you like
         $barPlot->SetWidth($chartData->plot_perc_width / 100);
@@ -55,23 +52,13 @@ class ApplyPlotStyleAction
         // visualizza il risultato con % oppure no
         // SetFormat exists on subclasses, check dynamically
         if (method_exists($value, 'SetFormat')) {
-            switch ($chartData->plot_value_format) {
-                case 1:
-                    /** @phpstan-ignore-next-line method.notFound */
-                    $value->SetFormat('%.1f &#37);');
-                    break;
-                case 2:
-                    /** @phpstan-ignore-next-line method.notFound */
-                    $value->SetFormat('%.1f');
-                    break;
-                case 3:
-                    /** @phpstan-ignore-next-line method.notFound */
-                    $value->SetFormat('%.0f');
-                    break;
-                default:
-                    /** @phpstan-ignore-next-line method.notFound */
-                    $value->SetFormat('%.1f &#37);');
-            }
+           $format = match ($chartData->plot_value_format) {
+                1, '1' => '%.1f &#37);',
+                2, '2' => '%.1f',
+                3, '3' => '%.0f',
+                default => '%.1f &#37);',
+            };
+            $value->SetFormat($format);
         }
 
         // Center the values in the bar

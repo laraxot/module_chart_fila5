@@ -2,60 +2,59 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Chart\Tests\TestCase::class);
-
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;
+use Modules\Chart\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('Chart Factory', function () {
-    it('creates chart with factory', function () {
-        $chart = Chart::factory()->create();
+uses(TestCase::class);
 
-        expect($chart)->toBeInstanceOf(Chart::class)
-            ->and($chart->exists)->toBeTrue()
-            ->and($chart->id)->toBeInt()
-            ->and($chart->post_id)->toBeInt()
-            ->and($chart->post_type)->toBeString()
-            ->and($chart->type)->toBeString()
-            ->and($chart->width)->toBeInt()
-            ->and($chart->height)->toBeInt();
-    });
+test('creates chart with factory', function (): void {
+    $chart = ChartFactory::new()->createOne();
 
-    it('creates chart with custom attributes', function () {
-        $attributes = [
-            'type' => 'bar',
-            'width' => 800,
-            'height' => 600,
-            'color' => '#ff0000',
-        ];
+    Assert::assertInstanceOf(Chart::class, $chart);
+    Assert::assertTrue($chart->exists);
+    Assert::assertIsInt($chart->id);
+    Assert::assertIsInt($chart->post_id);
+    Assert::assertIsString($chart->post_type);
+    Assert::assertIsString($chart->type);
+    Assert::assertIsInt($chart->width);
+    Assert::assertIsInt($chart->height);
+});
 
-        $chart = Chart::factory()->create($attributes);
+test('creates chart with custom attributes', function (): void {
+    $chart = ChartFactory::new()->createOne([
+        'type' => 'bar',
+        'width' => 800,
+        'height' => 600,
+        'color' => '#ff0000',
+    ]);
 
-        expect($chart->type)->toBe('bar')
-            ->and($chart->width)->toBe(800)
-            ->and($chart->height)->toBe(600)
-            ->and($chart->color)->toBe('#ff0000');
-    });
+    Assert::assertSame('bar', $chart->type);
+    Assert::assertSame(800, $chart->width);
+    Assert::assertSame(600, $chart->height);
+    Assert::assertSame('#ff0000', $chart->color);
+});
 
-    it('makes chart without persisting', function () {
-        $chart = Chart::factory()->make();
+test('makes chart without persisting', function (): void {
+    $chart = ChartFactory::new()->makeOne();
 
-        expect($chart)->toBeInstanceOf(Chart::class)
-            ->and($chart->exists)->toBeFalse();
-    });
+    Assert::assertInstanceOf(Chart::class, $chart);
+    Assert::assertFalse($chart->exists);
+});
 
-    it('creates multiple charts', function () {
-        $charts = Chart::factory()->count(3)->create();
+test('creates multiple charts', function (): void {
+    $charts = ChartFactory::new()->count(3)->create();
 
-        expect($charts)->toHaveCount(3)
-            ->and($charts->first())->toBeInstanceOf(Chart::class)
-            ->and($charts->last())->toBeInstanceOf(Chart::class);
-    });
+    Assert::assertInstanceOf(Collection::class, $charts);
+    Assert::assertCount(3, $charts);
+});
 
-    it('creates chart with colors array', function () {
-        $colors = ['#ff0000', '#00ff00', '#0000ff'];
-        $chart = Chart::factory()->create(['colors' => $colors]);
+test('creates chart with colors array', function (): void {
+    $colors = ['#ff0000', '#00ff00', '#0000ff'];
+    $chart = ChartFactory::new()->createOne(['colors' => $colors]);
 
-        expect($chart->colors)->toBe($colors)
-            ->and($chart->colors)->toBeArray();
-    });
+    Assert::assertSame($colors, $chart->colors);
+    Assert::assertIsArray($chart->colors);
 });

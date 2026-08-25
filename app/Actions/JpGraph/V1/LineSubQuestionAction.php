@@ -129,15 +129,23 @@ final class LineSubQuestionAction
         );
     }
 
+   /**
+     * @param  array<int, array<string, int|float|string|null>|null>  $rawData
+     * @return array<int, float>
+     */
     private function buildDataSeries(array $rawData, string $legend): array
     {
         $series = [];
         foreach ($rawData as $row) {
-            $series[] = $this->extractNumericValue($row, $legend);
+           $series[] = $this->extractNumericValue(is_array($row) ? $row : null, $legend);
         }
+
         return $series;
     }
 
+    /**
+     * @param  array<string, int|float|string|null>|null  $row
+     */
     private function extractNumericValue(?array $row, string $legend): float
     {
         if ($row !== null && array_key_exists($legend, $row)) {
@@ -149,6 +157,9 @@ final class LineSubQuestionAction
         return 0.0;
     }
 
+   /**
+     * @param  array<int, string>  $labels
+     */
     private function configureAxes(Graph $graph, array $labels, int $angle): void
     {
         $this->configureYAxis($graph);
@@ -158,7 +169,7 @@ final class LineSubQuestionAction
 
     private function configureYAxis(Graph $graph): void
     {
-        $yAxis = $graph->yaxis ?? null;
+       $yAxis = $graph->yaxis;
         if ($yAxis instanceof Axis) {
             $yAxis->HideZeroLabel();
             $yAxis->HideLine(false);
@@ -166,9 +177,12 @@ final class LineSubQuestionAction
         }
     }
 
+   /**
+     * @param  array<int, string>  $labels
+     */
     private function configureXAxis(Graph $graph, array $labels, int $angle): void
     {
-        $xAxis = $graph->xaxis ?? null;
+        $xAxis = $graph->xaxis;
         if ($xAxis instanceof Axis) {
             $xAxis->SetTickLabels($labels);
             $xAxis->SetLabelAngle($angle);
@@ -177,12 +191,16 @@ final class LineSubQuestionAction
 
     private function configureYGrid(Graph $graph): void
     {
-        $yGrid = $graph->ygrid ?? null;
+       $yGrid = $graph->ygrid;
         if (is_object($yGrid) && method_exists($yGrid, 'SetFill')) {
             $yGrid->SetFill(false);
         }
     }
 
+   /**
+     * @param  array<int, array<int, float>>  $dataSets
+     * @param  array<int, string>  $legends
+     */
     private function addLinePlots(Graph $graph, array $dataSets, array $legends): void
     {
         foreach ($legends as $index => $legend) {
@@ -200,7 +218,7 @@ final class LineSubQuestionAction
 
     private function configureMarker(LinePlot $linePlot, int $index, string $color): void
     {
-        $mark = $linePlot->mark ?? null;
+       $mark = $linePlot->mark;
         if (! is_object($mark)) {
             return;
         }
@@ -217,7 +235,7 @@ final class LineSubQuestionAction
 
     private function configureLegend(Graph $graph): void
     {
-        $legend = $graph->legend ?? null;
+       $legend = $graph->legend;
         if ($legend instanceof Legend) {
             $legend->SetFrameWeight(1);
             $legend->SetColor('#4E4E4E', '#00A78A');
@@ -227,12 +245,12 @@ final class LineSubQuestionAction
 
     private function configureTitles(Graph $graph, ChartData $chart): void
     {
-        $title = $graph->title ?? null;
+       $title = $graph->title;
         if ($title instanceof Text) {
             $this->applyTextSettings($title, $chart->title, $chart->font_family, $chart->font_style);
         }
 
-        $subtitle = $graph->subtitle ?? null;
+       $subtitle = $graph->subtitle;
         if ($subtitle instanceof Text) {
             $this->applyTextSettings($subtitle, $chart->subtitle, $chart->font_family, $chart->font_style);
         }
@@ -240,7 +258,7 @@ final class LineSubQuestionAction
 
     private function clearFooter(Graph $graph): void
     {
-        $footer = $graph->footer ?? null;
+       $footer = $graph->footer;
         if (is_object($footer) && isset($footer->center)) {
             $center = $footer->center;
             if ($center instanceof Text) {

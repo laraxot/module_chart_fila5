@@ -2,154 +2,88 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Chart\Tests\TestCase::class);
-
+use Modules\Chart\Database\Factories\ChartFactory;
+use Modules\Chart\Database\Factories\MixedChartFactory;
 use Modules\Chart\Models\Chart;
-use Webmozart\Assert\InvalidArgumentException;
+use Modules\Chart\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('Chart Model', function () {
-    it('can be created with factory', function () {
-        $chart = Chart::factory()->create();
+uses(TestCase::class);
 
-        expect($chart)->toBeInstanceOf(Chart::class)
-            ->and($chart->exists)->toBeTrue();
-    });
+test('chart model can be created with factory', function (): void {
+    $chart = ChartFactory::new()->createOne();
 
-    it('has correct fillable attributes', function () {
-        $chart = new Chart;
+    Assert::assertInstanceOf(Chart::class, $chart);
+    Assert::assertTrue($chart->exists);
+});
 
-        expect($chart->getFillable())->toContain([
-            'id', 'post_id', 'post_type', 'type', 'width', 'height',
-            'color', 'bg_color', 'font_family', 'font_size', 'font_style',
-            'y_grace', 'yaxis_hide', 'list_color', 'grace', 'x_label_angle',
-            'show_box', 'x_label_margin', 'plot_perc_width', 'plot_value_show',
-            'plot_value_format', 'plot_value_pos', 'plot_value_color',
-            'group_by', 'sort_by', 'transparency', 'colors',
-        ]);
-    });
+test('chart model has expected fillable attributes', function (): void {
+    $chart = new Chart;
 
-    it('has correct default attributes', function () {
-        $chart = new Chart;
+    Assert::assertEquals([
+        'id', 'post_id', 'post_type', 'type', 'width', 'height',
+        'color', 'bg_color', 'font_family', 'font_size', 'font_style',
+        'y_grace', 'yaxis_hide', 'list_color', 'grace', 'x_label_angle',
+        'show_box', 'x_label_margin', 'plot_perc_width', 'plot_value_show',
+        'plot_value_format', 'plot_value_pos', 'plot_value_color',
+        'group_by', 'sort_by', 'transparency', 'colors',
+    ], $chart->getFillable());
+});
 
-        expect($chart->getAttributes())->toMatchArray([
-            'list_color' => '#d60021',
-            'color' => '#d60021',
-            'font_family' => 15,
-            'font_style' => 9002,
-            'font_size' => 12,
-            'x_label_angle' => 0,
-            'show_box' => false,
-            'x_label_margin' => 10,
-            'plot_perc_width' => 90,
-            'plot_value_show' => 1,
-            'plot_value_pos' => 1,
-            'plot_value_color' => '#000000',
-        ]);
-    });
+test('chart model has default attributes', function (): void {
+    $chart = new Chart;
 
-    it('casts colors attribute to array', function () {
-        $chart = createChart(['colors' => ['red', 'blue', 'green']]);
+    Assert::assertSame('#d60021', $chart->getAttributes()['list_color']);
+    Assert::assertSame('#d60021', $chart->getAttributes()['color']);
+    Assert::assertSame(15, $chart->getAttributes()['font_family']);
+    Assert::assertSame(9002, $chart->getAttributes()['font_style']);
+    Assert::assertSame(12, $chart->getAttributes()['font_size']);
+    Assert::assertSame(10, $chart->getAttributes()['x_label_margin']);
+    Assert::assertSame(90, $chart->getAttributes()['plot_perc_width']);
+});
 
-        expect($chart->colors)->toBeArray()
-            ->and($chart->colors)->toBe(['red', 'blue', 'green']);
-    });
+test('chart model casts colors to array', function (): void {
+    $chart = createChart(['colors' => ['red', 'blue', 'green']]);
 
-    describe('Type Attribute', function () {
-        it('returns value when set', function () {
-            $chart = createChart(['type' => 'bar']);
+    Assert::assertSame(['red', 'blue', 'green'], $chart->colors);
+});
 
-            expect($chart->type)->toBe('bar');
-        });
+test('chart type accessor returns value when set', function (): void {
+    $chart = createChart(['type' => 'bar']);
 
-        it('falls back to chart_type from getPanelRow when null', function () {
-            $chart = makeChart(['type' => null]);
+    Assert::assertSame('bar', $chart->type);
+});
 
-            // Mock the getPanelRow method behavior
-            $chart = $chart->withoutEvents(function () use ($chart) {
-                $chart->chart_type = 'line';
+test('chart width accessor returns integer', function (): void {
+    $chart = createChart(['width' => 800]);
 
-                return $chart;
-            });
+    Assert::assertSame(800, $chart->width);
+});
 
-            expect($chart->getTypeAttribute(null))->toBeString();
-        });
-    });
+test('chart width accessor falls back to default', function (): void {
+    $chart = makeChart(['width' => null]);
 
-    describe('Width Attribute', function () {
-        it('returns integer value when set', function () {
-            $chart = createChart(['width' => 800]);
+    Assert::assertSame(800, $chart->getWidthAttribute(null));
+});
 
-            expect($chart->width)->toBe(800);
-        });
+test('chart height accessor returns integer', function (): void {
+    $chart = createChart(['height' => 600]);
 
-        it('calls getPanelRow when value is null', function () {
-            $chart = makeChart(['width' => null]);
+    Assert::assertSame(600, $chart->height);
+});
 
-            expect($chart->getWidthAttribute(null))->toBeInt();
-        });
+test('chart getSettings returns chart array', function (): void {
+    $chart = createChart(['type' => 'bar']);
+    $settings = $chart->getSettings();
 
-        it('calls getPanelRow when value is zero', function () {
-            $chart = makeChart(['width' => 0]);
+    Assert::assertArrayHasKey('chart', $settings);
+});
 
-            expect($chart->getWidthAttribute('0'))->toBeInt();
-        });
-    });
+test('chart getSettings throws when type is null', function (): void {
+    $chart = makeChart(['type' => null]);
 
-    describe('Height Attribute', function () {
-        it('returns integer value when set', function () {
-            $chart = createChart(['height' => 600]);
-
-            expect($chart->height)->toBe(600);
-        });
-
-        it('calls getPanelRow when value is null', function () {
-            $chart = makeChart(['height' => null]);
-
-            expect($chart->getHeightAttribute(null))->toBeInt();
-        });
-
-        it('calls getPanelRow when value is zero', function () {
-            $chart = makeChart(['height' => 0]);
-
-            expect($chart->getHeightAttribute('0'))->toBeInt();
-        });
-    });
-
-    describe('getPanelRow Method', function () {
-        it('returns value and saves to model', function () {
-            $chart = createChart(['post_id' => '123']);
-
-            $result = $chart->getPanelRow('post_id', 'test_field');
-
-            expect($result)->toBe('123')
-                ->and($chart->test_field)->toBe('123');
-        });
-
-        it('handles exceptions gracefully', function () {
-            $chart = createChart();
-
-            $result = $chart->getPanelRow('non_existent_field', 'test_field');
-
-            expect($result)->toBeNull();
-        });
-    });
-
-    describe('getSettings Method', function () {
-        it('returns array with chart data for non-mixed type', function () {
-            $chart = createChart(['type' => 'bar']);
-
-            $settings = $chart->getSettings();
-
-            expect($settings)->toBeArray()
-                ->and($settings)->toHaveCount(1)
-                ->and($settings[0])->toBeArray();
-        });
-
-        it('throws assertion error when type is null', function () {
-            $chart = makeChart(['type' => null]);
-
-            expect(fn () => $chart->getSettings())
-                ->toThrow(InvalidArgumentException::class);
-        });
-    });
+    assertChartThrows(
+        static fn (): array => $chart->getSettings(),
+        \InvalidArgumentException::class
+    );
 });

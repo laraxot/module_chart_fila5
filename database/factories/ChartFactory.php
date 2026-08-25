@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Chart\Models\Chart;
 
+/**
+ * @extends Factory<Chart>
+ */
 class ChartFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Model>
+    * @var class-string<Chart>
      */
     protected $model = Chart::class;
 

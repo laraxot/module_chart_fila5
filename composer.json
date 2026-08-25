@@ -35,16 +35,19 @@
     "autoload-dev": {
         "psr-4": {
             "Modules\\Chart\\Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "tests/Support/helpers.php"
+        ]
     },
     "require": {
         "amenadiel/jpgraph": "^4.1",
-        "filament/actions": "^5.0",
-        "filament/forms": "^5.0",
+        "filament/actions": "^5.6",
+        "filament/forms": "^5.6",
         "filament/infolists": "^5.0",
-        "filament/notifications": "^5.0",
+        "filament/notifications": "^5.6",
         "filament/schemas": "^5.0",
-        "filament/support": "^5.0",
+        "filament/support": "^5.6",
         "filament/tables": "^5.0",
         "filament/widgets": "^5.0",
         "spatie/color": "^2.0"

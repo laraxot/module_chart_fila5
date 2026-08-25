@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Pages;
 
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 use Modules\Chart\Filament\Widgets\Samples as WidgetsSamples;
 
-class Dashboard extends Page
+class Dashboard extends XotBasePage
 {
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
 
