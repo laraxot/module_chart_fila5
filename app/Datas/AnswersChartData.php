@@ -7,6 +7,7 @@ namespace Modules\Chart\Datas;
 use Filament\Support\RawJs;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Stringable;
+use Modules\Chart\Actions\Chart\BuildMinoritySliceOffsetAction;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\LaravelData\Attributes\MapInputName;
@@ -79,15 +80,26 @@ class AnswersChartData extends Data
                 ? 'Media'
                 : 'Percentuale';
 
-            $datasets = [
-                [
-                    'label' => $label,
-                    'data' => array_values($avgValues),
-                    'data2' => $this->normalizeSeries($answersCollection->pluck('value')->all()),
-                    'borderColor' => $this->chart->getColorsRgba(0.5),
-                    'backgroundColor' => $this->chart->getColorsRgba(0.5),
-                ],
+            $dataset = [
+                'label' => $label,
+                'data' => array_values($avgValues),
+                'data2' => $this->normalizeSeries($answersCollection->pluck('value')->all()),
+                'borderColor' => $this->chart->getColorsRgba(0.5),
+                'backgroundColor' => $this->chart->getColorsRgba(0.5),
             ];
+
+            // Richiesta utente (story quaeris-dashboard-chart-visual-improvements.md,
+            // Task 1): nel grafico a ciambella la fetta minoritaria (valore piu' piccolo)
+            // si stacca radialmente dal resto dell'anello, come in un grafico "esploso" —
+            // solo per le domande a risposta categorica ('Percentuale'), non per quelle a
+            // media numerica ('Media'): stessa distinzione gia' calcolata sopra per $label,
+            // non un nuovo controllo. 'offset' e' una proprieta' nativa di Chart.js sul
+            // dataset, un valore in pixel per ciascun indice — nessun plugin necessario.
+            if ('doughnut' === $this->chart->getChartJsType() && 'Percentuale' === $label) {
+                $dataset['offset'] = app(BuildMinoritySliceOffsetAction::class)->execute($avgValues);
+            }
+
+            $datasets = [$dataset];
         }
 
         return [
