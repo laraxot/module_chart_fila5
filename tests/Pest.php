@@ -8,4 +8,4 @@ declare(strict_types=1);
  * Ogni file test dichiara uses(Modules\Chart\Tests\TestCase::class).
  */
 
-require_once __DIR__.'/../../Xot/tests/XotBasePest.php';
+pest()->extend(\Modules\Chart\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');
