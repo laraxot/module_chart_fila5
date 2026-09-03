@@ -58,7 +58,6 @@ use Modules\Xot\Traits\Updater;
  */
 class Chart extends Model
 {
-    /** @use HasXotFactory<ChartFactory> */
     use HasXotFactory;
 
     use Updater;
