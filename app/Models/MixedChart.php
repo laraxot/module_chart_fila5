@@ -28,7 +28,6 @@ use Modules\Quaeris\Models\Profile;
  * @property-read int|null $charts_count
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|MixedChart newModelQuery()
  * @method static Builder<static>|MixedChart newQuery()
  * @method static Builder<static>|MixedChart query()
@@ -38,7 +37,7 @@ use Modules\Quaeris\Models\Profile;
  * @method static Builder<static>|MixedChart whereName($value)
  * @method static Builder<static>|MixedChart whereUpdatedAt($value)
  * @method static Builder<static>|MixedChart whereUpdatedBy($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class MixedChart extends BaseModel

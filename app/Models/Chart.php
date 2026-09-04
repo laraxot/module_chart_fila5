@@ -48,12 +48,49 @@ use Modules\Xot\Traits\Updater;
  * @property string $transparency
  * @property array<int, string> $colors
  * @property string|null $grace
- *
  * @method static Builder<static>|Chart newModelQuery()
  * @method static Builder<static>|Chart newQuery()
  * @method static Builder<static>|Chart query()
  * @method static ChartFactory factory($count = null, $state = [])
- *
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property-read \Modules\Quaeris\Models\Profile|null $creator
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @method static Builder<static>|Chart whereBgColor($value)
+ * @method static Builder<static>|Chart whereColor($value)
+ * @method static Builder<static>|Chart whereColors($value)
+ * @method static Builder<static>|Chart whereCreatedAt($value)
+ * @method static Builder<static>|Chart whereCreatedBy($value)
+ * @method static Builder<static>|Chart whereDeletedAt($value)
+ * @method static Builder<static>|Chart whereDeletedBy($value)
+ * @method static Builder<static>|Chart whereFontFamily($value)
+ * @method static Builder<static>|Chart whereFontSize($value)
+ * @method static Builder<static>|Chart whereFontStyle($value)
+ * @method static Builder<static>|Chart whereGrace($value)
+ * @method static Builder<static>|Chart whereGroupBy($value)
+ * @method static Builder<static>|Chart whereHeight($value)
+ * @method static Builder<static>|Chart whereId($value)
+ * @method static Builder<static>|Chart whereLang($value)
+ * @method static Builder<static>|Chart whereListColor($value)
+ * @method static Builder<static>|Chart wherePlotPercWidth($value)
+ * @method static Builder<static>|Chart wherePlotValueColor($value)
+ * @method static Builder<static>|Chart wherePlotValueFormat($value)
+ * @method static Builder<static>|Chart wherePlotValuePos($value)
+ * @method static Builder<static>|Chart wherePlotValueShow($value)
+ * @method static Builder<static>|Chart wherePostId($value)
+ * @method static Builder<static>|Chart wherePostType($value)
+ * @method static Builder<static>|Chart whereShowBox($value)
+ * @method static Builder<static>|Chart whereSortBy($value)
+ * @method static Builder<static>|Chart whereTransparency($value)
+ * @method static Builder<static>|Chart whereType($value)
+ * @method static Builder<static>|Chart whereUpdatedAt($value)
+ * @method static Builder<static>|Chart whereUpdatedBy($value)
+ * @method static Builder<static>|Chart whereWidth($value)
+ * @method static Builder<static>|Chart whereXLabelAngle($value)
+ * @method static Builder<static>|Chart whereXLabelMargin($value)
+ * @method static Builder<static>|Chart whereYGrace($value)
+ * @method static Builder<static>|Chart whereYaxisHide($value)
  * @mixin \Eloquent
  */
 class Chart extends Model
