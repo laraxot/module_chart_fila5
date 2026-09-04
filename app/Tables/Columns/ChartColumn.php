@@ -15,7 +15,7 @@ class ChartColumn extends XotBaseColumn
 
     public ?string $filter = null;
 
-    /** @var array<string, mixed> */
+    /** @var array{datasets: array<int, array<string, mixed>>, labels: array<int, string>} */
     public array $chartData = [
         'datasets' => [
             [
@@ -31,7 +31,7 @@ class ChartColumn extends XotBaseColumn
     /** @var array<string, mixed> */
     public array $chartOptions = [];
 
-    /** @var array<string, mixed>|null */
+    /** @var array{datasets: array<int, array<string, mixed>>, labels: array<int, string>}|null */
     protected ?array $cachedData = null;
 
     protected string $view = 'chart::tables.columns.chart-column';
@@ -45,7 +45,7 @@ class ChartColumn extends XotBaseColumn
         return $this;
     }
 
-    /** @return array<string, mixed> */
+    /** @return array{datasets: array<int, array<string, mixed>>, labels: array<int, string>} */
     public function getCachedData(): array
     {
         return $this->cachedData ??= $this->getData();
@@ -67,7 +67,7 @@ class ChartColumn extends XotBaseColumn
         return md5(json_encode($this->getCachedData()));
     }
 
-    /** @return array<string, mixed> */
+    /** @return array{datasets: array<int, array<string, mixed>>, labels: array<int, string>} */
     protected function getData(): array
     {
         return $this->chartData;

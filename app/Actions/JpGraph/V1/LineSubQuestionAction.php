@@ -108,7 +108,7 @@ final class LineSubQuestionAction
         }
 
         return array_map(
-            static fn (mixed $legend): string => (string) $legend,
+            static fn (int|string $legend): string => (string) $legend,
             array_keys($first->value)
         );
     }

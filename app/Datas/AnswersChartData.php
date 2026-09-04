@@ -39,7 +39,7 @@ class AnswersChartData extends Data
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{datasets: array<int, array<string, mixed>>, labels: array<int, string>}
      */
     public function getChartJsData(): array
     {

@@ -18,7 +18,7 @@ class MixedChartFactory extends Factory
     protected $model = MixedChart::class;
 
     /**
-     * @return array<string, mixed>
+     * @return array{id: int, name: string}
      */
     public function definition(): array
     {

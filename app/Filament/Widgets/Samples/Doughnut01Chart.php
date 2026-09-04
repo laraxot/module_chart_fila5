@@ -11,7 +11,7 @@ class Doughnut01Chart extends XotBaseChartWidget
     protected ?string $heading = 'Blog Posts';
 
     /**
-     * @return array<string, mixed>
+     * @return array{datasets: array<int, array<string, mixed>>, labels: array<int, string>}
      */
     protected function getData(): array
     {

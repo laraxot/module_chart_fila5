@@ -46,7 +46,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $sort_by
  * @property string|null $lang
  * @property string $transparency
- * @property array<array-key, mixed> $colors
+ * @property array<int, string> $colors
  * @property string|null $grace
  *
  * @method static Builder<static>|Chart newModelQuery()
