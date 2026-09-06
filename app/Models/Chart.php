@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 use InvalidArgumentException;
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Traits\Updater;
 
@@ -54,9 +55,9 @@ use Modules\Xot\Traits\Updater;
  * @method static ChartFactory factory($count = null, $state = [])
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- * @property-read \Modules\Quaeris\Models\Profile|null $creator
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
- * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $deleter
+ * @property-read ProfileContract|null $updater
  * @method static Builder<static>|Chart whereBgColor($value)
  * @method static Builder<static>|Chart whereColor($value)
  * @method static Builder<static>|Chart whereColors($value)

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Carbon;
-use Modules\Quaeris\Models\Profile;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Modules\Chart\Models\MixedChart.
@@ -26,8 +26,8 @@ use Modules\Quaeris\Models\Profile;
  * @property string|null $updated_by
  * @property-read Collection<int, Chart> $charts
  * @property-read int|null $charts_count
- * @property-read Profile|null $creator
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $updater
  * @method static Builder<static>|MixedChart newModelQuery()
  * @method static Builder<static>|MixedChart newQuery()
  * @method static Builder<static>|MixedChart query()
@@ -37,7 +37,7 @@ use Modules\Quaeris\Models\Profile;
  * @method static Builder<static>|MixedChart whereName($value)
  * @method static Builder<static>|MixedChart whereUpdatedAt($value)
  * @method static Builder<static>|MixedChart whereUpdatedBy($value)
- * @property-read Profile|null $deleter
+ * @property-read ProfileContract|null $deleter
  * @mixin \Eloquent
  */
 class MixedChart extends BaseModel
