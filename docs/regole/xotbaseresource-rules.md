@@ -75,7 +75,7 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class DoctorResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'name' => Forms\Components\TextInput::make('name')

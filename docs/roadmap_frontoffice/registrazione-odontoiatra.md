@@ -425,7 +425,7 @@ Quando il dottore clicca sul link nell'email:
 Questo comportamento è gestito nella configurazione del wizard:
 
 ```php
-public static function getFormSchemaWidget(): array
+public function getFormSchemaWidget(): array
 {
     return [
         Forms\Components\Wizard::make([

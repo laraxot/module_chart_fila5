@@ -91,7 +91,7 @@ class PatientResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione Pazienti';
     protected static ?string $navigationLabel = 'Pazienti';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             Forms\Components\TextInput::make('nome')
@@ -195,7 +195,7 @@ class VisitResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione Visite';
     protected static ?string $navigationLabel = 'Visite';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             Forms\Components\Select::make('patient_id')
@@ -307,7 +307,7 @@ class ISEEResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione ISEE';
     protected static ?string $navigationLabel = 'ISEE';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             Forms\Components\Select::make('patient_id')

@@ -14,7 +14,7 @@ class ChartInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component|Htmlable|string>
      */
-    public static function getInfolistSchema(): array
+    public function getInfolistSchema(): array
     {
         return [
             'id' => TextEntry::make('id'),

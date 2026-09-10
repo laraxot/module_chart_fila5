@@ -367,7 +367,7 @@ class ContentResource extends XotBaseResource
 {
     protected static ?string $model = Content::class;
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'main' => Forms\Components\Section::make('Informazioni Principali')

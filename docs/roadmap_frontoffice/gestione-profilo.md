@@ -14,7 +14,7 @@ La gestione del profilo permette alle pazienti di visualizzare e modificare i pr
 // Resource: PatientProfileResource
 class PatientProfileResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             Section::make('informazioni_personali')

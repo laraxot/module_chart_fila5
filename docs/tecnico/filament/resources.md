@@ -18,7 +18,7 @@ class MyResource extends XotBaseResource
     protected static ?string $model = MyModel::class;
 
     // OBBLIGATORIO
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form
@@ -37,7 +37,7 @@ class MyResource extends XotBaseResource
 {
     protected static ?string $model = MyModel::class;
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form
@@ -154,7 +154,7 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class ExampleResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema form
@@ -218,7 +218,7 @@ abstract class XotBaseResource extends FilamentResource
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     // Metodi principali
-    abstract public static function getFormSchema(): array;
+    abstract public function getFormSchema(): array;
     
     // Metodi utili
     public static function getModuleName(): string
@@ -235,7 +235,7 @@ abstract class XotBaseResource extends FilamentResource
 ```php
 class ArticleResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form
@@ -279,7 +279,7 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class ArticleResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form

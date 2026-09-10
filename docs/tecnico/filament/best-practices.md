@@ -89,7 +89,7 @@ class YourResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Your Group';
     protected static ?string $navigationLabel = 'Your Label';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form

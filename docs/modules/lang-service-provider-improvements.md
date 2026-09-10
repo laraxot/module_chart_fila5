@@ -406,7 +406,7 @@ enum DayOfWeek: int
 // Modules/Dental/app/Filament/Resources/AvailabilityResource.php
 class AvailabilityResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'day_of_week' => Forms\Components\Select::make('day_of_week')

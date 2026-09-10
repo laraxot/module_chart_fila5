@@ -33,7 +33,7 @@ Questo modulo del backoffice è dedicato alla gestione delle richieste di iscriz
           return parent::getEloquentQuery()->rejected();
       }
       
-      public static function getFormSchema(): array
+      public function getFormSchema(): array
       {
           return [
               // Schema form con tutti i campi necessari

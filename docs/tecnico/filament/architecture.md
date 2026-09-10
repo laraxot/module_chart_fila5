@@ -17,7 +17,7 @@ abstract class XotBaseResource extends FilamentResource
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     // Metodi principali
-    abstract public static function getFormSchema(): array;
+    abstract public function getFormSchema(): array;
     
     // Metodi utili
     public static function getModuleName(): string
@@ -122,7 +122,7 @@ Module/
 ```php
 class YourResource extends XotBaseResource
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema personalizzato

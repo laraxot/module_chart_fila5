@@ -26,7 +26,7 @@ abstract class XotBaseForm extends Form
 ```php
 class ArticleForm extends XotBaseForm
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema del form
@@ -72,7 +72,7 @@ use Filament\Forms\Components\Select;
 
 class ArticleForm extends XotBaseForm
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             TextInput::make('title')

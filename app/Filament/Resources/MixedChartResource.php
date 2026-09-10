@@ -23,7 +23,7 @@ class MixedChartResource extends XotBaseResource
      *
      * @return array<string, Select>
      */
-    public static function getFormSchemaOld(): array
+    public function getFormSchemaOld(): array
     {
         return [
             'type' => Select::make('type')->options(app(GetTypeOptions::class)->execute()),

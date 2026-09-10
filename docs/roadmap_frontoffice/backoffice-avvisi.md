@@ -162,7 +162,7 @@ Il sistema di avvisi del backoffice fornisce notifiche in tempo reale agli ammin
   {
       protected static ?string $model = Alert::class;
       
-      public static function getFormSchema(): array
+      public function getFormSchema(): array
       {
           return [
               // Definizione form

@@ -13,7 +13,7 @@ class PatientResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione Pazienti';
     protected static ?string $navigationLabel = 'Pazienti';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema specifico per i pazienti
@@ -33,7 +33,7 @@ class VisitResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione Visite';
     protected static ?string $navigationLabel = 'Visite';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema specifico per le visite
@@ -53,7 +53,7 @@ class ISEEResource extends XotBaseResource
     protected static ?string $navigationGroup = 'Gestione ISEE';
     protected static ?string $navigationLabel = 'ISEE';
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema specifico per ISEE
@@ -175,7 +175,7 @@ namespace Modules\Patient\Filament\Forms;
 
 class PatientRegistrationForm extends XotBaseForm
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema registrazione paziente
@@ -190,7 +190,7 @@ namespace Modules\Dental\Filament\Forms;
 
 class VisitForm extends XotBaseForm
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             // Schema visita
@@ -341,7 +341,7 @@ class PatientResource extends XotBaseResource
 ```php
 class PatientForm extends XotBaseForm
 {
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             TextInput::make('fiscal_code')

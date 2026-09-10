@@ -14,7 +14,7 @@ Quando si estende `XotBaseResource`, è necessario seguire alcune convenzioni sp
 Il metodo `getFormSchema()` deve restituire un array associativo con le seguenti caratteristiche:
 
 ```php
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     return [
         'field_name' => Forms\Components\TextInput::make('field_name')
@@ -34,7 +34,7 @@ Caratteristiche importanti:
 ### Esempio di Errore
 ```php
 // ❌ NON FARE QUESTO
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     return [
         Forms\Components\TextInput::make('title'),  // Senza chiave stringa
@@ -43,7 +43,7 @@ public static function getFormSchema(): array
 }
 
 // ✅ FARE QUESTO
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     return [
         'title' => Forms\Components\TextInput::make('title'),
@@ -81,7 +81,7 @@ class PatientResource extends XotBaseResource
 {
     protected static ?string $model = Patient::class;
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'name' => Forms\Components\TextInput::make('name')

@@ -307,8 +307,8 @@ ViewEntry::make('preview')
        protected static ?string $model = Patient::class;
 
        // 2. Public Methods
-       public static function getFormSchema(): array
-       public static function getFormSchemaWidget(): array
+       public function getFormSchema(): array
+       public function getFormSchemaWidget(): array
 
        // 3. Protected Methods - Step Definitions
        protected static function getPersonalDataStep(): Step

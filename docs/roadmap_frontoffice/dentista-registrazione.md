@@ -143,7 +143,7 @@ Se in futuro la registrazione dovesse diventare un processo ancora più articola
 ```php
 // Modules/Patient/app/Filament/Resources/DoctorResource.php
 
-public static function getFormSchemaWidget(): array
+public function getFormSchemaWidget(): array
 {
     return [
         Forms\Components\Wizard::make([

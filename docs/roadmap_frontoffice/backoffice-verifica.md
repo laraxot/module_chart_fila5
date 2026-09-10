@@ -124,7 +124,7 @@ class RequestResource extends XotBaseResource
 {
     protected static ?string $model = Request::class;
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'note' => Textarea::make('note')

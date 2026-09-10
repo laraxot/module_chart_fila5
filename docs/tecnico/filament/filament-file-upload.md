@@ -100,7 +100,7 @@ $filePath = Storage::disk('public')->path($model->document);
 Oltre alla validazione lato client, è importante implementare anche la validazione lato server:
 
 ```php
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     return [
         FileUpload::make('document')

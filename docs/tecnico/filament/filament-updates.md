@@ -33,7 +33,7 @@ public static function form(Form $form): Form
 
 Dopo:
 ```php
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     return [
         Forms\Components\TextInput::make('title'),

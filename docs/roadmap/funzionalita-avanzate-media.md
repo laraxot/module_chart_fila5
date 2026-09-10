@@ -167,7 +167,7 @@ class MediaResource extends XotBaseResource
 {
     protected static ?string $model = Media::class;
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'basic_info' => Forms\Components\Section::make('Informazioni Base')

@@ -244,7 +244,7 @@ Il modulo di gestione documentazione del backoffice permette agli amministratori
   {
       protected static ?string $model = Document::class;
       
-      public static function getFormSchema(): array
+      public function getFormSchema(): array
       {
           // Schema form con tutti i campi
       }

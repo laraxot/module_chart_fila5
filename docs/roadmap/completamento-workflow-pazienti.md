@@ -97,7 +97,7 @@ class PatientResource extends XotBaseResource
 {
     protected static ?string $model = Patient::class;
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'personal_info' => Forms\Components\Section::make('Informazioni Personali')

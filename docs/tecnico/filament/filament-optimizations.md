@@ -49,7 +49,7 @@ class MyResource extends XotBaseResource
         ];
     }
 
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'title' => Forms\Components\TextInput::make('title'),
@@ -65,7 +65,7 @@ class MyResource extends XotBaseResource
 {
     // Rimossi navigationIcon, getRelations e getPages
     
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'title' => Forms\Components\TextInput::make('title'),

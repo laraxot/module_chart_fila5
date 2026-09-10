@@ -75,7 +75,7 @@ File: `app/Filament/Resources/MixedChartResource.php`
 **Soluzioni:**
 ```php
 // 1. Ottimizzare caricamento relazioni
-public static function getFormSchema(): array {
+public function getFormSchema(): array {
     return [
         Select::make('charts')
             ->multiple()
