@@ -9,16 +9,29 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MixedChartsTable extends XotBaseResourceTable
 {
-    /**
-     * @return array<string, \Filament\Tables\Columns\Column>
+     /**
+     * Definisce le colonne della tabella.
+     *
+     * @return array<int, TextColumn>
      */
     public function getTableColumns(): array
     {
         return [
-            'id' => TextColumn::make('id')->searchable()->sortable(),
-            'title' => TextColumn::make('title')->searchable()->sortable(),
-            'type' => TextColumn::make('type'),
-            'created_at' => TextColumn::make('created_at')->dateTime(),
+            TextColumn::make('id')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('name')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('description')
+                ->limit(50)
+                ->searchable(),
+            TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable(),
+            TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable(),
         ];
     }
 }
