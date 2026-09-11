@@ -4,34 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Resources\MixedChartResource\Tables;
 
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MixedChartsTable extends XotBaseResourceTable
 {
-     /**
+    /**
      * Definisce le colonne della tabella.
      *
-     * @return array<int, TextColumn>
+     * @return array<string, Column>
      */
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('id')
-                ->sortable()
-                ->searchable(),
-            TextColumn::make('name')
-                ->sortable()
-                ->searchable(),
-            TextColumn::make('description')
-                ->limit(50)
-                ->searchable(),
-            TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable(),
-            TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable(),
+            'name' => TextColumn::make('name')->searchable()->sortable(),
+            'charts_count' => TextColumn::make('charts_count')->counts('charts')->numeric()->sortable(),
+            'id' => TextColumn::make('id')->sortable()->toggleable(isToggledHiddenByDefault: true),
+            'created_at' => TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 }
