@@ -6,10 +6,16 @@ namespace Modules\Chart\Filament\Resources\MixedChartResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Chart\Models\MixedChart;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MixedChartsTable extends XotBaseResourceTable
 {
+    /**
+     * @var class-string<MixedChart>
+     */
+    protected static string $model = MixedChart::class;
+
     /**
      * Definisce le colonne della tabella.
      *
