@@ -8,5 +8,8 @@ return [
         'title' => ['label' => 'title'],
         'type' => ['label' => 'type'],
         'created_at' => ['label' => 'created_at'],
+        'name' => ['label' => 'name'],
+        'charts_count' => ['label' => 'charts_count'],
+        'updated_at' => ['label' => 'updated_at'],
     ],
 ];
