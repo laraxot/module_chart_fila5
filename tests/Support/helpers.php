@@ -1,19 +1,18 @@
 <?php
 
 declare(strict_types=1);
-
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;
 use PHPUnit\Framework\Assert;
 
 /**
- * @param  class-string<\Throwable>  $exceptionClass
+ * @param  class-string<Throwable>  $exceptionClass
  */
 function assertChartThrows(callable $callback, string $exceptionClass): void
 {
     try {
         $callback();
-    } catch (\Throwable $exception) {
+    } catch (Throwable $exception) {
         Assert::assertInstanceOf($exceptionClass, $exception);
 
         return;

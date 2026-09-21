@@ -49,15 +49,18 @@ use Modules\Xot\Traits\Updater;
  * @property string $transparency
  * @property array<int, string> $colors
  * @property string|null $grace
+ *
  * @method static Builder<static>|Chart newModelQuery()
  * @method static Builder<static>|Chart newQuery()
  * @method static Builder<static>|Chart query()
  * @method static ChartFactory factory($count = null, $state = [])
+ *
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $deleter
  * @property-read ProfileContract|null $updater
+ *
  * @method static Builder<static>|Chart whereBgColor($value)
  * @method static Builder<static>|Chart whereColor($value)
  * @method static Builder<static>|Chart whereColors($value)
@@ -92,12 +95,12 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder<static>|Chart whereXLabelMargin($value)
  * @method static Builder<static>|Chart whereYGrace($value)
  * @method static Builder<static>|Chart whereYaxisHide($value)
+ *
  * @mixin \Eloquent
  */
 class Chart extends Model
 {
     use HasXotFactory;
-
     use Updater;
 
     protected $table = 'charts';
@@ -107,7 +110,7 @@ class Chart extends Model
         'id', 'post_id', 'post_type', 'type', 'width', 'height', 'color', 'bg_color', 'font_family', 'font_size', 'font_style', 'y_grace', 'yaxis_hide', 'list_color', 'grace', 'x_label_angle', 'show_box', 'x_label_margin', 'plot_perc_width', 'plot_value_show', 'plot_value_format', 'plot_value_pos', 'plot_value_color', 'group_by', 'sort_by', 'transparency', 'colors',
     ];
 
-    /** @var array<string, mixed> */
+    /** @var array<string, string|int|bool> */
     protected $attributes = [
         'list_color' => '#d60021', 'color' => '#d60021', 'font_family' => 15, 'font_style' => 9002, 'font_size' => 12, 'x_label_angle' => 0, 'show_box' => false, 'x_label_margin' => 10, 'plot_perc_width' => 90, 'plot_value_show' => 1, 'plot_value_pos' => 1, 'plot_value_color' => '#000000',
     ];
@@ -142,7 +145,7 @@ class Chart extends Model
     /**
      * Get chart settings as array of chart configurations.
      *
-     * @return array<string, array<int|string, mixed>>
+     * @return array{chart: array<array-key, mixed>}
      */
     public function getSettings(): array
     {

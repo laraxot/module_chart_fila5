@@ -28,7 +28,15 @@ class ChartColumn extends XotBaseColumn
 
     public string $chartType = 'bar';
 
-    /** @var array<string, mixed> */
+    /**
+     * @var array{
+     *     plugins?: array<string, array<string, bool|string|array<string, int>|array{}>>,
+     *     responsive?: bool,
+     *     maintainAspectRatio?: bool,
+     *     indexAxis?: string,
+     *     scales?: array{x: array{stacked: bool}, y: array{stacked: bool}}
+     * }
+     */
     public array $chartOptions = [];
 
     /** @var array{datasets: array<int, array<string, mixed>>, labels: array<int, string>}|null */
@@ -51,8 +59,16 @@ class ChartColumn extends XotBaseColumn
         return $this->cachedData ??= $this->getData();
     }
 
-    /** @return array<string, mixed>|null */
-    public function getOptions(): ?array
+    /**
+     * @return array{
+     *     plugins?: array<string, array<string, bool|string|array<string, int>|array{}>>,
+     *     responsive?: bool,
+     *     maintainAspectRatio?: bool,
+     *     indexAxis?: string,
+     *     scales?: array{x: array{stacked: bool}, y: array{stacked: bool}}
+     * }
+     */
+    public function getOptions(): array
     {
         return $this->chartOptions;
     }

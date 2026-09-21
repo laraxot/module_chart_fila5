@@ -7,6 +7,7 @@ namespace Modules\Chart\Filament\Resources;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Component;
 use Modules\Chart\Actions\Chart\GetTypeOptions;
 use Modules\Chart\Models\Chart;
 use Modules\Xot\Filament\Resources\XotBaseResource;
@@ -39,7 +40,7 @@ class ChartResource extends XotBaseResource
     /**
      * Schema legacy del form: la sorgente di verità è ChartForm::getFormSchema().
      *
-     * @return array<string, \Filament\Schemas\Components\Component>
+     * @return array<string, Component>
      */
     public function getFormSchemaOld(): array
     {

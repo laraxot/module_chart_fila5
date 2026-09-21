@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Actions;
 
-use RuntimeException;
 use Illuminate\Support\Facades\Storage;
+use RuntimeException;
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\base64_decode;
@@ -46,7 +46,6 @@ class ExportChartToSvgAction
 
     /**
      * @param  array<string, mixed>  $chartData
-     *
      * @return array{path: string, url: string, size: int, filename: string, mime_type: string, exported_at: string|null}
      */
     public function executeFromChartData(

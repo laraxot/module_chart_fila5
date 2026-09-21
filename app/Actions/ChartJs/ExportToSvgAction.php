@@ -39,13 +39,19 @@ final class ExportToSvgAction
      */
     private function resolveExportOptions(array $chartData, array $options): array
     {
-        /** @var float|int|string|null $widthInput */
         $widthInput = $options['width'] ?? $chartData['width'] ?? 800;
-        $width = $this->sanitizeDimension($widthInput);
+        $width = $this->sanitizeDimension(
+            is_int($widthInput) || is_float($widthInput) || is_string($widthInput)
+                ? $widthInput
+                : 800
+        );
 
-        /** @var float|int|string|null $heightInput */
         $heightInput = $options['height'] ?? $chartData['height'] ?? 600;
-        $height = $this->sanitizeDimension($heightInput);
+        $height = $this->sanitizeDimension(
+            is_int($heightInput) || is_float($heightInput) || is_string($heightInput)
+                ? $heightInput
+                : 600
+        );
 
         $filename = SafeStringCastAction::cast($options['filename'] ?? ('chart_'.\time().'.svg'));
         $title = SafeStringCastAction::cast($options['title'] ?? $chartData['title'] ?? 'Chart');
@@ -86,16 +92,26 @@ final class ExportToSvgAction
                     continue;
                 }
 
-                $numericData = $this->normalizeNumericSeries($dataset['data'] ?? []);
+                $rawData = $dataset['data'] ?? [];
+                $numericData = is_array($rawData) ? $this->normalizeNumericSeries($rawData) : [];
                 if ($numericData === []) {
                     continue;
+                }
+
+                $rawBackground = $dataset['backgroundColor'] ?? null;
+                if (! is_array($rawBackground) && ! is_string($rawBackground)) {
+                    $rawBackground = null;
+                }
+                $rawBorder = $dataset['borderColor'] ?? null;
+                if (! is_array($rawBorder) && ! is_string($rawBorder)) {
+                    $rawBorder = null;
                 }
 
                 $datasets[] = [
                     'label' => isset($dataset['label']) ? SafeStringCastAction::cast($dataset['label']) : null,
                     'data' => $numericData,
-                    'backgroundColor' => $this->normalizeColorPalette($dataset['backgroundColor'] ?? null, \count($numericData)),
-                    'borderColor' => $this->normalizeColorPalette($dataset['borderColor'] ?? null, \count($numericData)),
+                    'backgroundColor' => $this->normalizeColorPalette($rawBackground, \count($numericData)),
+                    'borderColor' => $this->normalizeColorPalette($rawBorder, \count($numericData)),
                 ];
             }
         }
@@ -110,14 +126,11 @@ final class ExportToSvgAction
     }
 
     /**
+     * @param  array<array-key, mixed>  $rawValues
      * @return list<float>
      */
-    private function normalizeNumericSeries(mixed $rawValues): array
+    private function normalizeNumericSeries(array $rawValues): array
     {
-        if (! \is_array($rawValues)) {
-            return [];
-        }
-
         $series = [];
         foreach ($rawValues as $value) {
             if (is_numeric($value)) {
@@ -129,9 +142,10 @@ final class ExportToSvgAction
     }
 
     /**
+     * @param  array<array-key, mixed>|string|null  $rawColors
      * @return list<string>
      */
-    private function normalizeColorPalette(mixed $rawColors, int $length): array
+    private function normalizeColorPalette(array|string|null $rawColors, int $length): array
     {
         if (\is_string($rawColors)) {
             $rawColors = [$rawColors];
@@ -163,7 +177,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param  array<int|string, mixed>  $rawLabels
+     * @param  array<array-key, mixed>  $rawLabels
      * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      * @return list<string>
      */
@@ -248,7 +262,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      * @param  list<string>  $labels
      */
     private function generateBarChartSvg(array $datasets, array $labels, int $width, int $height): string
@@ -257,7 +271,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      * @param  list<string>  $labels
      */
     private function generateLineChartSvg(array $datasets, array $labels, int $width, int $height): string
@@ -266,7 +280,7 @@ final class ExportToSvgAction
     }
 
     /**
-     * @param  list<array<string, mixed>>  $datasets
+     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
      * @param  list<string>  $labels
      */
     private function generatePieChartSvg(array $datasets, array $labels, int $width, int $height): string

@@ -34,7 +34,19 @@ class Doughnut01Chart extends XotBaseChartWidget
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{
+     *     plugins: array{
+     *         legend: array{display: bool},
+     *         doughnutLabel: array{label: string},
+     *         datalabels: array{
+     *             display: bool,
+     *             backgroundColor: string,
+     *             borderRadius: int,
+     *             anchor: string,
+     *             font: array{color: string, weight: string}
+     *         }
+     *     }
+     * }
      */
     protected function getOptions(): array
     {

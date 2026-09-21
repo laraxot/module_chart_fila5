@@ -13,6 +13,7 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
+use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
 
@@ -46,10 +47,11 @@ class AnswersChartData extends Data
         $datasets = [];
         $answersCollection = $this->answers->toCollection();
 
-        $labelsCollection = $answersCollection
-            ->pluck('label')
-            ->map(static fn (mixed $label): string => SafeStringCastAction::cast($label))
-            ->values();
+        $labels = [];
+        foreach ($answersCollection as $answer) {
+            Assert::isInstanceOf($answer, AnswerData::class);
+            $labels[] = SafeStringCastAction::cast($answer->label);
+        }
 
         $data = $answersCollection->pluck('value')->all();
 
@@ -71,9 +73,11 @@ class AnswersChartData extends Data
                 ];
             }
         } else {
-            $avgValues = $answersCollection->pluck('avg')->values()->map(
-                static fn (mixed $item): string => number_format(SafeFloatCastAction::cast($item, 0.0), 2, '.', '')
-            )->all();
+            $avgValues = [];
+            foreach ($answersCollection as $answer) {
+                Assert::isInstanceOf($answer, AnswerData::class);
+                $avgValues[] = number_format(SafeFloatCastAction::cast($answer->avg, 0.0), 2, '.', '');
+            }
 
             $firstAvg = $answersCollection->pluck('avg')->first();
             $label = isset($firstAvg) && ! is_string($firstAvg)
@@ -82,7 +86,7 @@ class AnswersChartData extends Data
 
             $dataset = [
                 'label' => $label,
-                'data' => array_values($avgValues),
+                'data' => $avgValues,
                 'data2' => $this->normalizeSeries($answersCollection->pluck('value')->all()),
                 'borderColor' => $this->chart->getColorsRgba(0.5),
                 'backgroundColor' => $this->chart->getColorsRgba(0.5),
@@ -95,7 +99,7 @@ class AnswersChartData extends Data
             // media numerica ('Media'): stessa distinzione gia' calcolata sopra per $label,
             // non un nuovo controllo. 'offset' e' una proprieta' nativa di Chart.js sul
             // dataset, un valore in pixel per ciascun indice — nessun plugin necessario.
-            if ('doughnut' === $this->chart->getChartJsType() && 'Percentuale' === $label) {
+            if ($this->chart->getChartJsType() === 'doughnut' && $label === 'Percentuale') {
                 $dataset['offset'] = app(BuildMinoritySliceOffsetAction::class)->execute($avgValues);
             }
 
@@ -104,7 +108,7 @@ class AnswersChartData extends Data
 
         return [
             'datasets' => $datasets,
-            'labels' => $labelsCollection->values()->all(),
+            'labels' => $labels,
         ];
     }
 
@@ -117,7 +121,21 @@ class AnswersChartData extends Data
      * Tutti i numeri hanno un fondo chiaro con bordo: senza, il testo scuro sparisce sul
      * colore pieno della barra.
      *
-     * @return array<string, mixed>
+     * @return array{
+     *     anchor: string,
+     *     align: string,
+     *     offset: int,
+     *     clamp: bool,
+     *     clip: bool,
+     *     color: string,
+     *     backgroundColor: string,
+     *     borderColor: string,
+     *     borderWidth: int,
+     *     borderRadius: int,
+     *     padding: array{top: int, right: int, bottom: int, left: int},
+     *     font: array{size: int, weight: string},
+     *     display: RawJs
+     * }
      */
     private function datalabelsForSeries(int $seriesIndex, int $lastSeriesIndex): array
     {
@@ -148,7 +166,13 @@ class AnswersChartData extends Data
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{
+     *     plugins: array<string, array<string, bool|string|array<string, int>|array{}>>,
+     *     responsive: bool,
+     *     maintainAspectRatio: bool,
+     *     indexAxis?: string,
+     *     scales?: array{x: array{stacked: bool}, y: array{stacked: bool}}
+     * }
      */
     public function getChartJsOptionsArray(): array
     {
@@ -189,14 +213,21 @@ class AnswersChartData extends Data
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{
+     *     plugins: array<string, array<string, bool|string|array<string, int>|array{}>>,
+     *     responsive: bool,
+     *     maintainAspectRatio: bool,
+     *     indexAxis?: string,
+     *     scales?: array{x: array{stacked: bool}, y: array{stacked: bool}}
+     * }
      */
     public function getChartJsOptions(): array
     {
         return $this->getChartJsOptionsArray();
     }
+
     /**
-     * @param  array<mixed>  $series
+     * @param  array<int|string, mixed>  $series
      * @return array<int, int|float|string>
      */
     private function normalizeSeries(array $series): array

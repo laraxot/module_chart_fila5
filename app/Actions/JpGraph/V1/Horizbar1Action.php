@@ -9,6 +9,7 @@ use Amenadiel\JpGraph\Plot\BarPlot;
 use Modules\Chart\Actions\JpGraph\ApplyGraphStyleAction;
 use Modules\Chart\Actions\JpGraph\ApplyPlotStyleAction;
 use Modules\Chart\Actions\JpGraph\GetGraphAction;
+use Modules\Chart\Datas\AnswerData;
 use Modules\Chart\Datas\AnswersChartData;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -21,14 +22,14 @@ class Horizbar1Action
     {
         $data = $answersChartData->answers->toCollection()->pluck('avg')->all();
 
-        $labels = $answersChartData->answers->toCollection()
-            ->pluck('label')
-            ->map(function (mixed $item): string {
-                Assert::string($item);
+        $labels = [];
+        foreach ($answersChartData->answers as $answer) {
+            Assert::isInstanceOf($answer, AnswerData::class);
+            $item = $answer->label;
+            Assert::string($item);
 
-                return wordwrap($item, 25, PHP_EOL);
-            })
-            ->all();
+            $labels[] = wordwrap($item, 25, PHP_EOL);
+        }
         $chart = $answersChartData->chart;
         $graph = app(GetGraphAction::class)->execute($chart);
 

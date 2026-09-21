@@ -44,19 +44,18 @@ class ChartData extends Data
         public int $plot_value_pos = 0,
         public ?string $answer_value_no_txt = null,
         public ?string $answer_value_txt = null,
-        /** @var array<string, mixed>|null */
+        /** @var array<int|string, string>|null */
         public ?array $legend = null,
         /** @var array<int, string>|null */
         public ?array $sublabels = null,
         public ?float $avg = null,
-        /** @var array<int|string, mixed>|null */
+        /** @var array<int|string, int|float|string>|null */
         public ?array $totali = null,
         public ?string $group_by = null,
         public ?string $sort_by = null,
         /** @var array<string, mixed>|null */
         public ?array $options = null,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<int, string>

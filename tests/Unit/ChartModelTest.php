@@ -1,9 +1,7 @@
 <?php
 
 declare(strict_types=1);
-
 use Modules\Chart\Database\Factories\ChartFactory;
-use Modules\Chart\Database\Factories\MixedChartFactory;
 use Modules\Chart\Models\Chart;
 use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
@@ -84,6 +82,6 @@ test('chart getSettings throws when type is null', function (): void {
 
     assertChartThrows(
         static fn (): array => $chart->getSettings(),
-        \InvalidArgumentException::class
+        InvalidArgumentException::class
     );
 });

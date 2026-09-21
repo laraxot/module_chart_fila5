@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 <x-filament-widgets::widget id="overlook-widget" @class(['hidden' => ! $data])>
     <div class="grid gap-6 grid-cols-{{ $grid['default'] ?? 1 }} {{ isset($grid['sm']) ? 'sm:grid-cols-' . $grid['sm'] : '' }} {{ isset($grid['md']) ? 'md:grid-cols-' . $grid['md'] : '' }} {{ isset($grid['lg']) ? 'lg:grid-cols-' . $grid['lg'] : '' }} {{ isset($grid['xl']) ? 'xl:grid-cols-' . $grid['xl'] : '' }}">
         @foreach ($data as $resource)

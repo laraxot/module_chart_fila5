@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;

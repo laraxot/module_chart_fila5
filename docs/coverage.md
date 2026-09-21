@@ -4,7 +4,7 @@ module: "Chart"
 type: concept
 tags: [coverage, phpstan, mixed-type]
 created: 2026-09-04
-updated: 2026-09-04
+updated: 2026-09-21
 qmd: "coverage"
 ---
 
@@ -67,3 +67,15 @@ alternate config.
 **Git**: `Modules/Chart` is a nested repo on remote `laraxot` (branch `dev`). Baseline
 `git status --short` was clean; module lock (`bashscripts/lock/lock.sh
 laravel/Modules/Chart`) was acquired before editing and released after commit/push.
+
+## 2026-09-21 — strict_types + secondo giro mixed
+
+Story canonica: [chart-mixed-type-reduction.story.md](stories/chart-mixed-type-reduction.story.md).
+
+**strict_types**: tutti i 99 file `.php` del modulo hanno `declare(strict_types=1);` subito dopo `<?php` (riga vuota in mezzo), prima di namespace/docblock. Inclusi lang e blade.
+
+**mixed nativi in `app/`**: azzerati. Le closure `fn (mixed)` su `Collection::pluck()` sono state sostituite da `foreach` su `AnswerData` + `Assert::isInstanceOf`, perché narrowing della closure restava incompatibile con i generics di Collection senza Larastan.
+
+**mixed restanti**: solo bag Chart.js / JSON export / `Model::toArray()` / `ReflectionMethod::invoke()` — ultima spiaggia documentata. Nessun `@var` per zittire PHPStan.
+
+**Pest**: `BuildMinoritySliceOffsetActionTest` 5/5. Il resto della suite Chart fallisce su `HasTeamsContract` (modulo User, non toccato).

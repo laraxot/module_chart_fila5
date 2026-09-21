@@ -87,12 +87,15 @@ final class LineSubQuestionAction
      */
     private function extractLabels(Collection $answers): array
     {
-        return $answers
-            ->pluck('label')
-            ->filter(static fn (mixed $label): bool => is_scalar($label))
-            ->map(static fn (mixed $label): string => (string) $label)
-            ->values()
-            ->all();
+        $labels = [];
+        foreach ($answers as $answer) {
+            $label = $answer->label;
+            if (is_scalar($label)) {
+                $labels[] = (string) $label;
+            }
+        }
+
+        return $labels;
     }
 
     /**
@@ -154,6 +157,7 @@ final class LineSubQuestionAction
                 return (float) $value;
             }
         }
+
         return 0.0;
     }
 

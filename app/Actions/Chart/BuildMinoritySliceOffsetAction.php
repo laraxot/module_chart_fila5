@@ -26,15 +26,15 @@ class BuildMinoritySliceOffsetAction
     private const int MINORITY_SLICE_OFFSET_PX = 40;
 
     /**
-     * @param  array<int, mixed>  $values  gli stessi valori che finiscono in
-     *                                     'data' — l'offset deve riferirsi a
-     *                                     ciò che Chart.js disegna davvero
+     * @param  array<int, int|float|string>  $values  gli stessi valori che finiscono in
+     *                                                'data' — l'offset deve riferirsi a
+     *                                                ciò che Chart.js disegna davvero
      * @return array<int, int>
      */
     public function execute(array $values): array
     {
         $numeric = array_map(
-            static fn (mixed $value): float => SafeFloatCastAction::cast($value, 0.0),
+            static fn (int|float|string $value): float => SafeFloatCastAction::cast($value, 0.0),
             array_values($values)
         );
 

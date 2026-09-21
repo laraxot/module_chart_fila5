@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 @extends('chart::layouts.master')
 
 @section('content')

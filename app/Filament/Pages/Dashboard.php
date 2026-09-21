@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Chart\Filament\Pages;
 
-use Modules\Xot\Filament\Pages\XotBasePage;
 use Modules\Chart\Filament\Widgets\Samples as WidgetsSamples;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 class Dashboard extends XotBasePage
 {

@@ -163,7 +163,7 @@ HTML;
     /**
      * Ottieni dati dal widget
      *
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>
      */
     private function getWidgetData(ChartWidget $widget): array
     {
@@ -172,8 +172,10 @@ HTML;
             $method = $reflection->getMethod('getData');
             $method->setAccessible(true);
 
-            /** @var array<string, mixed> $data */
             $data = $method->invoke($widget);
+            if (! is_array($data)) {
+                throw new RuntimeException('Widget getData() must return an array');
+            }
 
             return $data;
         } catch (ReflectionException $e) {
@@ -191,10 +193,9 @@ HTML;
             $method = $reflection->getMethod('getType');
             $method->setAccessible(true);
 
-            /** @var string $type */
             $type = $method->invoke($widget);
 
-            return $type;
+            return is_string($type) ? $type : 'line';
         } catch (ReflectionException $e) {
             return 'line'; // Default fallback
         }
@@ -203,7 +204,7 @@ HTML;
     /**
      * Ottieni opzioni dal widget
      *
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>
      */
     private function getWidgetOptions(ChartWidget $widget): array
     {
@@ -212,8 +213,10 @@ HTML;
             $method = $reflection->getMethod('getOptions');
             $method->setAccessible(true);
 
-            /** @var array<string, mixed> $options */
             $options = $method->invoke($widget);
+            if (! is_array($options)) {
+                return [];
+            }
 
             return $options;
         } catch (ReflectionException $e) {
@@ -231,10 +234,9 @@ HTML;
             $property = $reflection->getProperty('heading');
             $property->setAccessible(true);
 
-            /** @var string|null $heading */
             $heading = $property->getValue($widget);
 
-            return $heading;
+            return is_string($heading) ? $heading : null;
         } catch (ReflectionException $e) {
             return null;
         }

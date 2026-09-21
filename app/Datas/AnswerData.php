@@ -32,11 +32,10 @@ class AnswerData extends Data
         public float|array|string $avg = 0,
         public ?string $title = null,
         public ?string $subtitle = null,
-    ) {
-    }
+    ) {}
 
     /**
-     * @param  EloquentCollection<int, Model>|array<int, mixed>  $data
+     * @param  EloquentCollection<int, Model>|array<int, Model|array<string, mixed>>  $data
      * @return DataCollection<int, static>
      */
     public static function collection(EloquentCollection|array $data): DataCollection
