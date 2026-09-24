@@ -153,3 +153,8 @@ test_charts.sql
 *.fila2
 laravel
 public_html
+
+# Artefatti audit vietati (rule: tests-auditcoverage-forbidden)
+tests/AuditCoverage/
+audit-coverage/
+.claude-audit/
