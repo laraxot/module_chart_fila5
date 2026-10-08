@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Chart\Actions\Widget;
 
 use Filament\Widgets\ChartWidget;
-use Illuminate\Support\Facades\Storage;
 use RuntimeException;
 // use Spatie\Browsershot\Browsershot; // Not installed
 use Spatie\QueueableAction\QueueableAction;
@@ -45,7 +44,6 @@ class SaveChartWidgetAsPngAction
      */
     public function execute(
         ChartWidget $widget,
-        ?string $filename = null,
         int $width = 1200,
         int $height = 600,
         string $disk = 'public',
@@ -56,19 +54,7 @@ class SaveChartWidgetAsPngAction
         Assert::greaterThan($height, 0, 'Height must be positive');
         Assert::range($quality, 1, 100, 'Quality must be between 1-100');
 
-        // 2. Genera HTML del widget
-        $html = app(RenderChartWidgetHtmlAction::class)->execute(
-            widget: $widget,
-            width: $width,
-            height: $height
-        );
-
-        // 3. Genera filename se non fornito
-        if ($filename === null) {
-            $filename = 'charts/widget-'.uniqid().'.png';
-        }
-
-        // 4. Renderizza con Browsershot e salva
+        // Browsershot is intentionally optional; fail clearly until it is installed.
         throw new RuntimeException('Browsershot dependency not installed. Please install spatie/browsershot to use this functionality.');
     }
 
@@ -82,7 +68,6 @@ class SaveChartWidgetAsPngAction
         ChartWidget $widget,
         string $cacheKey,
         int $ttl = 3600,
-        ?string $filename = null,
         int $width = 1200,
         int $height = 600,
     ): array {

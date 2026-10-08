@@ -111,7 +111,6 @@ class Bar2Action
             }
 
             $bplot[] = $tmp;
-            $i++;
         }
 
         // Create the grouped bar plot

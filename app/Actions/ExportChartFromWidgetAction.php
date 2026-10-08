@@ -45,7 +45,7 @@ class ExportChartFromWidgetAction
         $filenameBase = $filenameBase ?? 'chart-'.class_basename($widgetClass).'-'.uniqid();
 
         // Simula export (in realtà dovrebbe essere fatto via Livewire/JavaScript)
-        $base64Data = $this->simulateChartExport($widget, $chartId);
+        $base64Data = $this->simulateChartExport();
 
         // Esporta in SVG
         $svgResult = app(ExportChartToSvgAction::class)->execute(
@@ -86,7 +86,7 @@ class ExportChartFromWidgetAction
         ?string $filename = null,
         string $disk = 'public',
     ): array {
-        $base64Data = $this->simulateChartExport($widget, $chartId);
+        $base64Data = $this->simulateChartExport();
 
         return app(ExportChartToSvgAction::class)->execute(
             base64Data: $base64Data,
@@ -112,7 +112,7 @@ class ExportChartFromWidgetAction
         string $disk = 'public',
         int $quality = 95,
     ): array {
-        $base64Data = $this->simulateChartExport($widget, $chartId);
+        $base64Data = $this->simulateChartExport();
 
         return app(ExportChartToPngAction::class)->execute(
             base64Data: $base64Data,
@@ -148,7 +148,7 @@ class ExportChartFromWidgetAction
      *
      * @return string Base64 placeholder
      */
-    private function simulateChartExport(object $widget, string $chartId): string
+    private function simulateChartExport(): string
     {
         // Placeholder per implementazione reale
         // In produzione, questo dovrebbe essere fatto client-side con:

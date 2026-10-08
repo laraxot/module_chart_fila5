@@ -250,9 +250,9 @@ final class ExportToSvgAction
         }
 
         $svgParts[] = match ($chartPayload['type']) {
-            'bar' => $this->generateBarChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
-            'line' => $this->generateLineChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
-            'doughnut', 'pie' => $this->generatePieChartSvg($chartPayload['datasets'], $chartPayload['labels'], $width, $height),
+            'bar' => $this->generateBarChartSvg(),
+            'line' => $this->generateLineChartSvg(),
+            'doughnut', 'pie' => $this->generatePieChartSvg(),
             default => $this->generateGenericChartSvg($width, $height),
         };
 
@@ -261,29 +261,17 @@ final class ExportToSvgAction
         return implode('', $svgParts);
     }
 
-    /**
-     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
-     * @param  list<string>  $labels
-     */
-    private function generateBarChartSvg(array $datasets, array $labels, int $width, int $height): string
+    private function generateBarChartSvg(): string
     {
         return '';
     }
 
-    /**
-     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
-     * @param  list<string>  $labels
-     */
-    private function generateLineChartSvg(array $datasets, array $labels, int $width, int $height): string
+    private function generateLineChartSvg(): string
     {
         return '';
     }
 
-    /**
-     * @param  list<array{label: string|null, data: list<float>, backgroundColor: list<string>, borderColor: list<string>}>  $datasets
-     * @param  list<string>  $labels
-     */
-    private function generatePieChartSvg(array $datasets, array $labels, int $width, int $height): string
+    private function generatePieChartSvg(): string
     {
         return '';
     }
