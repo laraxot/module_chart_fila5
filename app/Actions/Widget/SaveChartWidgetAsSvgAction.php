@@ -58,7 +58,6 @@ class SaveChartWidgetAsSvgAction
         // 2. Prima genera PNG (necessario per embedding in SVG)
         $pngResult = app(SaveChartWidgetAsPngAction::class)->execute(
             widget: $widget,
-            filename: 'temp-chart-'.uniqid().'.png',
             width: $width,
             height: $height,
             disk: 'local' // Temporary storage

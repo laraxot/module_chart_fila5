@@ -35,7 +35,6 @@ class SaveChartWidgetAsPngAction
      * Esegue l'export del widget Chart.js in PNG
      *
      * @param  ChartWidget  $widget  Widget Filament da esportare
-     * @param  string|null  $filename  Nome file (opzionale, auto-generato se null)
      * @param  int  $width  Larghezza immagine in pixel
      * @param  int  $height  Altezza immagine in pixel
      * @param  string  $disk  Disco storage Laravel
