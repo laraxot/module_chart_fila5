@@ -6,8 +6,9 @@
 ## 🎯 Lettura Essenziale
 
 1. [README.md](./README.md) - Panoramica e Quick Start.
-2. [roadmap/README.md](./roadmap/README.md) - Piano evolutivo.
-3. [philosophy.md](./philosophy.md) - Principi di design.
+2. [Actions e qualità statica](./actions/README.md) - Mappa delle Action e verifica PHPStan corrente.
+3. [roadmap/README.md](./roadmap/README.md) - Piano evolutivo.
+4. [core/filosofia.md](./core/filosofia.md) - Principi di design.
 
 ## 🏗️ Architettura
 
@@ -21,6 +22,13 @@
 
 - [coverage.md](./coverage.md)
 - [phpstan/](./phpstan/)
+- [Actions e qualità statica](./actions/README.md) - Nota canonica per le Actions e la verifica PHPStan.
+
+## 🧩 Actions e rendering
+
+- [LineSubQuestionAction](./actions/line-subquestion-action.md)
+- [Integrazione JpGraph](./tasks/jpgraph-integration.md)
+- [PHPStan corrente per le Action](./actions/README.md#verifica-phpstan)
 
 ## 🔗 Moduli Correlati
 

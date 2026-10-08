@@ -1,8 +1,14 @@
 # Analisi PHPStan per il modulo Chart
 
-Data: Wed Jan 8 10:42:39 CEST 2025
+> Per le regole correnti sulle Actions Chart e JpGraph consultare la [nota canonica Actions e qualità statica](../actions/README.md). Questo file conserva anche materiale storico sui livelli e sugli errori ricorrenti.
 
-## Riassunto
+> **Stato corrente (2026-10-08):** `./vendor/bin/phpstan analyse Modules/Chart`
+> restituisce **OK — No errors**. La mappa canonica delle Action è in
+> [actions/README.md](../actions/README.md).
+
+Data documento storico: Wed Jan 8 10:42:39 CEST 2025
+
+## Riassunto storico
 
 | Livello | Stato | Errori |
 |---------|-------|--------|
@@ -17,16 +23,14 @@ Questa cartella contiene l'analisi statica del codice eseguita con PHPStan per i
 
 ## File di Configurazione
 
-- `phpstan.neon.dist`: Configurazione principale di PHPStan
-- `phpstan-baseline.neon`: Baseline degli errori noti
-- `analysis.json`: Risultati dell'analisi corrente
+- [`phpstan.neon`](../../../../phpstan.neon): Configurazione principale del progetto
+- [Verifica corrente delle Action](../actions/README.md#verifica-phpstan)
 
 ## Come Eseguire l'Analisi
 
 ```bash
-cd laravel/Modules/Chart
-composer install
-vendor/bin/phpstan analyse --error-format=json > docs/phpstan/analysis.json
+cd laravel
+./vendor/bin/phpstan analyse Modules/Chart --error-format=table
 ```
 
 ## Correzioni Recenti
@@ -45,57 +49,12 @@ vendor/bin/phpstan analyse --error-format=json > docs/phpstan/analysis.json
 
 **File**: `app/Models/Chart.php` - metodo `getSettings()`
 
-## Livelli di Analisi
+## Livello corrente
 
-### [Livello 0](./level_0.md) - Base
-- Controlli di base
-- Errori di sintassi
-- Chiamate a funzioni inesistenti
-
-### [Livello 1](./level_1.md) - Tipi Base
-- Type hints base
-- Return types
-- Parametri obbligatori
-
-### [Livello 2](./level_2.md) - Controlli Avanzati
-- Controlli di tipo più stretti
-- Null checks
-- Array shapes
-
-### [Livello 3](./level_3.md) - Proprietà
-- Proprietà di classe
-- Proprietà dinamiche
-- Proprietà statiche
-
-### [Livello 4](./level_4.md) - Type Inference
-- Type inference base
-- Operatori
-- Costrutti di controllo
-
-### [Livello 5](./level_5.md) - Types
-- Controlli di tipo completi
-- Generics
-- Template types
-
-### [Livello 6](./level_6.md) - Signatures
-- Signatures di metodi
-- Ereditarietà
-- Interfacce
-
-### [Livello 7](./level_7.md) - Union Types
-- Union types
-- Intersection types
-- Template type variance
-
-### [Livello 8](./level_8.md) - Magic
-- Magic methods
-- Magic properties
-- Dynamic calls
-
-### [Livello 9](./level_9.md) - Strict
-- Strict types
-- Strict properties
-- Strict methods
+Il progetto usa il livello massimo tramite la configurazione condivisa in
+[`laravel/phpstan.neon`](../../../../phpstan.neon). La verifica eseguibile e
+la mappa delle Action sono mantenute in
+[actions/README.md](../actions/README.md#verifica-phpstan).
 
 ## Configurazione
 
@@ -213,28 +172,24 @@ php artisan phpstan:fix app/Models/Chart.php
 ```
 
 ### Fix Documentati
-- [Chart getSettings() Array Types](./chart-getsettings-fix.md) - Risoluzione errori array type specifications (2025-01-06)
+- [Actions e qualità statica](../actions/README.md) - Nota canonica sulle Actions e sull’integrazione JpGraph.
 
 ## Collegamenti Bidirezionali
 
 ### Collegamenti ad Altri Moduli
-- [PHPStan User](../../User/docs/phpstan/README.md)
-- [PHPStan Activity](../../Activity/docs/phpstan/README.md)
-- [PHPStan Xot](../../Xot/docs/phpstan/README.md)
+- [PHPStan Xot](../../../Xot/docs/phpstan/README.md)
+
+> I moduli User e Activity non espongono una pagina PHPStan nel checkout
+> corrente; non vengono collegati per evitare riferimenti non risolvibili.
 
 ### Collegamenti Interni
 - [README Principale](../README.md)
-- [Implementazione](../implementation.md)
-- [Testing](../testing.md)
-- [Performance](../performance/README.md)
-
-## Collegamenti tra versioni di README.md
-* [README.md](../../../../../bashscripts/docs/README.md)
-* [README.md](../../../../../bashscripts/docs/it/README.md)
-* [README.md](../../../../../docs/laravel-app/phpstan/README.md)
+- [Implementazione](../implementazione/README.md)
+- [Testing](../implementazione/testing/README.md)
+- [Performance](../performance/chart-bottlenecks.md)
 
 ## Collegamenti
 
 - [README Chart](../README.md)
-- [Documentazione <nome progetto>](/docs/README.md)
-- [Regole PHPStan Globali](/docs/phpstan_usage.md)
+- Le regole PHPStan globali appartengono alla documentazione del repository e
+  non sono duplicate nella documentazione del modulo.

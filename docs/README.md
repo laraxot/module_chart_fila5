@@ -7,7 +7,8 @@ status: active
 repository: https://github.com/laraxot/module_chart_fila5
 related:
   - ./00-index.md
-  - ./index.md
+  - ./actions/README.md
+  - ./phpstan/README.md
   - ../../../../docs/wiki/audits/docs-redundancy-audit.md
 issues: https://github.com/laraxot/module_chart_fila5/issues
 discussions: https://github.com/laraxot/module_chart_fila5/discussions
@@ -46,34 +47,25 @@ Utilizzato per la generazione server-side di grafici statici ad alta fedeltà.
 
 ### 📦 **Uso delle Actions**
 ```php
-use Modules\Chart\Actions\GetChartDataAction;
+use Modules\Chart\Actions\Chart\GetTypeOptions;
 
-$chartData = app(GetChartDataAction::class)->execute($model, 'bar');
+$chartTypes = app(GetTypeOptions::class)->execute();
 ```
 
-### ⚙️ **Integrazione Filament Widget**
-```php
-class MyChartWidget extends XotBaseChartWidget {
-    protected static string $type = 'bar';
-    
-    protected function getData(): array {
-        return app(GetChartDataAction::class)->execute($this->record, 'bar')->toArray();
-    }
-}
-```
+La mappa delle Action e il comando di verifica sono raccolti in
+[Actions e qualità statica](./actions/README.md).
 
 ## 📚 **Documentazione Centrale**
 
-- 📖 **[Indice Documentazione](./00-index.md)** - Mappa per navigare tra i 360+ documenti originali.
-- 🗺️ **[Roadmap 2026](./roadmap.md)** - Piani per AI-Driven reports e nuovi tipi di grafici.
-- 🎨 **[Color Palette System](./color-palette.md)** - Guida alla personalizzazione grafica.
-- 📄 **[JpGraph Integration](./jpgraph-complete-guide.md)** - Dettagli tecnici per la generazione PDF.
+- 📖 **[Indice Documentazione](./00-index.md)** - Mappa principale della documentazione.
+- 🗺️ **[Roadmap 2026](./roadmap/README.md)** - Piani per AI-Driven reports e nuovi tipi di grafici.
+- 📄 **[JpGraph Integration](./tasks/jpgraph-integration.md)** - Dettagli tecnici per la generazione PDF.
 
 ---
 
-**🔄 Ultimo aggiornamento**: 31 Gennaio 2026
+**🔄 Ultimo aggiornamento**: 8 Ottobre 2026
 **📦 Versione**: 1.2.0
-**✅ PHPStan level 10**: Compliance verificata
+**✅ PHPStan**: `./vendor/bin/phpstan analyse Modules/Chart` senza errori al 8 Ottobre 2026
 
 ## AI Workflows
-- [AI Methodologies](./ai-methodologies.md)
+- [AI Methodologies](./wiki/bmad-method.md)
