@@ -1,5 +1,10 @@
 # PHPStan Level 10 Analysis - Chart Module
 
+> **Nota di stato (2026-10-08):** questo report conserva l’analisi storica
+> degli errori rilevati nel 2025. La verifica corrente del modulo è documentata
+> in [../actions/README.md](../actions/README.md#verifica-phpstan) e restituisce
+> **OK — No errors**.
+
 **Date**: 2025-11-11
 **PHPStan Version**: 2.1.31
 **Analysis Level**: 10 (Maximum)
