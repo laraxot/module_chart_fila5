@@ -23,6 +23,7 @@
 - [coverage.md](./coverage.md)
 - [phpstan/](./phpstan/)
 - [Actions e qualità statica](./actions/README.md) - Nota canonica per le Actions e la verifica PHPStan.
+- [Form del grafico e getFormSchemaOld final](./stories/getformschemaold-final-chart-resources.story.md) - Il form vive solo in `ChartForm`; campi spostati dallo schema legacy e tipi veri di `GetTypeOptions`.
 
 ## 🧩 Actions e rendering
 
