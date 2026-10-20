@@ -45,8 +45,8 @@ Sistema avanzato per la validazione automatica dei documenti caricati sulla piat
 
 ## Collegamenti Utili
 - [Caricamento Documenti](./upload_documenti.md)
-- [Storage Sicuro](./storage_sicuro.md)
-- [Sistema OCR](./ocr_automatico.md)
+- [Storage Sicuro](./storage-sicuro.md)
+- [Sistema OCR](./ocr-automatico.md)
 
 ---
 [⬅️ Torna alla panoramica](../stato_avanzamento_lavori_2025_06_05.md)

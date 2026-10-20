@@ -566,8 +566,8 @@ class AppointmentConfirmationAnalytics
 
 ### Documentazione Correlata
 - [📄 Sistema Notifiche](./README.md) ← Torna alla panoramica
-- [📄 Email Conferma Registrazione](./email_conferma_registrazione.md)
-- [📄 Promemoria Appuntamento](./promemoria_appuntamento.md)
+- [📄 Email Conferma Registrazione](./email-conferma-registrazione.md)
+- [📄 Promemoria Appuntamento](./promemoria-appuntamento.md)
 
 ### Documentazione Principale
 - [📄 Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)

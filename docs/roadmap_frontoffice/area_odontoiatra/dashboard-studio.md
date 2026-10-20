@@ -769,10 +769,10 @@ class DashboardAlertService
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Registrazione Studi](./registrazione_studi.md)
-- [Gestione Appuntamenti](./gestione_appuntamenti.md)
+- [Registrazione Studi](./registrazione-studi.md)
+- [Gestione Appuntamenti](./gestione-appuntamenti.md)
 - [Area Odontoiatra](../04_area_odontoiatra.md)
-- [Calendario Disponibilità](../prenotazione_visite/calendario_disponibilita.md)
+- [Calendario Disponibilità](../prenotazione_visite/calendario-disponibilita.md)
 
 ### File Tecnici
 - `Modules/<nome progetto>/Filament/Pages/StudioDashboardPage.php`

@@ -56,8 +56,8 @@ Interfaccia di pianificazione e gestione degli appuntamenti per lo studio odonto
 - [ ] Personalizzazione avanzata (pianificato)
 
 ## Collegamenti Utili
-- [Gestione Appuntamenti](./gestione_appuntamenti.md)
-- [Dashboard Studio](./dashboard_studio.md)
+- [Gestione Appuntamenti](./gestione-appuntamenti.md)
+- [Dashboard Studio](./dashboard-studio.md)
 - [Guida all'Utilizzo](./guida_calendario.md)
 
 ---

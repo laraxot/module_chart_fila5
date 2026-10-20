@@ -10,7 +10,7 @@ In il progetto, utilizziamo i componenti Blade di Filament PHP come standard per
 4. **Performance**: I componenti sono ottimizzati per le performance
 
 ## Collegamenti correlati
-- [Regole per l'uso dei componenti Filament](../rules/filament-components.mdc)
+- [Regole per l'uso dei componenti Filament](../../rules/filament-components.mdc)
 - [Documentazione Filament nel CMS](../../laravel/Modules/Cms/docs/filament/componenti-blade.md)
 - [Convenzioni namespace Filament](../../laravel/Modules/Cms/docs/convenzioni-namespace-filament.md)
 - [Personalizzazioni avanzate Filament](../../laravel/Modules/Cms/docs/filament-personalizzazioni-avanzate.md)

@@ -52,7 +52,7 @@ namespace Modules\Patient\Models;
 class Doctor extends User { /* ... */ }
 ```
 
-Per approfondire: [Best Practices](../best-practices.md)
+Per approfondire: [Best Practices](../tecnico/filament/best-practices.md)
 
 ### File PHP principali
 - **Widget Filament**: [RegistrationWidget.php](../../laravel/Modules/User/app/Filament/Widgets/RegistrationWidget.php)
@@ -189,7 +189,7 @@ protected static function getStepFromToken(string $token): int
 ### Collegamenti
 - [Esempio implementazione Filament Wizard](../../laravel/Modules/Patient/app/Filament/Resources/DoctorResource.php)
 - [Documentazione Laravel Mutators/Casts](https://laravel.com/docs/12.x/eloquent-mutators)
-- [Best Practices](../best-practices.md)
+- [Best Practices](../tecnico/filament/best-practices.md)
 
 ## Invio della mail con il link per continuare la registrazione
 

@@ -81,8 +81,8 @@ return [
 
 ## Collegamenti
 - [Modulo Xot](../laravel/Modules/Xot/README.md)
-- [Regole Progetto](./project-rules.md)
-- [Best Practices](./best-practices.md)
+- [Regole Progetto](../rules/project-rules.md)
+- [Best Practices](../tecnico/filament/best-practices.md)
 
 ## Note
 - Seguire sempre questa struttura

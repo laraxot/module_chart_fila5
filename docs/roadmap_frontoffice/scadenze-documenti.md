@@ -57,9 +57,9 @@ Sistema di tracciamento e notifica per la gestione delle scadenze documentali.
 - [ ] Integrazione avanzata (pianificato)
 
 ## Collegamenti Utili
-- [Gestione Documenti](./gestione_documenti.md)
+- [Gestione Documenti](./gestione-documenti.md)
 - [Validazione Documenti](./validazione_documenti.md)
-- [Archiviazione Sicura](./archiviazione_documenti.md)
+- [Archiviazione Sicura](./archiviazione-documenti.md)
 
 ---
 [⬅️ Torna alla panoramica](./stato_avanzamento_lavori_2025_06_05.md)

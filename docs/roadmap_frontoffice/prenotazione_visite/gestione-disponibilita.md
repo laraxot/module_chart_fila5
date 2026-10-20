@@ -772,9 +772,9 @@ class PredictiveSchedulingService
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Calendario Disponibilità](./calendario_disponibilita.md)
-- [Lista Studi](./lista_studi.md)
-- [Area Odontoiatra](../area_odontoiatra/dashboard_studio.md)
+- [Calendario Disponibilità](./calendario-disponibilita.md)
+- [Lista Studi](./lista-studi.md)
+- [Area Odontoiatra](../area_odontoiatra/dashboard-studio.md)
 - [Sistema Prenotazione](../03_prenotazione_visite.md)
 
 ### File Tecnici

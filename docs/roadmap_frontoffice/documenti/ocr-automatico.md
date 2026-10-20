@@ -64,7 +64,7 @@ Sistema avanzato di riconoscimento ottico dei caratteri (OCR) per l'estrazione a
 ## Collegamenti Utili
 - [Caricamento Documenti](./upload_documenti.md)
 - [Validazione Documenti](./validazione_documenti.md)
-- [Storage Sicuro](./storage_sicuro.md)
+- [Storage Sicuro](./storage-sicuro.md)
 
 ---
 [⬅️ Torna alla panoramica](../stato_avanzamento_lavori_2025_06_05.md)

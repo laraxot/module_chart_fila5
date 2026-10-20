@@ -141,7 +141,7 @@ Schema::table('users', function (Blueprint $table) {
 
 ### Documentazione Moduli
 - [Struttura Moduli](../struttura-moduli.md)
-- [Architettura Folio+Volt](../architettura-folio-volt.md)
+- [Architettura Folio+Volt](../core/architettura-folio-volt.md)
 - [Modulo Xot - Struttura](../../laravel/Modules/Xot/docs/MODULE_STRUCTURE.md)
 - [Regole Traduzioni](../../laravel/Modules/Xot/docs/TRANSLATIONS.md)
 

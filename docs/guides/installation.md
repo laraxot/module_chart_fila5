@@ -278,7 +278,7 @@ sudo systemctl status php8.2-fpm
 
 ## 🔗 Prossimi Passi
 
-1. [⚙️ Configurazione](configuration.md) - Configurazione dettagliata
+1. [⚙️ Configurazione](../tecnico/localization/configuration.md) - Configurazione dettagliata
 2. [🚀 Deployment](deployment.md) - Deploy in produzione
 3. [📏 Coding Standards](../development/coding-standards.md) - Standard di sviluppo
 4. [🧪 Testing](../development/testing.md) - Setup testing

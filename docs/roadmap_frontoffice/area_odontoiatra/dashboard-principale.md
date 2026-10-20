@@ -214,8 +214,8 @@ Cache::remember("dashboard_overview_{$dentistId}", 300, function () {
 ← **Ritorna a**: [Area Odontoiatra](../../stato_avanzamento_lavori_2025_06_05.md#4-area-odontoiatra-55) | [Stato Avanzamento](../../stato_avanzamento_lavori_2025_06_05.md)
 
 ### File Correlati
-- [Calendario Appuntamenti](./calendario_appuntamenti.md)
-- [Gestione Orari](./gestione_orari.md)
+- [Calendario Appuntamenti](./calendario-appuntamenti.md)
+- [Gestione Orari](./gestione-orari.md)
 - [Sistema Notifiche](../notifiche/README.md)
 - [Dashboard Generale](../04_area_odontoiatra.md)
 

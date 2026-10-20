@@ -146,7 +146,7 @@ User Registration Flow:
 - [Template Module README](../templates/module-readme.md)
 - [Development Standards](../development/coding-standards.md)
 - [Testing Guidelines](../development/testing.md)
-- [Architecture Principles](../core/architettura_tecnologica.md)
+- [Architecture Principles](../core/architettura-tecnologica.md)
 
 ---
 

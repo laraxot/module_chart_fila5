@@ -88,7 +88,7 @@ php artisan serve
 ## Prossimi Passi
 
 Dopo l'installazione iniziale, consultare:
-- [Gestione Migrazioni](migrazione-struttura.md) per la gestione delle migrazioni nei moduli
+- [Gestione Migrazioni](struttura/migrazione-struttura.md) per la gestione delle migrazioni nei moduli
 - [Installazione Moduli](installazione.md) per l'aggiunta dei moduli necessari
 - [Configurazione](configurazione.md) per le impostazioni specifiche del progetto 
 ## Collegamenti tra versioni di installazione-iniziale.md

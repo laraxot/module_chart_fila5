@@ -52,7 +52,7 @@ Implementazione del sistema di autenticazione per l'accesso sicuro alla piattafo
 - [Registrazione Pazienti](./registrazione_pazienti.md)
 - [Recupero Password](./recupero_password.md)
 - [Verifica Email](./verifica_email.md)
-- [2FA](./autenticazione_2fa.md)
+- [2FA](./autenticazione-2fa.md)
 
 ---
 [⬅️ Torna alla panoramica](../stato_avanzamento_lavori_2025_06_05.md)

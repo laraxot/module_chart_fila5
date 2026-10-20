@@ -546,7 +546,7 @@ class PendingSensitiveChangesWidget extends Widget
 
 ### Documenti Correlati
 - [Gestione Profilo](./gestione_profilo.md)
-- [Upload Documenti](./documenti/upload_documenti.md)
+- [Upload Documenti](./documenti/upload-documenti.md)
 - [Sistema Notifiche](./notifiche/README.md)
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 

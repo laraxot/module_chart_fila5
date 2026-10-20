@@ -18,13 +18,13 @@
 
 ### In Corso 🚧
 - [ ] Autenticazione a due fattori
-  - [Specifiche tecniche](./2fa_specifiche.md)
-  - [Piano di implementazione](./2fa_piano.md)
+  - [Specifiche tecniche](./2fa-specifiche.md)
+  - [Piano di implementazione](./2fa-piano.md)
 
 ### Pianificati 📅
 - [ ] Integrazione con SPID/CIE
-  - [Requisiti SPID/CIE](./spid_cie_requisiti.md)
-  - [Piano di integrazione](./spid_cie_piano.md)
+  - [Requisiti SPID/CIE](./spid-cie-requisiti.md)
+  - [Piano di integrazione](./spid-cie-piano.md)
 
 ## Documentazione Correlata
 - [Panoramica Generale](../stato_avanzamento_lavori_2025_06_05.md#panoramica-generale)

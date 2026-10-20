@@ -75,7 +75,7 @@ Seguire queste convenzioni garantisce:
 - [Indice Documentazione](../INDEX.md) - Indice principale della documentazione
 - [README Principale](../README.md) - Panoramica del progetto
 - [Regole di Documentazione](../regole-documentazione.md) - Linee guida generali per la documentazione
-- [Convenzioni Generali](../conventions.md) - Altre convenzioni e standard del progetto
+- [Convenzioni Generali](../tecnico/filament/conventions.md) - Altre convenzioni e standard del progetto
 
 ## Vedi Anche
 - [Xot Documentazione](../../laravel/Modules/Xot/docs/README.md) - Linee guida generali del modulo Xot

@@ -110,7 +110,7 @@ Performance: Lighthouse CI
 **📄 Documento Principale**: [Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)
 
 **🔗 File Correlati**:
-- [Fase 1: Base](../fase_1_base.md)
+- [Fase 1: Base](../fase-1-base.md)
 - [Architettura Base](./architettura_base.md)
 - [UI/UX di Base](./ui_ux_base.md)
 

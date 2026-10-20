@@ -76,7 +76,7 @@ Piano dettagliato per l'integrazione dei sistemi di autenticazione SPID e CIE ne
 - Soddisfazione utente > 4/5
 
 ## Documentazione Correlata
-- [Requisiti SPID/CIE](./spid_cie_requisiti.md)
+- [Requisiti SPID/CIE](./spid-cie-requisiti.md)
 - [Panoramica Autenticazione](./README.md)
 - [Linee Guida AGID](https://www.agid.gov.it/it/piattaforme/spid)
 

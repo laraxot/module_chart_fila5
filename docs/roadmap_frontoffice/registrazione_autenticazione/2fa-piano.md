@@ -70,7 +70,7 @@ Piano dettagliato per l'implementazione dell'autenticazione a due fattori nel po
 - Tasso di fallimento autenticazione < 1%
 
 ## Documentazione Correlata
-- [Specifiche Tecniche 2FA](./2fa_specifiche.md)
+- [Specifiche Tecniche 2FA](./2fa-specifiche.md)
 - [Panoramica Autenticazione](./README.md)
 - [Linee Guida Sicurezza](../sicurezza/2fa_security.md)
 

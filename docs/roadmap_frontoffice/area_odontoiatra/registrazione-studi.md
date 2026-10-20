@@ -835,8 +835,8 @@ class RegistrationAnalytics
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Dashboard Studio](./dashboard_studio.md)
-- [Gestione Appuntamenti](./gestione_appuntamenti.md)
+- [Dashboard Studio](./dashboard-studio.md)
+- [Gestione Appuntamenti](./gestione-appuntamenti.md)
 - [Area Odontoiatra](../04_area_odontoiatra.md)
 - [Sistema Notifiche](../notifiche/README.md)
 

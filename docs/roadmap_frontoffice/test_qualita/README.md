@@ -4,7 +4,7 @@ Questa sezione documenta le procedure e gli standard per garantire la qualità d
 
 ## Indice
 
-1. [Test Automatizzati](./test_automatizzati.md)
+1. [Test Automatizzati](./test-automatizzati.md)
    - Unit Test
    - Test di Integrazione
    - Test End-to-End

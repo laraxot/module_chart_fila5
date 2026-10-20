@@ -7,14 +7,14 @@ Il Portale Salute Orale è un'applicazione web progettata per facilitare la pren
 ## Flussi Principali
 
 ### 1. Homepage
-![Homepage Flow](./images/homepage-flow.svg)
+![Homepage Flow](../images/homepage-flow.svg)
 
 La pagina principale offre due percorsi principali:
 - Registrazione Paziente
 - Registrazione Dentista
 
 ### 2. Registrazione Paziente
-![Patient Registration](./images/patient-registration.svg)
+![Patient Registration](../images/patient-registration.svg)
 
 Passaggi della registrazione:
 1. Inserimento dati anagrafici
@@ -23,7 +23,7 @@ Passaggi della registrazione:
 4. Accettazione privacy
 
 ### 3. Registrazione Dentista
-![Dentist Registration](./images/dentist-registration.svg)
+![Dentist Registration](../images/dentist-registration.svg)
 
 Passaggi della registrazione:
 1. Verifica identità
@@ -32,7 +32,7 @@ Passaggi della registrazione:
 4. Definizione orari disponibilità
 
 ### 4. Prenotazione Appuntamento
-![Appointment Booking](./images/appointment-booking.svg)
+![Appointment Booking](../images/appointment-booking.svg)
 
 Processo di prenotazione:
 1. Ricerca dentista
@@ -41,7 +41,7 @@ Processo di prenotazione:
 4. Conferma finale
 
 ### 5. Gestione Back Office
-![Back Office Management](./images/back-office-management.svg)
+![Back Office Management](../images/back-office-management.svg)
 
 Funzioni principali:
 1. Conferma registrazioni

@@ -45,8 +45,8 @@ La dashboard principale che offre un riepilogo delle informazioni e delle azioni
 - [ ] Widget personalizzabili (pianificato)
 
 ## Collegamenti Utili
-- [Prenotazione Visite](../prenotazione_visite/ricerca_studi.md)
-- [Gestione Documenti](./gestione_documenti.md)
+- [Prenotazione Visite](prenotazione_visite/ricerca-studi.md)
+- [Gestione Documenti](./gestione-documenti.md)
 - [Impostazioni Profilo](./gestione_profilo.md)
 
 ---

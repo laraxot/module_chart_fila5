@@ -73,8 +73,8 @@ La strategia contenuti di <nome progetto> riflette la missione sociale del proge
 ## Cross-References e Collegamenti
 
 - [UX Guidelines](ux-guidelines.md)
-- [Performance Standards](performance.md)
+- [Performance Standards](../standards/performance.md)
 - [Accessibility Requirements](accessibility.md)
-- [Analytics Setup](analytics.md)
+- [Analytics Setup](../roadmap_frontoffice/analytics.md)
 
 *Ultimo aggiornamento: 2025-01-15* 

@@ -73,10 +73,10 @@ bashscripts/
 
 ## Collegamenti Bidirezionali
 - [Struttura Temi](../laravel/Modules/Theme/docs/theme-structure.md)
-- [Struttura Moduli](architecture/modules-structure.md)
+- [Struttura Moduli](modules-structure.md)
 - [Standard Directory](standards/directory-standards.md)
 
 ## Vedi Anche
-- [Convenzioni di Naming](naming-conventions.md)
+- [Convenzioni di Naming](../rules/naming-conventions.md)
 - [Best Practices](standards/best-practices.md)
 - [Guida Sviluppo](development-guide.md) 

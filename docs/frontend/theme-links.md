@@ -68,7 +68,7 @@ Per maggiori dettagli, consultare la [documentazione completa sulla compilazione
 - [Configurazione FullCalendar](../../laravel/Modules/<nome progetto>/docs/fullcalendar_configuration.md)
 
 ### Compilazione e Build
-- [Compilazione Temi](./compilazione_temi.md)
+- [Compilazione Temi](./compilazione-temi.md)
 - [Frontend Development](./frontend-development.md)
 
 ## Convenzioni

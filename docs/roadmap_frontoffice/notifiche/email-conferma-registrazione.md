@@ -438,8 +438,8 @@ class EmailAnalytics
 
 ### Documentazione Correlata
 - [📄 Sistema Notifiche](./README.md) ← Torna alla panoramica
-- [📄 Conferma Appuntamento](./conferma_appuntamento.md)
-- [📄 Promemoria Appuntamento](./promemoria_appuntamento.md)
+- [📄 Conferma Appuntamento](./conferma-appuntamento.md)
+- [📄 Promemoria Appuntamento](./promemoria-appuntamento.md)
 
 ### Documentazione Principale  
 - [📄 Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)

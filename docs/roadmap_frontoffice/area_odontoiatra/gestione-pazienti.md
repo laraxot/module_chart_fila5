@@ -49,8 +49,8 @@ Sistema completo per la gestione delle cartelle cliniche e delle informazioni de
 - [ ] Integrazione completa (pianificato)
 
 ## Collegamenti Utili
-- [Dashboard Studio](./dashboard_studio.md)
-- [Gestione Appuntamenti](./gestione_appuntamenti.md)
+- [Dashboard Studio](./dashboard-studio.md)
+- [Gestione Appuntamenti](./gestione-appuntamenti.md)
 - [Documentazione](./documentazione.md)
 
 ---

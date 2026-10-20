@@ -101,4 +101,4 @@ Block::register('user-dropdown', [
 ## Collegamenti
 - [Documentazione Tema](../laravel/Themes/One/docs/components/blocks/navigation/user-dropdown.md)
 - [Documentazione CMS](../laravel/Modules/Cms/docs/components/blocks/navigation/user-dropdown.md)
-- [Best Practices](../best-practices.md) 
+- [Best Practices](../../../tecnico/filament/best-practices.md) 

@@ -13,7 +13,7 @@ I conflitti git devono essere risolti seguendo un ordine di priorità basato sul
 
 ### 2. Coerenza con le Convenzioni del Progetto
 Tutte le risoluzioni dei conflitti devono seguire le convenzioni stabilite nel progetto:
-- Rispettare le [convenzioni di naming](file_naming_conventions.md)
+- Rispettare le [convenzioni di naming](file-naming-conventions.md)
 - Mantenere la struttura dei file e directory coerente con il resto del progetto
 - Seguire gli standard di codice definiti (PSR-12, ecc.)
 
@@ -77,6 +77,6 @@ La risoluzione dei conflitti deve essere effettuata con un approccio conservativ
 ## Collegamenti Bidirezionali
 
 - [Documentazione Principale](../README.md) - Indice della documentazione
-- [Convenzioni di Naming](file_naming_conventions.md) - Standard per la nomenclatura dei file
+- [Convenzioni di Naming](file-naming-conventions.md) - Standard per la nomenclatura dei file
 - [Modulo Chart - Gestione Conflitti Git](../../laravel/Modules/Chart/docs/git-conflicts.md) - Esempio di gestione conflitti
 - [Modulo Chart - PHPStan Usage](../../laravel/Modules/Chart/docs/phpstan-usage.md) - Convenzioni per la documentazione PHPStan

@@ -8,7 +8,7 @@ Questo documento descrive l'architettura tecnica del sistema, con particolare at
 ### Sistema di Icone Blade
 Il sistema di icone Blade è un componente fondamentale che permette una gestione modulare e flessibile delle icone SVG. Per una comprensione completa, consultare:
 
-1. [Documentazione del Modulo Xot](xot-module-documentation.md)
+1. [Documentazione del Modulo Xot](../modules/xot-module-documentation.md)
    - Panoramica generale del sistema
    - Struttura e organizzazione
    - Best practices
@@ -74,7 +74,7 @@ Il sistema si integra con Laravel attraverso:
 
 ## Risorse Aggiuntive
 - [Panoramica delle Blade Icons](laravel/Modules/Xot/docs/blade-icons-overview.md)
-- [Documentazione del Modulo Xot](xot-module-documentation.md)
+- [Documentazione del Modulo Xot](../modules/xot-module-documentation.md)
 - [Implementazione delle Icone](laravel/Modules/Xot/docs/custom-icons-implementation.md)
 
 ## Conclusione

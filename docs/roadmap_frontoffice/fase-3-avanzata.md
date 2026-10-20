@@ -523,8 +523,8 @@ Exit Opportunities: IPO readiness by 2028
 **📄 Documento Principale**: [Stato Avanzamento Lavori](../stato_avanzamento_lavori_2025_06_05.md)
 
 **🔗 File Correlati**:
-- [Fase 1: Base](./fase_1_base.md)
-- [Fase 2: Core](./fase_2_core.md)
+- [Fase 1: Base](./fase-1-base.md)
+- [Fase 2: Core](./fase-2-core.md)
 - [Telemedicina](./telemedicina.md)
 - [Mobile App](./mobile_app.md)
 - [API Partner](./api_partner.md)

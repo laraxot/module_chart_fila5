@@ -178,6 +178,6 @@
 **🔗 File Correlati**:
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 - [Prenotazione Visite](./03_prenotazione_visite.md)
-- [Sistema Notifiche](./sistema_notifiche.md)
+- [Sistema Notifiche](./sistema-notifiche.md)
 
 *Ultimo aggiornamento: Dicembre 2024*

@@ -480,7 +480,7 @@ class MonthlyAppointmentReportJob implements ShouldQueue
 - [Sistema Prenotazione](./03_prenotazione_visite.md)
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 - [Sistema Notifiche](./notifiche/README.md)
-- [Dashboard Paziente](./dashboard_paziente.md)
+- [Dashboard Paziente](./dashboard-paziente.md)
 
 ### File Tecnici
 - `Modules/<nome progetto>/Filament/Resources/AppointmentHistoryResource.php`

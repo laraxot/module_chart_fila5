@@ -1,6 +1,6 @@
 # Naming Conventions
 
-> **Nota**: Questo documento è correlato a [Convenzioni](conventions.md) e [Standard Codice](standard-codice.md). Per una panoramica completa, consulta tutti i documenti correlati.
+> **Nota**: Questo documento è correlato a [Convenzioni](../tecnico/filament/conventions.md) e [Standard Codice](standard-codice.md). Per una panoramica completa, consulta tutti i documenti correlati.
 
 # Convenzioni di Naming
 

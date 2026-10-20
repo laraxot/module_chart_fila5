@@ -84,7 +84,7 @@ POST /api/v1/auth/2fa/trust-device
 
 ## Documentazione Correlata
 - [Panoramica Autenticazione](./README.md)
-- [Piano di Implementazione 2FA](./2fa_piano.md)
+- [Piano di Implementazione 2FA](./2fa-piano.md)
 - [Linee Guida Sicurezza](../sicurezza/2fa_security.md)
 
 [← Torna all'elenco componenti](./README.md)

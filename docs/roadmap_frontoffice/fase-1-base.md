@@ -404,7 +404,7 @@ Growth Foundation: Scalable customer acquisition
 **📄 Documento Principale**: [Stato Avanzamento Lavori](../stato_avanzamento_lavori_2025_06_05.md)
 
 **🔗 File Correlati**:
-- [Fase 2: Core](./fase_2_core.md)
+- [Fase 2: Core](./fase-2-core.md)
 - [Registrazione e Autenticazione](./01_registrazione_autenticazione.md)
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 - [Architettura Base](../architecture/technical-specs.md)

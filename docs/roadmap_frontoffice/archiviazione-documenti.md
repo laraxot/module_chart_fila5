@@ -51,7 +51,7 @@ Sistema di archiviazione sicura e conforme alle normative per tutti i documenti 
 ## Collegamenti Utili
 - [Caricamento Documenti](./upload_documenti.md)
 - [Validazione Documenti](./validazione_documenti.md)
-- [Scadenze Documenti](./scadenze_documenti.md)
+- [Scadenze Documenti](./scadenze-documenti.md)
 
 ---
 [⬅️ Torna alla panoramica](./stato_avanzamento_lavori_2025_06_05.md)

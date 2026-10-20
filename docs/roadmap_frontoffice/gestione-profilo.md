@@ -249,8 +249,8 @@ class ProfileCompletionReminder implements ShouldQueue
 
 ### Documenti Correlati
 - [Area Personale Paziente](./02_area_personale_paziente.md)
-- [Dashboard Paziente](./dashboard_paziente.md)
-- [Upload Documenti](./documenti/upload_documenti.md)
+- [Dashboard Paziente](./dashboard-paziente.md)
+- [Upload Documenti](./documenti/upload-documenti.md)
 - [Sistema Notifiche](./notifiche/README.md)
 
 ### File Tecnici

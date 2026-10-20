@@ -5,13 +5,13 @@
 ## 📊 Stato Implementazione: 60%
 
 ### ✅ Componenti Completati (75%)
-- [x] **Notifiche email conferma registrazione** (100%) → [📄 Dettaglio](./email_conferma_registrazione.md)
-- [x] **Notifiche conferma appuntamento** (100%) → [📄 Dettaglio](./conferma_appuntamento.md) 
-- [x] **Promemoria appuntamenti** (90%) → [📄 Dettaglio](./promemoria_appuntamento.md)
+- [x] **Notifiche email conferma registrazione** (100%) → [📄 Dettaglio](./email-conferma-registrazione.md)
+- [x] **Notifiche conferma appuntamento** (100%) → [📄 Dettaglio](./conferma-appuntamento.md) 
+- [x] **Promemoria appuntamenti** (90%) → [📄 Dettaglio](./promemoria-appuntamento.md)
 
 ### 🔄 In Sviluppo (35%)
-- [ ] **Notifiche push** (40%) → [📄 Dettaglio](./notifiche_push.md)
-- [ ] **Personalizzazione preferenze** (30%) → [📄 Dettaglio](./preferenze_notifiche.md)
+- [ ] **Notifiche push** (40%) → [📄 Dettaglio](./notifiche-push.md)
+- [ ] **Personalizzazione preferenze** (30%) → [📄 Dettaglio](./preferenze-notifiche.md)
 
 ---
 
@@ -63,13 +63,13 @@ Queue::push(new SendEmailNotification($user, $template, $data));
 ## 📧 Tipologie di Notifica
 
 ### 1. Notifiche di Registrazione
-- **Email conferma account** → [📄 Dettaglio](./email_conferma_registrazione.md)
+- **Email conferma account** → [📄 Dettaglio](./email-conferma-registrazione.md)
 - **Benvenuto post-verifica**
 - **Completamento profilo**
 
 ### 2. Notifiche Appuntamenti  
-- **Conferma prenotazione** → [📄 Dettaglio](./conferma_appuntamento.md)
-- **Promemoria** (24h, 1h prima) → [📄 Dettaglio](./promemoria_appuntamento.md)
+- **Conferma prenotazione** → [📄 Dettaglio](./conferma-appuntamento.md)
+- **Promemoria** (24h, 1h prima) → [📄 Dettaglio](./promemoria-appuntamento.md)
 - **Cancellazioni/modifiche**
 - **Richieste rifiutate con motivazione**
 
@@ -79,8 +79,8 @@ Queue::push(new SendEmailNotification($user, $template, $data));
 - **Richieste integrazione documentale**
 
 ### 4. Notifiche Sistema (Pianificate)
-- **Push notifications** (in sviluppo) → [📄 Dettaglio](./notifiche_push.md)
-- **Personalizzazione preferenze** → [📄 Dettaglio](./preferenze_notifiche.md)
+- **Push notifications** (in sviluppo) → [📄 Dettaglio](./notifiche-push.md)
+- **Personalizzazione preferenze** → [📄 Dettaglio](./preferenze-notifiche.md)
 
 ---
 
@@ -243,8 +243,8 @@ class NotificationStats
 
 ### Q3 2025
 - [x] Completamento notifiche email base
-- [ ] **Notifiche push browser** → [📄 Dettaglio](./notifiche_push.md)
-- [ ] **Centro preferenze utente** → [📄 Dettaglio](./preferenze_notifiche.md)
+- [ ] **Notifiche push browser** → [📄 Dettaglio](./notifiche-push.md)
+- [ ] **Centro preferenze utente** → [📄 Dettaglio](./preferenze-notifiche.md)
 
 ### Q4 2025  
 - [ ] **Notifiche SMS** (opzionale)
@@ -261,11 +261,11 @@ class NotificationStats
 ## 🔗 Collegamenti e Riferimenti
 
 ### Documentazione Correlata
-- [📄 Email Conferma Registrazione](./email_conferma_registrazione.md)
-- [📄 Conferma Appuntamento](./conferma_appuntamento.md)
-- [📄 Promemoria Appuntamento](./promemoria_appuntamento.md)
-- [📄 Notifiche Push](./notifiche_push.md)
-- [📄 Preferenze Notifiche](./preferenze_notifiche.md)
+- [📄 Email Conferma Registrazione](./email-conferma-registrazione.md)
+- [📄 Conferma Appuntamento](./conferma-appuntamento.md)
+- [📄 Promemoria Appuntamento](./promemoria-appuntamento.md)
+- [📄 Notifiche Push](./notifiche-push.md)
+- [📄 Preferenze Notifiche](./preferenze-notifiche.md)
 
 ### Documentazione Principale
 - [📄 Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)

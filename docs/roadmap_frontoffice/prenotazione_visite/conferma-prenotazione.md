@@ -711,10 +711,10 @@ class BookingFunnelAnalytics
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Calendario Disponibilità](./calendario_disponibilita.md)
-- [Lista Studi](./lista_studi.md)
+- [Calendario Disponibilità](./calendario-disponibilita.md)
+- [Lista Studi](./lista-studi.md)
 - [Sistema Notifiche](../notifiche/README.md)
-- [Upload Documenti](../documenti/upload_documenti.md)
+- [Upload Documenti](../documenti/upload-documenti.md)
 
 ### File Tecnici
 - `Modules/<nome progetto>/Filament/Pages/ConfirmAppointmentPage.php`

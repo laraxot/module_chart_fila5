@@ -50,4 +50,4 @@ docs/form-architecture.md
 
 ## Collegamenti Correlati
 - [Struttura Documentazione](../struttura-documentazione.md)
-- [Best Practices](../best-practices.md)
+- [Best Practices](../tecnico/filament/best-practices.md)

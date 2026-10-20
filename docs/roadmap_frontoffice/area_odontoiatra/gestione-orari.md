@@ -351,7 +351,7 @@ $emailTemplate = [
 ← **Ritorna a**: [Area Odontoiatra](../../stato_avanzamento_lavori_2025_06_05.md#4-area-odontoiatra-55) | [Dashboard Principale](./dashboard_principale.md)
 
 ### File Correlati
-- [Calendario Appuntamenti](./calendario_appuntamenti.md)
+- [Calendario Appuntamenti](./calendario-appuntamenti.md)
 - [Sistema Notifiche](../notifiche/README.md)
 - [Prenotazione Visite](../prenotazione_visite/disponibilita_orari.md)
 - [Dashboard Odontoiatra](./dashboard_principale.md)

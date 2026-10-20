@@ -822,7 +822,7 @@ class UploadAnalytics
 ### Documentazione Correlata
 - [📄 Sistema Documenti](./README.md) ← Torna alla panoramica
 - [📄 Validazione Documenti](./validazione_documenti.md)
-- [📄 Storage Sicuro](./storage_sicuro.md)
+- [📄 Storage Sicuro](./storage-sicuro.md)
 
 ### Documentazione Principale
 - [📄 Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)

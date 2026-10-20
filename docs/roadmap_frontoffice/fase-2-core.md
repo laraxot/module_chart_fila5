@@ -425,9 +425,9 @@ Budget Planning: Fase 3 investment planning
 **📄 Documento Principale**: [Stato Avanzamento Lavori](../stato_avanzamento_lavori_2025_06_05.md)
 
 **🔗 File Correlati**:
-- [Fase 1: Base](./fase_1_base.md)
-- [Fase 3: Avanzata](./fase_3_avanzata.md)
-- [Sistema Notifiche](./sistema_notifiche.md)
+- [Fase 1: Base](./fase-1-base.md)
+- [Fase 3: Avanzata](./fase-3-avanzata.md)
+- [Sistema Notifiche](./sistema-notifiche.md)
 - [Integrazione Pagamenti](./integrazione_pagamenti.md)
-- [Documenti Digitali](./documenti_digitali.md)
+- [Documenti Digitali](./documenti-digitali.md)
 

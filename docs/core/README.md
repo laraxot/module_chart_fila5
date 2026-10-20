@@ -5,7 +5,7 @@ Questa cartella contiene la documentazione fondamentale del progetto.
 ## Contenuti
 
 ### Architettura
-- [Architettura Tecnologica](architettura_tecnologica.md) - Panoramica dell'architettura del sistema
+- [Architettura Tecnologica](architettura-tecnologica.md) - Panoramica dell'architettura del sistema
 - [Architettura Folio Volt](architettura-folio-volt.md) - Architettura del frontend con Folio e Volt
 
 ### Progetto

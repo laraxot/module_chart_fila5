@@ -313,5 +313,5 @@ class UserStats extends Component
 ## Collegamenti
 - [Struttura Base](../laravel/Modules/Xot/docs/STRUCTURE.md)
 - [Convenzioni di Namespace](../laravel/Modules/Xot/docs/namespace-conventions.md)
-- [Documentazione Laravel](LARAVEL.md)
-- [Documentazione Folio & Volt](FOLIO_VOLT.md) 
+- [Documentazione Laravel](laravel.md)
+- [Documentazione Folio & Volt](folio-volt.md) 

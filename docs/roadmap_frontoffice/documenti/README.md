@@ -7,10 +7,10 @@
 ### ✅ Componenti Completati (85%)
 - [x] **Upload documenti sicuro** (90%) → [📄 Dettaglio](./upload_documenti.md)
 - [x] **Validazione automatica** (80%) → [📄 Dettaglio](./validazione_documenti.md)
-- [x] **Storage crittografato** (95%) → [📄 Dettaglio](./storage_sicuro.md)
+- [x] **Storage crittografato** (95%) → [📄 Dettaglio](./storage-sicuro.md)
 
 ### 🔄 In Sviluppo (55%)
-- [ ] **OCR automatico** (60%) → [📄 Dettaglio](./ocr_automatico.md)
+- [ ] **OCR automatico** (60%) → [📄 Dettaglio](./ocr-automatico.md)
 - [ ] **Firma digitale** (50%) → [📄 Dettaglio](./firma_digitale.md)
 
 ---
@@ -276,8 +276,8 @@ class DocumentAnalytics
 ### Documentazione Dettagliata
 - [📄 Upload Documenti](./upload_documenti.md)
 - [📄 Validazione Automatica](./validazione_documenti.md)
-- [📄 Storage Sicuro](./storage_sicuro.md)
-- [📄 OCR Automatico](./ocr_automatico.md)
+- [📄 Storage Sicuro](./storage-sicuro.md)
+- [📄 OCR Automatico](./ocr-automatico.md)
 - [📄 Firma Digitale](./firma_digitale.md)
 
 ### Documentazione Principale

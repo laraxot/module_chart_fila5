@@ -283,6 +283,6 @@
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 - [Area Odontoiatra](./04_area_odontoiatra.md)
 - [Integrazione Pagamenti](./integrazione_pagamenti.md)
-- [Sistema Notifiche](./sistema_notifiche.md)
+- [Sistema Notifiche](./sistema-notifiche.md)
 
 *Ultimo aggiornamento: Dicembre 2024*

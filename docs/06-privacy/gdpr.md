@@ -102,4 +102,4 @@ Una DPIA completa è stata condotta per il progetto il progetto, identificando:
 - Misure di mitigazione implementate
 - Valutazione della proporzionalità del trattamento
 
-Per i dettagli completi della DPIA, consultare il documento [DPIA](./dpia.md).
+Per i dettagli completi della DPIA, consultare il documento [DPIA](../compliance/gdpr/dpia.md).

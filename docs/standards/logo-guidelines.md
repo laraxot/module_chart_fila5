@@ -96,7 +96,7 @@ config/
 - [Gestione Asset](../../laravel/Modules/Xot/docs/assets.md)
 - [Gestione Media](../../laravel/Modules/Media/docs/README.md)
 - [Standard UI](interface_guidelines.md)
-- [Best Practices](best_practices.md)
+- [Best Practices](../tecnico/filament/best-practices.md)
 
 ## Vedi Anche
 - [Documentazione UI](../../laravel/Modules/UI/docs/README.md)
@@ -237,7 +237,7 @@ Prima di utilizzare un logo SVG:
 ### Collegamenti nella Root
 - [Configurazione e Risoluzione dei Loghi](../configurazione-logo.md) - Indice generale sulla gestione dei loghi
 - [Struttura dei Moduli in Base](../struttura-moduli.md) - Struttura dei moduli nel progetto
-- [Architettura Folio + Volt in Base](../architettura-folio-volt.md) - Implementazione di Folio e Volt
+- [Architettura Folio + Volt in Base](../core/architettura-folio-volt.md) - Implementazione di Folio e Volt
 
 ### Collegamenti ai Moduli
 - [Risoluzione dei Loghi](../../laravel/Modules/Xot/docs/LOGO_RESOLUTION.md) - Processo tecnico di risoluzione dei loghi

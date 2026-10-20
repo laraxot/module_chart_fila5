@@ -253,4 +253,4 @@ $users = Cache::remember('users', 3600, function () {
 - [Struttura Base](../laravel/Modules/Xot/docs/STRUCTURE.md)
 - [Convenzioni di Routing](../laravel/Modules/Xot/docs/routing-conventions.md)
 - [Convenzioni di Namespace](../laravel/Modules/Xot/docs/namespace-conventions.md)
-- [Documentazione Folio & Volt](FOLIO_VOLT.md) 
+- [Documentazione Folio & Volt](folio-volt.md) 

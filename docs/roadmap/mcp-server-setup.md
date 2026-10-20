@@ -58,6 +58,6 @@ I seguenti script sono stati implementati per gestire i MCP servers:
 
 ## Collegamenti Correlati
 
-- [Documentazione Bash Scripts](../bashscripts.md)
+- [Documentazione Bash Scripts](../tecnico/bashscripts.md)
 - [Best Practices per Script Bash](../rules/bashscripts-standards.md)
 - [Configurazione Cursor](../ide/cursor/configuration.md)

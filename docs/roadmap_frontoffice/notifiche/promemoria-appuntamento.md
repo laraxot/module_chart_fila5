@@ -744,9 +744,9 @@ class ReminderAnalytics
 
 ### Documentazione Correlata
 - [📄 Sistema Notifiche](./README.md) ← Torna alla panoramica
-- [📄 Email Conferma Registrazione](./email_conferma_registrazione.md)
-- [📄 Conferma Appuntamento](./conferma_appuntamento.md)
-- [📄 Notifiche Push](./notifiche_push.md)
+- [📄 Email Conferma Registrazione](./email-conferma-registrazione.md)
+- [📄 Conferma Appuntamento](./conferma-appuntamento.md)
+- [📄 Notifiche Push](./notifiche-push.md)
 
 ### Documentazione Principale
 - [📄 Stato Avanzamento Lavori](../../stato_avanzamento_lavori_2025_06_05.md)

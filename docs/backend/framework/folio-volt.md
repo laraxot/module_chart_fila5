@@ -252,4 +252,4 @@ $submit = function () {
 - [Struttura Base](../laravel/Modules/Xot/docs/STRUCTURE.md)
 - [Convenzioni di Routing](../laravel/Modules/Xot/docs/routing-conventions.md)
 - [Convenzioni di Namespace](../laravel/Modules/Xot/docs/namespace-conventions.md)
-- [Documentazione Livewire](LIVEWIRE.md) 
+- [Documentazione Livewire](livewire.md) 

@@ -167,7 +167,7 @@ $notification = new RecordNotification($record, 'your-module.notification');
 - Retry rate: <1%
 
 ## Collegamenti
-- [Documentazione API](./api.md)
+- [Documentazione API](../advanced/api.md)
 - [Guida Contribuzione](./CONTRIBUTING.md)
 - [Changelog](./CHANGELOG.md)
 

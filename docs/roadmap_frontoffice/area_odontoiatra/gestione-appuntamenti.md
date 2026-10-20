@@ -949,9 +949,9 @@ class AppointmentsExport implements FromCollection, WithHeadings, WithMapping
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Dashboard Studio](./dashboard_studio.md)
-- [Registrazione Studi](./registrazione_studi.md)
-- [Calendario Disponibilità](../prenotazione_visite/calendario_disponibilita.md)
+- [Dashboard Studio](./dashboard-studio.md)
+- [Registrazione Studi](./registrazione-studi.md)
+- [Calendario Disponibilità](../prenotazione_visite/calendario-disponibilita.md)
 - [Sistema Notifiche](../notifiche/README.md)
 
 ### File Tecnici

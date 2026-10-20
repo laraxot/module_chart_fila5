@@ -54,8 +54,8 @@ Sistema di verifica automatica e manuale dei documenti caricati dai pazienti.
 
 ## Collegamenti Utili
 - [Caricamento Documenti](./upload_documenti.md)
-- [Archiviazione Sicura](./archiviazione_documenti.md)
-- [Scadenze Documenti](./scadenze_documenti.md)
+- [Archiviazione Sicura](./archiviazione-documenti.md)
+- [Scadenze Documenti](./scadenze-documenti.md)
 
 ---
 [⬅️ Torna alla panoramica](./stato_avanzamento_lavori_2025_06_05.md)

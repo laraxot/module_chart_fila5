@@ -51,7 +51,7 @@ Sistema di archiviazione sicura per la conservazione dei documenti sensibili dei
 ## Collegamenti Utili
 - [Caricamento Documenti](./upload_documenti.md)
 - [Validazione Documenti](./validazione_documenti.md)
-- [Sistema OCR](./ocr_automatico.md)
+- [Sistema OCR](./ocr-automatico.md)
 
 ---
 [⬅️ Torna alla panoramica](../stato_avanzamento_lavori_2025_06_05.md)

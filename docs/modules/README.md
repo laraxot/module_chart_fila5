@@ -10,15 +10,15 @@ Questa cartella contiene la documentazione relativa ai moduli del sistema.
 - [Collegamenti Moduli](module-links/README.md) - Collegamenti tra i moduli
 
 ### Moduli Core
-- [Xot](xot.md) - Modulo base del sistema
-- [User](user.md) - Gestione utenti
+- [Xot](../tecnico/packages/xot.md) - Modulo base del sistema
+- [User](../moduli/user.md) - Gestione utenti
 - [Lang](lang.md) - Gestione lingue
 - [Tenant](tenant.md) - Gestione multi-tenant
 
 ### Moduli Business
 - [Patient](patient.md) - Gestione pazienti
 - [Dental](dental.md) - Gestione odontoiatrica
-- [Gdpr](gdpr.md) - Gestione privacy
+- [Gdpr](../06-privacy/gdpr.md) - Gestione privacy
 
 ### Moduli Support
 - [Activity](activity.md) - Logging attività

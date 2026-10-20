@@ -88,6 +88,6 @@ GDPR Compliance: Right to be forgotten
 **📄 Documento Principale**: [Stato Avanzamento Lavori](../stato_avanzamento_lavori_2025_06_05.md)
 
 **🔗 File Correlati**:
-- [Gestione Documenti](./gestione_documenti.md)
+- [Gestione Documenti](./gestione-documenti.md)
 - [Visualizzazione Sicura](./visualizzazione_sicura.md)
 

@@ -668,9 +668,9 @@ const studioFilters = new StudioFilters();
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Ricerca Studi](./ricerca_studi.md)
-- [Calendario Disponibilità](./calendario_disponibilita.md)
-- [Conferma Prenotazione](./conferma_prenotazione.md)
+- [Ricerca Studi](./ricerca-studi.md)
+- [Calendario Disponibilità](./calendario-disponibilita.md)
+- [Conferma Prenotazione](./conferma-prenotazione.md)
 - [Sistema Prenotazione](../03_prenotazione_visite.md)
 
 ### File Tecnici

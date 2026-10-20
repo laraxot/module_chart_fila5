@@ -6,8 +6,8 @@ Questa cartella contiene gli standard e le convenzioni di codifica del progetto.
 
 ### Standard di Codice
 - [Standard Codice](standard-codice.md) - Standard generali di codifica
-- [Convenzioni](conventions.md) - Convenzioni generali
-- [Naming Conventions](naming-conventions.md) - Convenzioni di denominazione
+- [Convenzioni](../tecnico/filament/conventions.md) - Convenzioni generali
+- [Naming Conventions](../rules/naming-conventions.md) - Convenzioni di denominazione
 - [Schema Conventions](schema_conventions.md) - Convenzioni per gli schemi
 - [Convenzioni Naming Campi](convenzioni-naming-campi.md) - Convenzioni per i nomi dei campi
 

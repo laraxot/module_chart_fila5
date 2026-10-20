@@ -250,10 +250,10 @@ $templates = [
 ← **Ritorna a**: [Area Odontoiatra](../../stato_avanzamento_lavori_2025_06_05.md#4-area-odontoiatra-55) | [Dashboard Principale](./dashboard_principale.md)
 
 ### File Correlati
-- [Gestione Orari](./gestione_orari.md)
+- [Gestione Orari](./gestione-orari.md)
 - [Sistema Notifiche](../notifiche/README.md)
-- [Prenotazione Visite](../prenotazione_visite/calendario_disponibilita.md)
-- [Conferma Appuntamento](../notifiche/conferma_appuntamento.md)
+- [Prenotazione Visite](../prenotazione_visite/calendario-disponibilita.md)
+- [Conferma Appuntamento](../notifiche/conferma-appuntamento.md)
 
 ## Performance e Ottimizzazioni
 

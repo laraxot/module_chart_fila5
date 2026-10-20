@@ -229,7 +229,7 @@
 **🔗 File Correlati**:
 - [Registrazione e Autenticazione](./01_registrazione_autenticazione.md)
 - [Prenotazione Visite](./03_prenotazione_visite.md)
-- [Documenti Digitali](./documenti_digitali.md)
-- [Sistema Notifiche](./sistema_notifiche.md)
+- [Documenti Digitali](./documenti-digitali.md)
+- [Sistema Notifiche](./sistema-notifiche.md)
 
 *Ultimo aggiornamento: Dicembre 2024*

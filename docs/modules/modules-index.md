@@ -198,5 +198,5 @@ Ogni modulo deve:
 
 - [Architettura Moduli](../architecture/modules-structure.md)
 - [Convenzioni di Codice](../standards/coding-standards.md)
-- [Documentazione Filament](../filament/componenti-blade.md)
+- [Documentazione Filament](../backend/filament/componenti-blade.md)
 - [Guida Frontend](../frontend/README.md) 

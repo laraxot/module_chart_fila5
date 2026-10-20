@@ -3,7 +3,7 @@
 > **Riferimenti ufficiali:**
 > - [Documentazione MCP su Cursor](https://docs.cursor.com/context/model-context-protocol)
 > - [Sito ufficiale MCP](https://modelcontextprotocol.io/introduction)
-> - [Esempi pratici locali](./ESEMPI_PRACTICI_MCP.md)
+> - [Esempi pratici locali](./esempi-practici-mcp.md)
 
 ---
 
@@ -58,11 +58,11 @@ Entrambi i file usano lo stesso schema JSON, vedi esempio sopra.
 ## Best Practice
 - Gestire le variabili d'ambiente (API_KEY, ecc.) tramite il campo `env` nella configurazione.
 - Preferire stdio per sviluppo locale, SSE per ambienti condivisi.
-- Documentare ogni tool MCP sviluppato con esempi pratici (vedi [ESEMPI_PRACTICI_MCP.md](./ESEMPI_PRACTICI_MCP.md)).
+- Documentare ogni tool MCP sviluppato con esempi pratici (vedi [ESEMPI_PRACTICI_MCP.md](./esempi-practici-mcp.md)).
 - Aggiornare la documentazione ad ogni variazione di configurazione o aggiunta tool.
 
 ## Collegamenti utili
-- [Esempi pratici MCP](./ESEMPI_PRACTICI_MCP.md)
+- [Esempi pratici MCP](./esempi-practici-mcp.md)
 - [Documentazione MCP Cursor](https://docs.cursor.com/context/model-context-protocol)
 - [Guida ufficiale MCP](https://modelcontextprotocol.io/introduction)
 

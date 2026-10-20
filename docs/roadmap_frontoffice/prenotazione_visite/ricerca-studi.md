@@ -46,9 +46,9 @@ Sistema di ricerca avanzata per trovare studi odontoiatrici convenzionati in bas
 - Integrazione con sistema di prenotazione
 
 ## Collegamenti Utili
-- [Lista Studi](./lista_studi.md)
-- [Calendario Disponibilità](./calendario_disponibilita.md)
-- [Conferma Prenotazione](./conferma_prenotazione.md)
+- [Lista Studi](./lista-studi.md)
+- [Calendario Disponibilità](./calendario-disponibilita.md)
+- [Conferma Prenotazione](./conferma-prenotazione.md)
 
 ---
 [⬅️ Torna alla panoramica](../../stato_avanzamento_lavori_2025_06_05.md)

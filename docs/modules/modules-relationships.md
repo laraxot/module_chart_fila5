@@ -69,6 +69,6 @@ Il modulo Reporting integra i dati per fornire:
 - [Modulo Reporting](../laravel/Modules/Reporting/docs/README.md)
 
 ## Vedi Anche
-- [Architettura Moduli](architecture/modules-structure.md)
+- [Architettura Moduli](../architecture/modules-structure.md)
 - [Standard di Codice](standards/coding-standards.md)
 - [Documentazione API](api/README.md) 

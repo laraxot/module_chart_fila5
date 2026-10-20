@@ -727,10 +727,10 @@ window.selectAvailableSlot = (event) => {
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Ricerca Studi](./ricerca_studi.md)
-- [Lista Studi](./lista_studi.md)
+- [Ricerca Studi](./ricerca-studi.md)
+- [Lista Studi](./lista-studi.md)
 - [Gestione Disponibilità](./gestione_disponibilita.md)
-- [Conferma Prenotazione](./conferma_prenotazione.md)
+- [Conferma Prenotazione](./conferma-prenotazione.md)
 
 ### File Tecnici
 - `Modules/<nome progetto>/Widgets/StudioAvailabilityCalendarWidget.php`

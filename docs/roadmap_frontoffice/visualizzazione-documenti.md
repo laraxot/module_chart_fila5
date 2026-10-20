@@ -386,9 +386,9 @@ document.addEventListener('DOMContentLoaded', function() {
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [Upload Documenti](./documenti/upload_documenti.md)
-- [Validazione Documenti](./documenti/validazione_documenti.md)
-- [Storage Sicuro](./documenti/storage_sicuro.md)
+- [Upload Documenti](./documenti/upload-documenti.md)
+- [Validazione Documenti](./documenti/validazione-documenti.md)
+- [Storage Sicuro](./documenti/storage-sicuro.md)
 - [Area Personale Paziente](./02_area_personale_paziente.md)
 
 ### File Tecnici
