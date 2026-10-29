@@ -49,15 +49,15 @@ Filament\Pages\Dashboard → Modules\Xot\Filament\Pages\XotBaseDashboard
 **MAI modificare i tipi delle proprietà ereditate da Filament Widgets!**
 
 ```php
-// ❌ SBAGLIATO - Non modificare il tipo
-protected static ?bool $isLazy = true;
+// ❌ SBAGLIATO - Non modificare il tipo (fatal error di PHP)
+protected static bool $isLazyLoaded = true;
 
-// ✅ CORRETTO - Usa il tipo esatto della classe base
-protected static bool $isLazy = true;
+// ✅ CORRETTO - Usa il tipo esatto della classe base (Filament 5.11: ?bool)
+protected static ?bool $isLazyLoaded = true;
 ```
 
 **Proprietà che DEVONO mantenere il tipo esatto:**
-- `protected static bool $isLazy` (non `?bool`)
+- `protected static ?bool $isLazyLoaded` (da Filament 5.11; la vecchia `$isLazy`, che era `bool`, e' deprecata)
 - `protected static ?string $heading` (può rimanere nullable)
 - `protected static ?int $sort` (può rimanere nullable)
 - `protected static ?string $pollingInterval` (può rimanere nullable)
@@ -95,7 +95,7 @@ class ModelNameChart extends XotBaseChartWidget // ⚠️ SEMPRE XotBase
 {
     protected static ?string $heading = null;
     protected static ?int $sort = 1;
-    protected static bool $isLazy = true; // ⚠️ SEMPRE bool, mai ?bool
+    protected static ?bool $isLazyLoaded = true; // ⚠️ tipo del parent: ?bool
     protected static ?string $pollingInterval = '300s';
 
     public function getHeading(): ?string // ⚠️ SEMPRE public, mai protected
@@ -193,7 +193,7 @@ use Filament\Widgets\Concerns\InteractsWithPageFilters; // ✅ Esiste
 #### ❌ Errori di Tipo
 ```php
 // SBAGLIATO
-protected static ?bool $isLazy = true;  // Dovrebbe essere bool
+protected static bool $isLazyLoaded = true;  // Dovrebbe essere ?bool
 protected static string $heading = '';  // Dovrebbe essere ?string
 ```
 

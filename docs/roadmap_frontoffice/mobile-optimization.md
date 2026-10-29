@@ -63,7 +63,7 @@ L'ottimizzazione mobile è critica per il successo di <nome progetto>, considera
 // Esempio ottimizzazione widget
 class OptimizedPatientWidget extends Widget
 {
-    protected static ?bool $isLazy = true; // Caricamento lazy
+    protected static ?bool $isLazyLoaded = true; // Caricamento lazy
     protected static ?string $pollingInterval = null; // Disabilita polling
     
     protected function getViewData(): array
