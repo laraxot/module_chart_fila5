@@ -1,5 +1,11 @@
 # Gestione dei Temi
 
+> **Obsoleto: `npm run copy` non esiste piu' (2026-11-11).** Gli asset dei temi
+> arrivano nella document root con un symlink, non con una copia. Per il
+> procedimento valido vedi
+> [Xot/docs/theme-assets-workflow.md](/laravel/Modules/Xot/docs/theme-assets-workflow.md).
+> Le istruzioni di copia qui sotto sono lasciate come documentazione storica.
+
 ## Dipendenze Critiche
 - **Tailwind CSS**: Per la compatibilità con Filament 4.x, è **obbligatorio** utilizzare `tailwindcss@3.x`. Non aggiornare a versioni superiori finché non sarà supportato ufficialmente da Filament.
 

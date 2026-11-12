@@ -1,5 +1,11 @@
 # Link alle Documentazioni dei Temi
 
+> **Obsoleto: `npm run copy` non esiste piu' (2026-11-11).** Gli asset dei temi
+> arrivano nella document root con un symlink, non con una copia. Per il
+> procedimento valido vedi
+> [Xot/docs/theme-assets-workflow.md](/laravel/Modules/Xot/docs/theme-assets-workflow.md).
+> Le istruzioni di copia qui sotto sono lasciate come documentazione storica.
+
 > Questo documento è un indice centralizzato con collegamenti alla documentazione sui temi nei vari moduli.
 
 ## Documentazione Temi nel Modulo Cms
