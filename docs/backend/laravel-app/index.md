@@ -24,8 +24,8 @@
 
 ## Collegamenti Bidirezionali
 Ogni modulo ha i propri collegamenti bidirezionali nella sua cartella docs/LINKS.md 
-## Collegamenti tra versioni di INDEX.md
-* [INDEX.md](docs/laravel-app/INDEX.md)
-* [INDEX.md](docs/INDEX.md)
-* [INDEX.md](laravel/docs/INDEX.md)
+## Collegamenti tra versioni di index.md
+* [index.md](docs/laravel-app/index.md)
+* [index.md](docs/index.md)
+* [index.md](laravel/docs/index.md)
 

@@ -148,8 +148,8 @@ Verificare sempre:
 
 ## Collegamenti alla Documentazione Dettagliata
 
-- [MULTI_CHANNEL_NOTIFICATIONS.md](/laravel/Modules/Notify/docs/notifications/MULTI_CHANNEL_NOTIFICATIONS.md)
-- [NOTIFICATIONS_IMPLEMENTATION_GUIDE.md](/laravel/Modules/Notify/docs/notifications/NOTIFICATIONS_IMPLEMENTATION_GUIDE.md)
-- [SMS_PROVIDER_CONFIGURATION.md](/laravel/Modules/Notify/docs/notifications/SMS_PROVIDER_CONFIGURATION.md)
-- [SMS_IMPLEMENTATION_DETAILS.md](/laravel/Modules/Notify/docs/notifications/SMS_IMPLEMENTATION_DETAILS.md)
-- [TELEGRAM_NOTIFICATIONS_GUIDE.md](/laravel/Modules/Notify/docs/notifications/TELEGRAM_NOTIFICATIONS_GUIDE.md)
+- [MULTI_CHANNEL_NOTIFICATIONS.md](/laravel/Modules/Notify/docs/notifications/multi_channel_notifications.md)
+- [NOTIFICATIONS_IMPLEMENTATION_GUIDE.md](/laravel/Modules/Notify/docs/notifications/notifications_implementation_guide.md)
+- [SMS_PROVIDER_CONFIGURATION.md](/laravel/Modules/Notify/docs/notifications/sms_provider_configuration.md)
+- [SMS_IMPLEMENTATION_DETAILS.md](/laravel/Modules/Notify/docs/notifications/sms_implementation_details.md)
+- [TELEGRAM_NOTIFICATIONS_GUIDE.md](/laravel/Modules/Notify/docs/notifications/telegram_notifications_guide.md)

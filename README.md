@@ -352,7 +352,7 @@ $theme = app(CreateChartThemeAction::class)->execute([
 - [⚙️ Configuration](docs/configuration.md)
 - [🧪 Testing](docs/testing.md)
 - [🚀 Deployment](docs/deployment.md)
-- [🔒 Security](docs/security.md)
+- [🔒 Security](docs/SECURITY.md)
 
 ---
 

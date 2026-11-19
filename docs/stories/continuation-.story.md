@@ -4,6 +4,7 @@ title: "Chart Module — Table Audit and $model Property"
 type: continuation
 scope: module:Chart
 github: {issues: "https://github.com/laraxot/module_xot_fila5/issues/115", discussions: "https://github.com/laraxot/module_xot_fila5/discussions/117"}
+date_originale_nome_file: 2026-09-11
 ---
 # Chart Module — Continuation Task
 

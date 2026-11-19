@@ -12,7 +12,7 @@ Le convenzioni e regole generali per i namespace sono documentate in:
 
 ## Quick Links
 - [Best Practices](/laravel/Modules/Xot/docs/best-practices/README.md)
-- [Architettura del Progetto](/laravel/Modules/Xot/docs/architecture/README.md)
+- [Architettura del Progetto](/laravel/Modules/Xot/docs/architecture/readme.md)
 - [Guida allo Sviluppo](/laravel/Modules/Xot/docs/development/README.md) 
 
 ## Collegamenti tra versioni di namespaces.md
