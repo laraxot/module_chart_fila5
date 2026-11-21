@@ -3,9 +3,9 @@
 ## Collegamenti correlati
 - [Documentazione centrale](/docs/README.md)
 - [Collegamenti documentazione](/docs/collegamenti-documentazione.md)
-- [Regole Traduzioni User](/laravel/Modules/User/docs/TRANSLATION_KEYS_RULES.md)
-- [Regole Traduzioni Lang](/laravel/Modules/Lang/docs/TRANSLATION_KEYS_RULES.md)
-- [Implementazione Auth Pages](/laravel/Modules/User/docs/AUTH_PAGES_IMPLEMENTATION.md)
+- [Regole Traduzioni User](/laravel/Modules/User/docs/translation_keys_rules.md)
+- [Regole Traduzioni Lang](/laravel/Modules/Lang/docs/translation_keys_rules.md)
+- [Implementazione Auth Pages](/laravel/Modules/User/docs/auth_pages_implementation.md)
 
 ## Errore Comune da Evitare
 

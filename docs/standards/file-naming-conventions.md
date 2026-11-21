@@ -39,9 +39,9 @@ Modules/ModuleName/
 ```
 Modules/ModuleName/
 ├── Readme.md                  # ❌ ERRATO (prima lettera maiuscola)
-├── readme.md                  # ❌ ERRATO (tutto minuscolo)
+├── README.md                  # ❌ ERRATO (tutto minuscolo)
 ├── docs/
-│   ├── readme.md              # ❌ ERRATO (tutto minuscolo)
+│   ├── README.md              # ❌ ERRATO (tutto minuscolo)
 │   ├── BOTTLENECKS.md         # ❌ ERRATO (tutto maiuscolo)
 │   └── Roadmap.md             # ❌ ERRATO (prima lettera maiuscola)
 ```
@@ -52,7 +52,7 @@ Quando si trovano file che non seguono queste convenzioni, devono essere rinomin
 
 1. Per file README.md con nome errato:
    ```bash
-   mv /path/to/module/docs/readme.md /path/to/module/docs/README.md
+   mv /path/to/module/docs/README.md /path/to/module/docs/README.md
    ```
 
 2. Per altri file di documentazione con maiuscole:

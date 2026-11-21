@@ -4,10 +4,7 @@ declare(strict_types=1);
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;
-use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 test('creates chart with factory', function (): void {
     $chart = ChartFactory::new()->createOne();

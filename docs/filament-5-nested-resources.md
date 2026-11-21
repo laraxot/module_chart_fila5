@@ -1,3 +1,19 @@
+---
+title: "Resource Annidate In Filament 5"
+type: reference
+tags: [chart, filament, resources]
+created: 2026-11-19
+updated: 2026-11-19
+qmd: "Resource Annidate In Filament 5"
+issues: [15, 20]
+discussions: []
+---
+
+> Convertito da `.txt` a `.md` il 2026-11-19 (#15, #20). Lo stesso contenuto
+> esisteva, identico byte per byte, anche in
+> `Themes/Zero/docs/filament-5-nested-resources.txt`: quella copia e' stata
+> rimossa, perche' l'argomento sono le Resource di Filament e non il tema.
+
 # Filament 5.x Nested Resources Guide
 
 ## Overview

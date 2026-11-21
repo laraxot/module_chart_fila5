@@ -3,10 +3,7 @@
 declare(strict_types=1);
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Models\Chart;
-use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 test('can create a chart with valid data', function (): void {
     $chart = ChartFactory::new()->createOne([

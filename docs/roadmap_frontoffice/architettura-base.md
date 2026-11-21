@@ -81,7 +81,7 @@ laravel/
 │   │   │   ├── password.md
 │   │   │   ├── repositories.md
 │   │   │   ├── FILAMENT_BEST_PRACTICES.md
-│   │   │   ├── PHPSTAN_FIXES.md
+│   │   │   ├── phpstan_fixes.md
 │   │   │   └── ...
 │   │   ├── lang/
 │   │   │   ├── ar/

@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 use Modules\Chart\Datas\ChartData;
-use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Spatie\LaravelData\Data;
-
-uses(TestCase::class);
 
 /**
  * @param  array<string, mixed>  $overrides

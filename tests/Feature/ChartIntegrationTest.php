@@ -4,10 +4,7 @@ declare(strict_types=1);
 use Modules\Chart\Database\Factories\ChartFactory;
 use Modules\Chart\Database\Factories\MixedChartFactory;
 use Modules\Chart\Models\Chart;
-use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 test('can create chart with all required fields', function (): void {
     $chart = ChartFactory::new()->createOne([

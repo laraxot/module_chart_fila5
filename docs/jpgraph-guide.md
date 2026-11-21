@@ -1,3 +1,18 @@
+---
+title: "Guida A JpGraph"
+type: reference
+tags: [chart, jpgraph, pdf]
+created: 2026-11-19
+updated: 2026-11-19
+qmd: "Guida A JpGraph"
+issues: [15, 20]
+discussions: []
+---
+
+> Convertito da `.txt` a `.md` il 2026-11-19: il contenuto era gia' scritto in
+> markdown, solo con l'estensione sbagliata, quindi non veniva reso da nessun
+> visualizzatore (#15, #20).
+
 # JpGraph 4.4.2 Guide
 
 ## Overview
@@ -294,3 +309,11 @@ public function testChartInPDF()
 - GitHub repository
 - Community forums
 - Stack Overflow questions
+
+## Riferimenti esterni
+
+- <https://gist.github.com/milon/5173255b58564a0e50548cfbe879181e>
+
+Era l'unico contenuto di `docs/.github/links.txt`, un file da una riga in una
+cartella `.github` dentro `docs/`, dove nessuno lo avrebbe cercato. Riportato
+qui il 2026-11-19 (#15, #20).

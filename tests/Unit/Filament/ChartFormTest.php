@@ -8,10 +8,7 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Select;
 use Modules\Chart\Actions\Chart\GetTypeOptions;
 use Modules\Chart\Filament\Resources\ChartResource\Schemas\ChartForm;
-use Modules\Chart\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /*
  * Il form vero del grafico e' `ChartForm` (`XotBaseResource::form()` usa solo lui). Fino al 2026-10-20 sette campi
